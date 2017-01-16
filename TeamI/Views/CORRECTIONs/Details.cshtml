@@ -1,0 +1,90 @@
+﻿@model TeamI.Models.CORRECTION
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CORRECTION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.action)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.action)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EQUIPMENT.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EQUIPMENT.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EQUIPMENT1.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EQUIPMENT1.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EQUIPMENT2.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EQUIPMENT2.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EQUIPMENT3.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EQUIPMENT3.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HAZARD.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HAZARD.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HAZARD1.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HAZARD1.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HAZARD2.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HAZARD2.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HAZARD3.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HAZARD3.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

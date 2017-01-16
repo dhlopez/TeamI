@@ -1,0 +1,93 @@
+﻿@model IEnumerable<TeamI.Models.INSPECTION>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CORRECTION.action)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LAB.building)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LAB1.building)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LAB2.building)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LAB3.building)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USER.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USER1.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USER2.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USER3.firstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CORRECTION.action)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LAB.building)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LAB1.building)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LAB2.building)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LAB3.building)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USER.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USER1.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USER2.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USER3.firstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NCSafteyInspectionModelStoreContainer" CdmEntityContainer="NCSafteyInspectionEntities">
+    <EntitySetMapping Name="CORRECTION">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.CORRECTION">
+        <MappingFragment StoreEntitySet="CORRECTION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="equipmentID" ColumnName="equipmentID" />
+          <ScalarProperty Name="hazardID" ColumnName="hazardID" />
+          <ScalarProperty Name="action" ColumnName="action" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EQUIPMENT">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.EQUIPMENT">
+        <MappingFragment StoreEntitySet="EQUIPMENT">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="labID" ColumnName="labID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HAZARD">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.HAZARD">
+        <MappingFragment StoreEntitySet="HAZARD">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="equipmentID" ColumnName="equipmentID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INSPECTION">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.INSPECTION">
+        <MappingFragment StoreEntitySet="INSPECTION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="labID" ColumnName="labID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="correctionID" ColumnName="correctionID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LAB">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.LAB">
+        <MappingFragment StoreEntitySet="LAB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="building" ColumnName="building" />
+          <ScalarProperty Name="room" ColumnName="room" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TASK">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.TASK">
+        <MappingFragment StoreEntitySet="TASK">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.USER">
+        <MappingFragment StoreEntitySet="USER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="taskID" ColumnName="taskID" />
+          <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+          <ScalarProperty Name="role" ColumnName="role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

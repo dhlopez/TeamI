@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NCSafteyInspectionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CORRECTION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="equipmentID" Type="int" Nullable="false" />
+    <Property Name="hazardID" Type="int" />
+    <Property Name="action" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="EQUIPMENT">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="labID" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="type" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="HAZARD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="equipmentID" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="INSPECTION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="date" Type="date" />
+    <Property Name="labID" Type="int" />
+    <Property Name="userID" Type="int" />
+    <Property Name="correctionID" Type="int" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="LAB">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="building" Type="varchar" MaxLength="100" />
+    <Property Name="room" Type="int" />
+    <Property Name="type" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TASK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="1000" />
+    <Property Name="date" Type="date" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="USER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="100" />
+    <Property Name="lastName" Type="varchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="200" />
+    <Property Name="phone" Type="varchar" MaxLength="10" />
+    <Property Name="taskID" Type="int" />
+    <Property Name="postalCode" Type="varchar" MaxLength="6" />
+    <Property Name="role" Type="int" />
+  </EntityType>
+  <Association Name="FK__CORRECTIO__equip__4AB81AF0">
+    <End Role="EQUIPMENT" Type="Self.EQUIPMENT" Multiplicity="1" />
+    <End Role="CORRECTION" Type="Self.CORRECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EQUIPMENT">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CORRECTION">
+        <PropertyRef Name="equipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CORRECTIO__equip__4CA06362">
+    <End Role="EQUIPMENT" Type="Self.EQUIPMENT" Multiplicity="1" />
+    <End Role="CORRECTION" Type="Self.CORRECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EQUIPMENT">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CORRECTION">
+        <PropertyRef Name="equipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CORRECTIO__equip__4E88ABD4">
+    <End Role="EQUIPMENT" Type="Self.EQUIPMENT" Multiplicity="1" />
+    <End Role="CORRECTION" Type="Self.CORRECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EQUIPMENT">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CORRECTION">
+        <PropertyRef Name="equipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CORRECTIO__equip__5070F446">
+    <End Role="EQUIPMENT" Type="Self.EQUIPMENT" Multiplicity="1" />
+    <End Role="CORRECTION" Type="Self.CORRECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EQUIPMENT">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CORRECTION">
+        <PropertyRef Name="equipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CORRECTIO__hazar__49C3F6B7">
+    <End Role="HAZARD" Type="Self.HAZARD" Multiplicity="0..1" />
+    <End Role="CORRECTION" Type="Self.CORRECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HAZARD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CORRECTION">
+        <PropertyRef Name="hazardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CORRECTIO__hazar__4BAC3F29">
+    <End Role="HAZARD" Type="Self.HAZARD" Multiplicity="0..1" />
+    <End Role="CORRECTION" Type="Self.CORRECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HAZARD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CORRECTION">
+        <PropertyRef Name="hazardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CORRECTIO__hazar__4D94879B">
+    <End Role="HAZARD" Type="Self.HAZARD" Multiplicity="0..1" />
+    <End Role="CORRECTION" Type="Self.CORRECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HAZARD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CORRECTION">
+        <PropertyRef Name="hazardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CORRECTIO__hazar__4F7CD00D">
+    <End Role="HAZARD" Type="Self.HAZARD" Multiplicity="0..1" />
+    <End Role="CORRECTION" Type="Self.CORRECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HAZARD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CORRECTION">
+        <PropertyRef Name="hazardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EQUIPMENT__labID__2F10007B">
+    <End Role="LAB" Type="Self.LAB" Multiplicity="0..1" />
+    <End Role="EQUIPMENT" Type="Self.EQUIPMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LAB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EQUIPMENT">
+        <PropertyRef Name="labID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EQUIPMENT__labID__34C8D9D1">
+    <End Role="LAB" Type="Self.LAB" Multiplicity="0..1" />
+    <End Role="EQUIPMENT" Type="Self.EQUIPMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LAB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EQUIPMENT">
+        <PropertyRef Name="labID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EQUIPMENT__labID__3A81B327">
+    <End Role="LAB" Type="Self.LAB" Multiplicity="0..1" />
+    <End Role="EQUIPMENT" Type="Self.EQUIPMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LAB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EQUIPMENT">
+        <PropertyRef Name="labID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EQUIPMENT__labID__412EB0B6">
+    <End Role="LAB" Type="Self.LAB" Multiplicity="0..1" />
+    <End Role="EQUIPMENT" Type="Self.EQUIPMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LAB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EQUIPMENT">
+        <PropertyRef Name="labID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INSPECTIO__corre__5165187F">
+    <End Role="CORRECTION" Type="Self.CORRECTION" Multiplicity="0..1" />
+    <End Role="INSPECTION" Type="Self.INSPECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CORRECTION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INSPECTION">
+        <PropertyRef Name="correctionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INSPECTIO__labID__32E0915F">
+    <End Role="LAB" Type="Self.LAB" Multiplicity="0..1" />
+    <End Role="INSPECTION" Type="Self.INSPECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LAB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INSPECTION">
+        <PropertyRef Name="labID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INSPECTIO__labID__38996AB5">
+    <End Role="LAB" Type="Self.LAB" Multiplicity="0..1" />
+    <End Role="INSPECTION" Type="Self.INSPECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LAB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INSPECTION">
+        <PropertyRef Name="labID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INSPECTIO__labID__3E52440B">
+    <End Role="LAB" Type="Self.LAB" Multiplicity="0..1" />
+    <End Role="INSPECTION" Type="Self.INSPECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LAB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INSPECTION">
+        <PropertyRef Name="labID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INSPECTIO__labID__44FF419A">
+    <End Role="LAB" Type="Self.LAB" Multiplicity="0..1" />
+    <End Role="INSPECTION" Type="Self.INSPECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LAB">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INSPECTION">
+        <PropertyRef Name="labID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INSPECTIO__userI__31EC6D26">
+    <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+    <End Role="INSPECTION" Type="Self.INSPECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INSPECTION">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INSPECTIO__userI__37A5467C">
+    <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+    <End Role="INSPECTION" Type="Self.INSPECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INSPECTION">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INSPECTIO__userI__3D5E1FD2">
+    <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+    <End Role="INSPECTION" Type="Self.INSPECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INSPECTION">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INSPECTIO__userI__440B1D61">
+    <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+    <End Role="INSPECTION" Type="Self.INSPECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INSPECTION">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USER__taskID__3F466844">
+    <End Role="TASK" Type="Self.TASK" Multiplicity="0..1" />
+    <End Role="USER" Type="Self.USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TASK">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER">
+        <PropertyRef Name="taskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USER__taskID__45F365D3">
+    <End Role="TASK" Type="Self.TASK" Multiplicity="0..1" />
+    <End Role="USER" Type="Self.USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TASK">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USER">
+        <PropertyRef Name="taskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NCSafteyInspectionModelStoreContainer">
+    <EntitySet Name="CORRECTION" EntityType="Self.CORRECTION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EQUIPMENT" EntityType="Self.EQUIPMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HAZARD" EntityType="Self.HAZARD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INSPECTION" EntityType="Self.INSPECTION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LAB" EntityType="Self.LAB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TASK" EntityType="Self.TASK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CORRECTIO__equip__4AB81AF0" Association="Self.FK__CORRECTIO__equip__4AB81AF0">
+      <End Role="EQUIPMENT" EntitySet="EQUIPMENT" />
+      <End Role="CORRECTION" EntitySet="CORRECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CORRECTIO__equip__4CA06362" Association="Self.FK__CORRECTIO__equip__4CA06362">
+      <End Role="EQUIPMENT" EntitySet="EQUIPMENT" />
+      <End Role="CORRECTION" EntitySet="CORRECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CORRECTIO__equip__4E88ABD4" Association="Self.FK__CORRECTIO__equip__4E88ABD4">
+      <End Role="EQUIPMENT" EntitySet="EQUIPMENT" />
+      <End Role="CORRECTION" EntitySet="CORRECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CORRECTIO__equip__5070F446" Association="Self.FK__CORRECTIO__equip__5070F446">
+      <End Role="EQUIPMENT" EntitySet="EQUIPMENT" />
+      <End Role="CORRECTION" EntitySet="CORRECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CORRECTIO__hazar__49C3F6B7" Association="Self.FK__CORRECTIO__hazar__49C3F6B7">
+      <End Role="HAZARD" EntitySet="HAZARD" />
+      <End Role="CORRECTION" EntitySet="CORRECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CORRECTIO__hazar__4BAC3F29" Association="Self.FK__CORRECTIO__hazar__4BAC3F29">
+      <End Role="HAZARD" EntitySet="HAZARD" />
+      <End Role="CORRECTION" EntitySet="CORRECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CORRECTIO__hazar__4D94879B" Association="Self.FK__CORRECTIO__hazar__4D94879B">
+      <End Role="HAZARD" EntitySet="HAZARD" />
+      <End Role="CORRECTION" EntitySet="CORRECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CORRECTIO__hazar__4F7CD00D" Association="Self.FK__CORRECTIO__hazar__4F7CD00D">
+      <End Role="HAZARD" EntitySet="HAZARD" />
+      <End Role="CORRECTION" EntitySet="CORRECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EQUIPMENT__labID__2F10007B" Association="Self.FK__EQUIPMENT__labID__2F10007B">
+      <End Role="LAB" EntitySet="LAB" />
+      <End Role="EQUIPMENT" EntitySet="EQUIPMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EQUIPMENT__labID__34C8D9D1" Association="Self.FK__EQUIPMENT__labID__34C8D9D1">
+      <End Role="LAB" EntitySet="LAB" />
+      <End Role="EQUIPMENT" EntitySet="EQUIPMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EQUIPMENT__labID__3A81B327" Association="Self.FK__EQUIPMENT__labID__3A81B327">
+      <End Role="LAB" EntitySet="LAB" />
+      <End Role="EQUIPMENT" EntitySet="EQUIPMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EQUIPMENT__labID__412EB0B6" Association="Self.FK__EQUIPMENT__labID__412EB0B6">
+      <End Role="LAB" EntitySet="LAB" />
+      <End Role="EQUIPMENT" EntitySet="EQUIPMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INSPECTIO__corre__5165187F" Association="Self.FK__INSPECTIO__corre__5165187F">
+      <End Role="CORRECTION" EntitySet="CORRECTION" />
+      <End Role="INSPECTION" EntitySet="INSPECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INSPECTIO__labID__32E0915F" Association="Self.FK__INSPECTIO__labID__32E0915F">
+      <End Role="LAB" EntitySet="LAB" />
+      <End Role="INSPECTION" EntitySet="INSPECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INSPECTIO__labID__38996AB5" Association="Self.FK__INSPECTIO__labID__38996AB5">
+      <End Role="LAB" EntitySet="LAB" />
+      <End Role="INSPECTION" EntitySet="INSPECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INSPECTIO__labID__3E52440B" Association="Self.FK__INSPECTIO__labID__3E52440B">
+      <End Role="LAB" EntitySet="LAB" />
+      <End Role="INSPECTION" EntitySet="INSPECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INSPECTIO__labID__44FF419A" Association="Self.FK__INSPECTIO__labID__44FF419A">
+      <End Role="LAB" EntitySet="LAB" />
+      <End Role="INSPECTION" EntitySet="INSPECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INSPECTIO__userI__31EC6D26" Association="Self.FK__INSPECTIO__userI__31EC6D26">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="INSPECTION" EntitySet="INSPECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INSPECTIO__userI__37A5467C" Association="Self.FK__INSPECTIO__userI__37A5467C">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="INSPECTION" EntitySet="INSPECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INSPECTIO__userI__3D5E1FD2" Association="Self.FK__INSPECTIO__userI__3D5E1FD2">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="INSPECTION" EntitySet="INSPECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INSPECTIO__userI__440B1D61" Association="Self.FK__INSPECTIO__userI__440B1D61">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="INSPECTION" EntitySet="INSPECTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USER__taskID__3F466844" Association="Self.FK__USER__taskID__3F466844">
+      <End Role="TASK" EntitySet="TASK" />
+      <End Role="USER" EntitySet="USER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USER__taskID__45F365D3" Association="Self.FK__USER__taskID__45F365D3">
+      <End Role="TASK" EntitySet="TASK" />
+      <End Role="USER" EntitySet="USER" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -80,6 +80,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -196,14 +198,57 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CORRECTIONsController.cs" />
+    <Compile Include="Controllers\EQUIPMENTsController.cs" />
+    <Compile Include="Controllers\HAZARDsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\INSPECTIONsController.cs" />
+    <Compile Include="Controllers\LABsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TASKsController.cs" />
+    <Compile Include="Controllers\USERsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CORRECTION.cs">
+      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EQUIPMENT.cs">
+      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HAZARD.cs">
+      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\INSPECTION.cs">
+      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LAB.cs">
+      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NCSafteyInspection.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NCSafteyInspection.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NCSafteyInspection.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NCSafteyInspection.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NCSafteyInspection.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TASK.cs">
+      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USER.cs">
+      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -218,10 +263,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\NCSafteyInspection.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NCSafteyInspection.edmx</DependentUpon>
+      <LastGenOutput>NCSafteyInspection.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NCSafteyInspection.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NCSafteyInspection.edmx</DependentUpon>
+      <LastGenOutput>NCSafteyInspection.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\NCSafteyInspection.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NCSafteyInspection.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NCSafteyInspection.edmx.diagram">
+      <DependentUpon>NCSafteyInspection.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -269,8 +331,45 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\LABs\Create.cshtml" />
+    <Content Include="Views\LABs\Delete.cshtml" />
+    <Content Include="Views\LABs\Details.cshtml" />
+    <Content Include="Views\LABs\Edit.cshtml" />
+    <Content Include="Views\LABs\Index.cshtml" />
+    <Content Include="Views\CORRECTIONs\Create.cshtml" />
+    <Content Include="Views\CORRECTIONs\Delete.cshtml" />
+    <Content Include="Views\CORRECTIONs\Details.cshtml" />
+    <Content Include="Views\CORRECTIONs\Edit.cshtml" />
+    <Content Include="Views\CORRECTIONs\Index.cshtml" />
+    <Content Include="Views\EQUIPMENTs\Create.cshtml" />
+    <Content Include="Views\EQUIPMENTs\Delete.cshtml" />
+    <Content Include="Views\EQUIPMENTs\Details.cshtml" />
+    <Content Include="Views\EQUIPMENTs\Edit.cshtml" />
+    <Content Include="Views\EQUIPMENTs\Index.cshtml" />
+    <Content Include="Views\HAZARDs\Create.cshtml" />
+    <Content Include="Views\HAZARDs\Delete.cshtml" />
+    <Content Include="Views\HAZARDs\Details.cshtml" />
+    <Content Include="Views\HAZARDs\Edit.cshtml" />
+    <Content Include="Views\HAZARDs\Index.cshtml" />
+    <Content Include="Views\INSPECTIONs\Create.cshtml" />
+    <Content Include="Views\INSPECTIONs\Delete.cshtml" />
+    <Content Include="Views\INSPECTIONs\Details.cshtml" />
+    <Content Include="Views\INSPECTIONs\Edit.cshtml" />
+    <Content Include="Views\INSPECTIONs\Index.cshtml" />
+    <Content Include="Views\TASKs\Create.cshtml" />
+    <Content Include="Views\TASKs\Delete.cshtml" />
+    <Content Include="Views\TASKs\Details.cshtml" />
+    <Content Include="Views\TASKs\Edit.cshtml" />
+    <Content Include="Views\TASKs\Index.cshtml" />
+    <Content Include="Views\USERs\Create.cshtml" />
+    <Content Include="Views\USERs\Delete.cshtml" />
+    <Content Include="Views\USERs\Details.cshtml" />
+    <Content Include="Views\USERs\Edit.cshtml" />
+    <Content Include="Views\USERs\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
