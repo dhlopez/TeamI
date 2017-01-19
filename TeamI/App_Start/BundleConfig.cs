@@ -30,7 +30,8 @@ namespace TeamI
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/navigation.css"));
+                      "~/Content/navigation.css",
+                      "~/Content/Custom.css"));
         }
     }
 }
