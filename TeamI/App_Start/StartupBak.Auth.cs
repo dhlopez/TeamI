@@ -9,7 +9,8 @@ using TeamI.Models;
 
 namespace TeamI
 {
-    public partial class Startup
+    public partial class StartupBak
+
     {
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
