@@ -308,6 +308,7 @@
     <Content Include="Content\circleStats\material-design-iconic-font.css" />
     <Content Include="Content\circleStats\material-design-iconic-font.min.css" />
     <Content Include="Content\Custom.css" />
+    <Content Include="Content\Modal.css" />
     <Content Include="Content\navigation.css" />
     <Content Include="Content\Normalize.css" />
     <Content Include="favicon.ico" />
@@ -316,6 +317,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\ncc-logo-transparent.png" />
+    <Content Include="Images\user.png" />
     <Content Include="Models\NCSafteyInspection.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NCSafteyInspection.edmx</DependentUpon>
@@ -354,6 +356,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Modal.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\navigation.js" />
     <Content Include="Scripts\respond.js" />

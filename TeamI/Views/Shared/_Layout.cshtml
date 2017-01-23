@@ -62,7 +62,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Mail</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> User</a></li>
+                    <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span> User</a></li>
                 </ul>
             </div>
         </nav>
@@ -75,6 +75,49 @@
                 @RenderBody()
                 <div class="row">
 
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <span class="close">&times;</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Images/user.png" alt="User Picture" class="modalimg img-responsive"/>
+                                        <h3>User Name</h3>
+                                        <p>Position</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4>Enrolled Labs</h4>
+                                        <ul>
+                                            <li>Lab 1</li>
+                                            <li>Lab 2</li>
+                                            <li>Lab 3</li>
+                                        </ul>
+                                        <br />
+                                        <h4>Email</h4>
+                                        <p>user@outlook.com</p>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        @*Calendar maybe??*@
+                                    </div>
+                                    <div class="col-sm-6">
+                                        @*Alerts or mail maybe??*@
+                                    </div>
+                                </div>                       
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#" class="btn btn-default logout">Log Out</a>
+                            </div>
+                        </div>
+
+                    </div>
 
                     <hr />
                     <footer>
@@ -91,6 +134,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/navigation")
+    @Scripts.Render("~/bundles/modal")
     @Scripts.Render("~/bundles/stats")
     @RenderSection("scripts", required: false)
     <script>
