@@ -2,74 +2,86 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>@ViewBag.Title - Niagara College</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
 
     <div id="wrapper">
-       
+
         <!-- Sidebar -->
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-                <ul class="nav sidebar-nav" style="z-index: -1000">
-                    <li>
-                        <img src="~/Images/ncc-logo-transparent.png" class="sidebar-brand img-responsive navimg" />
-                    </li>
-                    <li>
-                        <a href="#">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Events</a>
-                    </li>
-                    <li>
-                        <a href="#">Team</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li class="dropdown-header">Dropdown heading</li>
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/maridlcrmn">Follow me</a>
-                    </li>
-                </ul>
-            
+            <ul class="nav sidebar-nav" style="z-index: -1000">
+                <li>
+                    <img src="~/Images/ncc-logo-transparent.png" class="sidebar-brand img-responsive navimg" />
+                </li>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">Team</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="dropdown-header">Dropdown heading</li>
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/maridlcrmn">Follow me</a>
+                </li>
+            </ul>
+
         </nav>
+
         <!-- /#sidebar-wrapper -->
+
+
+        <nav class="navbar navbar-inverse" style="z-index:1; border-radius:0px;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="#" data-toggle="offcanvas"><span class="glyphicon glyphicon-th"></span>Menu</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Mail</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> User</a></li>
+                </ul>
+            </div>
+        </nav>
+      
+
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
-                <span class="hamb-top"></span>
-                <span class="hamb-middle"></span>
-                <span class="hamb-bottom"></span>
-            </button>
+            
             <div class="container" style="width:1200px">
                 @RenderBody()
                 <div class="row">
-                   
-                        
-                        <hr />
-                        <footer>
-                            <p>&copy; @DateTime.Now.Year - Lucid Technologies</p>
-                        </footer>
-                    
+
+
+                    <hr />
+                    <footer>
+                        <p>&copy; @DateTime.Now.Year - Lucid Technologies</p>
+                    </footer>
+
                 </div>
             </div>
         </div>
@@ -80,6 +92,38 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/navigation")
+    @Scripts.Render("~/bundles/stats")
     @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $("#circle1").circliful({
+                animationStep: 5,
+                foregroundBorderWidth: 5,
+                backgroundBorderWidth: 15,
+                text: "Safety",
+                backgroundcolor: "#1a1a1a",
+                foregroundColor: "#0073cf"
+
+
+            });
+
+            $("#circle2").circliful({
+                animationStep: 5,
+                foregroundBorderWidth: 5,
+                backgroundBorderWidth: 15,
+                text: "Pending Tasks",
+                foregroundColor: "#0073cf"
+            });
+
+            $("#circle3").circliful({
+                animationStep: 5,
+                foregroundBorderWidth: 5,
+                backgroundBorderWidth: 15,
+
+                text: "Something?",
+                foregroundColor: "#0073cf"
+            });
+        });
+    </script>
 </body>
 </html>

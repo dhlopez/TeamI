@@ -25,13 +25,20 @@ namespace TeamI
 
             bundles.Add(new ScriptBundle("~/bundles/navigation").Include(
                       "~/Scripts/navigation.js"));
-            
+
+            bundles.Add(new ScriptBundle("~/bundles/stats").Include(
+                     "~/Scripts/circleStats/jquery.circliful.js",
+                      "~/Scripts/circleStats/jquery.circliful.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/Normalize.css",
                       "~/Content/site.css",
                       "~/Content/navigation.css",
-                      "~/Content/Custom.css"));
+                      "~/Content/Custom.css",
+                      "~/Content/circleStats/jquery.circliful.css",
+                      "~/Content/circleStats/material-design-iconic-font.css",
+                      "~/Content/circleStats/material-design-iconic-font.min.css"));
         }
     }
 }
