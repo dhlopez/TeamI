@@ -77,7 +77,8 @@ namespace TeamI.Controllers
             {
                 // Signal OWIN to send an authorization request to Azure
                 HttpContext.GetOwinContext().Authentication.Challenge(
-                    new AuthenticationProperties { RedirectUri = "/Home/EmailLogin" },
+                    //new AuthenticationProperties { RedirectUri = "/Home/EmailLogin" },
+                    new AuthenticationProperties { RedirectUri = "/" },
                     OpenIdConnectAuthenticationDefaults.AuthenticationType);
             }
         }
