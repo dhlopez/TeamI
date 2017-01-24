@@ -11,9 +11,9 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Notifications;
 using Microsoft.Owin.Security.OpenIdConnect;
-
+using Microsoft.Identity.Client;
 using Owin;
-
+using TeamI.TokenStorage;
 
 [assembly: OwinStartup(typeof(TeamI.App_Start.Startup))]
 
@@ -83,11 +83,28 @@ namespace TeamI.App_Start
             return Task.FromResult(0);
         }
 
-        private Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification notification)
+        // Note the function signature is changed!
+        private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification notification)
         {
-            notification.HandleResponse();
-            notification.Response.Redirect("/Home/Error?message=See Auth Code Below&debug=" + notification.Code);
-            return Task.FromResult(0);
+            // Get the signed in user's id and create a token cache
+            string signedInUserId = notification.AuthenticationTicket.Identity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            SessionTokenCache tokenCache = new SessionTokenCache(signedInUserId,
+                notification.OwinContext.Environment["System.Web.HttpContextBase"] as HttpContextBase);
+
+            ConfidentialClientApplication cca = new ConfidentialClientApplication(
+                appId, redirectUri, new ClientCredential(appPassword), tokenCache);
+
+            try
+            {
+                var result = await cca.AcquireTokenByAuthorizationCodeAsync(scopes, notification.Code);
+            }
+            catch (MsalException ex)
+            {
+                string message = "AcquireTokenByAuthorizationCodeAsync threw an exception";
+                string debug = ex.Message;
+                notification.HandleResponse();
+                notification.Response.Redirect("/Home/Error?message=" + message + "&debug=" + debug);
+            }
         }
     }
 }
