@@ -21,11 +21,6 @@ namespace TeamI.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult EmailLogin()
-        {
             if (Request.IsAuthenticated)
             {
                 string userName = ClaimsPrincipal.Current.FindFirst("name").Value;
@@ -49,6 +44,12 @@ namespace TeamI.Controllers
 
                 ViewBag.UserName = userName;
             }
+            return View();
+        }
+
+        public ActionResult EmailLogin()
+        {
+            
             return View();
         }
 

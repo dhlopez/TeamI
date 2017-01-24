@@ -67,12 +67,15 @@
                         <li>@Html.ActionLink("Calendar", "Calendar", "Home")</li>
                         <li>@Html.ActionLink("Contacts", "Contacts", "Home")</li>
                         <li>@Html.ActionLink("Sign Out", "SignOut", "Home")</li>
+                        <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span> @(ViewBag.UserName)</a></li>
                     }
                     else
                     {
                         <li><a href="@Url.Action("SignIn", "Home")"><span class="glyphicon glyphicon-envelope"></span> Mail</a></li>
+                        <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span> User</a></li>
                     }
-                    <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span> User</a></li>
+                    
+                    
                 </ul>
             </div>
         </nav>
