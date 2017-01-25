@@ -18,19 +18,16 @@
                     <img src="~/Images/ncc-logo-transparent.png" class="sidebar-brand img-responsive navimg" />
                 </li>
                 <li>
-                    <a href="#">Home</a>
+                    @Html.ActionLink("Home", "Index", "Home")
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    @Html.ActionLink("About", "About", "Home")
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    @Html.ActionLink("Inspection", "Index", "INSPECTIONs")
                 </li>
-                <li>
-                    <a href="#">Team</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+                @*<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inspection<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
@@ -38,9 +35,12 @@
                         <li><a href="#">Separated link</a></li>
                         <li><a href="#">One more separated link</a></li>
                     </ul>
+                </li>*@
+                <li>
+                    @Html.ActionLink("Report an Issue", "Index", "CORRECTIONs")
                 </li>
                 <li>
-                    <a href="#">Services</a>
+                    <a href="#">Administration</a>
                 </li>
                 <li>
                     <a href="#">Contact</a>
@@ -100,7 +100,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <img src="~/Images/user.png" alt="User Picture" class="modalimg img-responsive"/>
-                                        <h3>User Name</h3>
+                                        <h3>@ViewBag.UserName</h3>
                                         <p>Position</p>
                                     </div>
                                     <div class="col-sm-6">
@@ -118,7 +118,6 @@
                                 <hr />
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        @*Calendar maybe??*@
                                     </div>
                                     <div class="col-sm-6">
                                         @*Alerts or mail maybe??*@
@@ -126,7 +125,7 @@
                                 </div>                       
                             </div>
                             <div class="modal-footer">
-                                <a href="#" class="btn btn-default logout">Log Out</a>
+                                @Html.ActionLink("Sign Out", "SignOut", "Home")
                             </div>
                         </div>
 
@@ -134,7 +133,10 @@
 
                     <hr />
                     <footer>
-                        <p>&copy; @DateTime.Now.Year - Lucid Technologies</p>
+                        <div class="row">
+                            <div class="col-sm-6">&copy; @DateTime.Now.Year - Lucid Technologies</div>
+                            <div class="col-sm-6 text-right">Niagara College Canada</div>
+                        </div>
                     </footer>
 
                 </div>

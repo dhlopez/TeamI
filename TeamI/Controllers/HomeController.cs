@@ -44,6 +44,10 @@ namespace TeamI.Controllers
                 ViewBag.SafetyPercentage = "89";
                 ViewBag.UserName = userName;
             }
+            else
+            {
+                ViewBag.UserName = "Unknown User";
+            }
             return View();
         }
 
