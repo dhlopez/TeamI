@@ -402,3 +402,13 @@ C:\Users\Administrator\Source\Repos\TeamI\TeamI\bin\ko\Microsoft.Spatial.resourc
 C:\Users\Administrator\Source\Repos\TeamI\TeamI\bin\ru\Microsoft.Spatial.resources.dll
 C:\Users\Administrator\Source\Repos\TeamI\TeamI\bin\zh-Hans\Microsoft.Spatial.resources.dll
 C:\Users\Administrator\Source\Repos\TeamI\TeamI\bin\zh-Hant\Microsoft.Spatial.resources.dll
+C:\Users\Gaming\Source\Repos\TeamI\TeamI\bin\Microsoft.Identity.Client.dll
+C:\Users\Gaming\Source\Repos\TeamI\TeamI\bin\Microsoft.Identity.Client.Platform.dll
+C:\Users\Gaming\Source\Repos\TeamI\TeamI\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+C:\Users\Gaming\Source\Repos\TeamI\TeamI\bin\Microsoft.Owin.Security.OpenIdConnect.dll
+C:\Users\Gaming\Source\Repos\TeamI\TeamI\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Gaming\Source\Repos\TeamI\TeamI\bin\Microsoft.Identity.Client.xml
+C:\Users\Gaming\Source\Repos\TeamI\TeamI\bin\Microsoft.Identity.Client.Platform.xml
+C:\Users\Gaming\Source\Repos\TeamI\TeamI\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+C:\Users\Gaming\Source\Repos\TeamI\TeamI\bin\Microsoft.Owin.Security.OpenIdConnect.xml
+C:\Users\Gaming\Source\Repos\TeamI\TeamI\bin\System.IdentityModel.Tokens.Jwt.xml

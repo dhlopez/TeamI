@@ -41,7 +41,7 @@ namespace TeamI.Controllers
                     // Cache is empty, sign out
                     return RedirectToAction("SignOut");
                 }
-
+                ViewBag.SafetyPercentage = "89";
                 ViewBag.UserName = userName;
             }
             return View();
