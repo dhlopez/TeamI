@@ -7,34 +7,21 @@
       <Diagram DiagramId="538a1b5dabdd4514bd731ace9d69dc8d" Name="Diagram1">
         <EntityTypeShape EntityType="NCSafteyInspectionModel.CORRECTION" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.EQUIPMENT" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCSafteyInspectionModel.HAZARD" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NCSafteyInspectionModel.HAZARD" Width="1.5" PointX="2.625" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.INSPECTION" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.LAB" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCSafteyInspectionModel.TASK" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCSafteyInspectionModel.USER" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__CORRECTIO__equip__4AB81AF0" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NCSafteyInspectionModel.TASK" Width="1.5" PointX="8.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NCSafteyInspectionModel.USER" Width="1.5" PointX="6.375" PointY="4.875" IsExpanded="true" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__CORRECTIO__equip__4CA06362" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__CORRECTIO__equip__4E88ABD4" ManuallyRouted="false" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__CORRECTIO__equip__5070F446" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__CORRECTIO__hazar__49C3F6B7" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__CORRECTIO__hazar__4BAC3F29" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__CORRECTIO__hazar__4D94879B" ManuallyRouted="false" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__CORRECTIO__hazar__4F7CD00D" ManuallyRouted="false" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__corre__5165187F" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__EQUIPMENT__labID__2F10007B" ManuallyRouted="false" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__EQUIPMENT__labID__34C8D9D1" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__EQUIPMENT__labID__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__EQUIPMENT__labID__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__labID__32E0915F" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__labID__38996AB5" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__labID__3E52440B" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__labID__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__userI__31EC6D26" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__userI__37A5467C" ManuallyRouted="false" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__userI__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__userI__440B1D61" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__USER__taskID__3F466844" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__USER__taskID__45F365D3" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NCSafteyInspectionModel.HAZARDOBSERVED" Width="1.5" PointX="9.75" PointY="2.375" />
+        <AssociationConnector Association="NCSafteyInspectionModel.FK_HAZARDOBSERVED_INSPECTION" />
+        <AssociationConnector Association="NCSafteyInspectionModel.FK__TASK__userID__03F0984C" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

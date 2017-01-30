@@ -256,25 +256,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CORRECTION.cs">
-      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DisplayContact.cs" />
     <Compile Include="Models\DisplayEvent.cs" />
     <Compile Include="Models\DisplayMessage.cs" />
-    <Compile Include="Models\EQUIPMENT.cs">
-      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HAZARD.cs">
-      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\INSPECTION.cs">
-      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LAB.cs">
-      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NCSafteyInspection.Context.cs">
       <AutoGen>True</AutoGen>
@@ -290,12 +275,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NCSafteyInspection.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TASK.cs">
-      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\USER.cs">
-      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Start\Startup.cs" />
