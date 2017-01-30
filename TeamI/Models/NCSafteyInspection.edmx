@@ -274,8 +274,8 @@
           <Property Name="status" Type="Boolean" />
           <NavigationProperty Name="CORRECTION" Relationship="Self.FK__INSPECTIO__corre__5165187F" FromRole="INSPECTION" ToRole="CORRECTION" />
           <NavigationProperty Name="LAB" Relationship="Self.FK__INSPECTIO__labID__32E0915F" FromRole="INSPECTION" ToRole="LAB" />
-          <NavigationProperty Name="USER" Relationship="Self.FK__INSPECTIO__userI__3D5E1FD2" FromRole="INSPECTION" ToRole="USER" />
           <NavigationProperty Name="HAZARDOBSERVED" Relationship="NCSafteyInspectionModel.FK_HAZARDOBSERVED_INSPECTION" FromRole="INSPECTION" ToRole="HAZARDOBSERVED" />
+          <NavigationProperty Name="USER" Relationship="NCSafteyInspectionModel.FK__INSPECTIO__userI__2DE6D218" FromRole="INSPECTION" ToRole="USER" />
         </EntityType>
         <EntityType Name="LAB">
           <Key>
@@ -287,32 +287,6 @@
           <Property Name="type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="EQUIPMENT" Relationship="Self.FK__EQUIPMENT__labID__34C8D9D1" FromRole="LAB" ToRole="EQUIPMENT" />
           <NavigationProperty Name="INSPECTION" Relationship="Self.FK__INSPECTIO__labID__32E0915F" FromRole="LAB" ToRole="INSPECTION" />
-        </EntityType>
-        <EntityType Name="TASK">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="date" Type="DateTime" Precision="0" />
-          <Property Name="status" Type="Boolean" />
-          <Property Name="USERID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="USER" Relationship="NCSafteyInspectionModel.USERTASK" FromRole="TASK" ToRole="USER" />
-        </EntityType>
-        <EntityType Name="USER">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="taskID" Type="Int32" />
-          <Property Name="postalCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
-          <Property Name="role" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="INSPECTION" Relationship="Self.FK__INSPECTIO__userI__3D5E1FD2" FromRole="USER" ToRole="INSPECTION" />
-          <NavigationProperty Name="TASK" Relationship="NCSafteyInspectionModel.USERTASK" FromRole="USER" ToRole="TASK" />
         </EntityType>
         <Association Name="FK__CORRECTIO__equip__5070F446">
           <End Role="EQUIPMENT" Type="Self.EQUIPMENT" Multiplicity="1" />
@@ -362,26 +336,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__INSPECTIO__userI__3D5E1FD2">
-          <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
-          <End Role="INSPECTION" Type="Self.INSPECTION" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="INSPECTION">
-              <PropertyRef Name="userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="NCSafteyInspectionEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CORRECTION" EntityType="Self.CORRECTION" />
           <EntitySet Name="EQUIPMENT" EntityType="Self.EQUIPMENT" />
           <EntitySet Name="HAZARD" EntityType="Self.HAZARD" />
           <EntitySet Name="INSPECTION" EntityType="Self.INSPECTION" />
           <EntitySet Name="LAB" EntityType="Self.LAB" />
-          <EntitySet Name="TASK" EntityType="Self.TASK" />
-          <EntitySet Name="USER" EntityType="Self.USER" />
           <AssociationSet Name="FK__CORRECTIO__equip__5070F446" Association="Self.FK__CORRECTIO__equip__5070F446">
             <End Role="EQUIPMENT" EntitySet="EQUIPMENT" />
             <End Role="CORRECTION" EntitySet="CORRECTION" />
@@ -398,10 +358,6 @@
             <End Role="LAB" EntitySet="LAB" />
             <End Role="INSPECTION" EntitySet="INSPECTION" />
           </AssociationSet>
-          <AssociationSet Name="FK__INSPECTIO__userI__3D5E1FD2" Association="Self.FK__INSPECTIO__userI__3D5E1FD2">
-            <End Role="USER" EntitySet="USER" />
-            <End Role="INSPECTION" EntitySet="INSPECTION" />
-          </AssociationSet>
           <EntitySet Name="HAZARDOBSERVED" EntityType="NCSafteyInspectionModel.HAZARDOBSERVED" />
           <AssociationSet Name="FK_HAZARDOBSERVED_INSPECTION" Association="NCSafteyInspectionModel.FK_HAZARDOBSERVED_INSPECTION">
             <End Role="INSPECTION" EntitySet="INSPECTION" />
@@ -411,7 +367,13 @@
             <End Role="HAZARD" EntitySet="HAZARD" />
             <End Role="CORRECTION" EntitySet="CORRECTION" />
           </AssociationSet>
-          <AssociationSet Name="USERTASK" Association="NCSafteyInspectionModel.USERTASK">
+          <EntitySet Name="TASK" EntityType="NCSafteyInspectionModel.TASK" />
+          <EntitySet Name="USER" EntityType="NCSafteyInspectionModel.USER" />
+          <AssociationSet Name="FK__INSPECTIO__userI__2DE6D218" Association="NCSafteyInspectionModel.FK__INSPECTIO__userI__2DE6D218">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="INSPECTION" EntitySet="INSPECTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TASK__userID__74794A92" Association="NCSafteyInspectionModel.FK__TASK__userID__74794A92">
             <End Role="USER" EntitySet="USER" />
             <End Role="TASK" EntitySet="TASK" />
           </AssociationSet>
@@ -443,7 +405,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="USERTASK">
+        <EntityType Name="TASK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="status" Type="Boolean" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="USER" Relationship="NCSafteyInspectionModel.FK__TASK__userID__74794A92" FromRole="TASK" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="postalCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="INSPECTION" Relationship="NCSafteyInspectionModel.FK__INSPECTIO__userI__2DE6D218" FromRole="USER" ToRole="INSPECTION" />
+          <NavigationProperty Name="TASK" Relationship="NCSafteyInspectionModel.FK__TASK__userID__74794A92" FromRole="USER" ToRole="TASK" />
+        </EntityType>
+        <Association Name="FK__INSPECTIO__userI__2DE6D218">
+          <End Type="NCSafteyInspectionModel.USER" Role="USER" Multiplicity="0..1" />
+          <End Type="NCSafteyInspectionModel.INSPECTION" Role="INSPECTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="INSPECTION">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TASK__userID__74794A92">
           <End Type="NCSafteyInspectionModel.USER" Role="USER" Multiplicity="1" />
           <End Type="NCSafteyInspectionModel.TASK" Role="TASK" Multiplicity="*" />
           <ReferentialConstraint>
@@ -451,7 +450,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="TASK">
-              <PropertyRef Name="USERID" />
+              <PropertyRef Name="userID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -514,29 +513,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TASK">
-            <EntityTypeMapping TypeName="NCSafteyInspectionModel.TASK">
-              <MappingFragment StoreEntitySet="TASK">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="status" ColumnName="status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USER">
-            <EntityTypeMapping TypeName="NCSafteyInspectionModel.USER">
-              <MappingFragment StoreEntitySet="USER">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="firstName" ColumnName="firstName" />
-                <ScalarProperty Name="lastName" ColumnName="lastName" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
-                <ScalarProperty Name="role" ColumnName="role" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="HAZARDOBSERVED">
             <EntityTypeMapping TypeName="NCSafteyInspectionModel.HAZARDOBSERVED">
               <MappingFragment StoreEntitySet="HAZARDOBSERVED">
@@ -556,6 +532,30 @@
               <ScalarProperty Name="ID" ColumnName="InspectionID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="TASK">
+            <EntityTypeMapping TypeName="NCSafteyInspectionModel.TASK">
+              <MappingFragment StoreEntitySet="TASK">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER">
+            <EntityTypeMapping TypeName="NCSafteyInspectionModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

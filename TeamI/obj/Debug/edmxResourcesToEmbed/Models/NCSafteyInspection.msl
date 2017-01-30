@@ -54,29 +54,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TASK">
-      <EntityTypeMapping TypeName="NCSafteyInspectionModel.TASK">
-        <MappingFragment StoreEntitySet="TASK">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="status" ColumnName="status" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="USER">
-      <EntityTypeMapping TypeName="NCSafteyInspectionModel.USER">
-        <MappingFragment StoreEntitySet="USER">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="firstName" ColumnName="firstName" />
-          <ScalarProperty Name="lastName" ColumnName="lastName" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="phone" ColumnName="phone" />
-          <ScalarProperty Name="postalCode" ColumnName="postalCode" />
-          <ScalarProperty Name="role" ColumnName="role" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="HAZARDOBSERVED">
       <EntityTypeMapping TypeName="NCSafteyInspectionModel.HAZARDOBSERVED">
         <MappingFragment StoreEntitySet="HAZARDOBSERVED">
@@ -96,5 +73,29 @@
         <ScalarProperty Name="ID" ColumnName="InspectionID" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="TASK">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.TASK">
+        <MappingFragment StoreEntitySet="TASK">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.USER">
+        <MappingFragment StoreEntitySet="USER">
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -29,8 +29,8 @@ namespace TeamI.Models
     
         public virtual CORRECTION CORRECTION { get; set; }
         public virtual LAB LAB { get; set; }
-        public virtual USER USER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HAZARDOBSERVED> HAZARDOBSERVED { get; set; }
+        public virtual USER USER { get; set; }
     }
 }

@@ -26,7 +26,6 @@ namespace TeamI.Models
         public string lastName { get; set; }
         public string email { get; set; }
         public string phone { get; set; }
-        public Nullable<int> taskID { get; set; }
         public string postalCode { get; set; }
         public int role { get; set; }
     

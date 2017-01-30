@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TeamI.Models;
 
-namespace TeamI.Controllers
+namespace TeamI.Controllers 
 {
     [Authorize]
     public class AccountController : Controller
