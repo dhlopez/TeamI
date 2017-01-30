@@ -319,13 +319,16 @@
     <Content Include="Content\Modal.css" />
     <Content Include="Content\navigation.css" />
     <Content Include="Content\Normalize.css" />
+    <Content Include="Content\TabView.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\Material-Design-Iconic-Font.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\hoist.jpg" />
     <Content Include="Images\ncc-logo-transparent.png" />
     <Content Include="Images\user.png" />
+    <Content Include="Images\welder.jpg" />
     <Content Include="Models\NCSafteyInspection.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NCSafteyInspection.edmx</DependentUpon>
