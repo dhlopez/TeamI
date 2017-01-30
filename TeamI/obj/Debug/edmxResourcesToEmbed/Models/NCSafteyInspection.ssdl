@@ -67,7 +67,7 @@
     <Property Name="description" Type="varchar" MaxLength="1000" />
     <Property Name="date" Type="date" />
     <Property Name="status" Type="bit" />
-    <Property Name="userID" Type="int" Nullable="false" />
+    <Property Name="userID" Type="int" />
   </EntityType>
   <EntityType Name="USER">
     <Key>
@@ -153,8 +153,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TASK__userID__74794A92">
-    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+  <Association Name="FK__TASK__userID__0697FACD">
+    <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
     <End Role="TASK" Type="Self.TASK" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="USER">
@@ -210,7 +210,7 @@
       <End Role="USER" EntitySet="USER" />
       <End Role="INSPECTION" EntitySet="INSPECTION" />
     </AssociationSet>
-    <AssociationSet Name="FK__TASK__userID__74794A92" Association="Self.FK__TASK__userID__74794A92">
+    <AssociationSet Name="FK__TASK__userID__0697FACD" Association="Self.FK__TASK__userID__0697FACD">
       <End Role="USER" EntitySet="USER" />
       <End Role="TASK" EntitySet="TASK" />
     </AssociationSet>

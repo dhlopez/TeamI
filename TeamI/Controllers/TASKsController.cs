@@ -13,11 +13,20 @@ namespace TeamI.Controllers
     public class TASKsController : Controller
     {
         private NCSafteyInspectionEntities db = new NCSafteyInspectionEntities();
+        /*
+        public string FullName {
+            get {
+                var fullName = db.TASK.Include(u => u.USER.firstName + u.USER.lastName);
+                return fullName.ToString();
+            }
+        }
+        */
 
         // GET: TASKs
         public ActionResult Index()
         {
             var tASK = db.TASK.Include(u => u.USER);
+            //ViewBag.fullName = FullName;
             return View(tASK.ToList());
         }
 
@@ -39,7 +48,7 @@ namespace TeamI.Controllers
         // GET: TASKs/Create
         public ActionResult Create()
         {
-            ViewBag.userID = new SelectList(db.USER, "ID", "description");
+            ViewBag.userID = new SelectList(db.USER, "ID", "firstName");
             return View();
         }
 
@@ -56,7 +65,7 @@ namespace TeamI.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.userID = new SelectList(db.USER, "ID", "description", tASK.ID);
+            ViewBag.userID = new SelectList(db.USER, "ID", "firstName", tASK.ID);
             return View(tASK);
         }
 
@@ -72,7 +81,7 @@ namespace TeamI.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.userID = new SelectList(db.USER, "ID", "description", tASK.ID);
+            ViewBag.userID = new SelectList(db.USER, "ID", "firstName", tASK.ID);
             return View(tASK);
         }
 
@@ -89,7 +98,7 @@ namespace TeamI.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.userID = new SelectList(db.USER, "ID", "description", tASK.ID);
+            ViewBag.userID = new SelectList(db.USER, "ID", "firstName", tASK.ID);
             return View(tASK);
         }
 

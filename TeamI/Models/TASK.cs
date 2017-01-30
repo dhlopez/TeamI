@@ -18,7 +18,7 @@ namespace TeamI.Models
         public string description { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<bool> status { get; set; }
-        public int userID { get; set; }
+        public Nullable<int> userID { get; set; }
     
         public virtual USER USER { get; set; }
     }

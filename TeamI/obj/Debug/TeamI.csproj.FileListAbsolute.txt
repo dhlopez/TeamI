@@ -411,4 +411,3 @@ C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\zh-Hans\Microsoft.Spatial.res
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\zh-Hant\Microsoft.Spatial.resources.dll
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\obj\Debug\TeamI.dll
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\obj\Debug\TeamI.pdb
-C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\obj\Debug\TeamI.csprojResolveAssemblyReference.cache

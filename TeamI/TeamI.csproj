@@ -251,7 +251,7 @@
     <Compile Include="Controllers\LABsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TASKsController.cs" />
-    <Compile Include="Controllers\USERsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -432,6 +432,16 @@
     <Content Include="Views\Home\EmailLogin.cshtml" />
     <Content Include="Views\Home\Calendar.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
+    <Content Include="Views\Tasks\Create.cshtml" />
+    <Content Include="Views\Tasks\Delete.cshtml" />
+    <Content Include="Views\Tasks\Details.cshtml" />
+    <Content Include="Views\Tasks\Edit.cshtml" />
+    <Content Include="Views\Tasks\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

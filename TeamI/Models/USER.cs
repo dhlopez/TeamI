@@ -14,13 +14,6 @@ namespace TeamI.Models
     
     public partial class USER
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public USER()
-        {
-            this.INSPECTION = new HashSet<INSPECTION>();
-            this.TASK = new HashSet<TASK>();
-        }
-    
         public int ID { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -28,10 +21,5 @@ namespace TeamI.Models
         public string phone { get; set; }
         public string postalCode { get; set; }
         public int role { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INSPECTION> INSPECTION { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TASK> TASK { get; set; }
     }
 }
