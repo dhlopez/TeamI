@@ -429,16 +429,6 @@
     <Content Include="Views\INSPECTIONs\Details.cshtml" />
     <Content Include="Views\INSPECTIONs\Edit.cshtml" />
     <Content Include="Views\INSPECTIONs\Index.cshtml" />
-    <Content Include="Views\TASKs\Create.cshtml" />
-    <Content Include="Views\TASKs\Delete.cshtml" />
-    <Content Include="Views\TASKs\Details.cshtml" />
-    <Content Include="Views\TASKs\Edit.cshtml" />
-    <Content Include="Views\TASKs\Index.cshtml" />
-    <Content Include="Views\USERs\Create.cshtml" />
-    <Content Include="Views\USERs\Delete.cshtml" />
-    <Content Include="Views\USERs\Details.cshtml" />
-    <Content Include="Views\USERs\Edit.cshtml" />
-    <Content Include="Views\USERs\Index.cshtml" />
     <Content Include="Views\Home\EmailLogin.cshtml" />
     <Content Include="Views\Home\Calendar.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />

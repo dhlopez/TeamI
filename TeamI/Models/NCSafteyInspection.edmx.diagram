@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="538a1b5dabdd4514bd731ace9d69dc8d" Name="Diagram1" ZoomLevel="96">
+      <Diagram DiagramId="538a1b5dabdd4514bd731ace9d69dc8d" Name="Diagram1" ZoomLevel="53">
         <EntityTypeShape EntityType="NCSafteyInspectionModel.CORRECTION" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.EQUIPMENT" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.HAZARD" Width="1.5" PointX="2.625" PointY="4.25" IsExpanded="true" />
@@ -14,7 +14,7 @@
         <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__corre__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__EQUIPMENT__labID__34C8D9D1" ManuallyRouted="false" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__labID__32E0915F" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="NCSafteyInspectionModel.HAZARDOBSERVED" Width="1.5" PointX="9.75" PointY="2.375" />
+        <EntityTypeShape EntityType="NCSafteyInspectionModel.HAZARDOBSERVED" Width="1.5" PointX="10.875" PointY="1.5" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK_HAZARDOBSERVED_INSPECTION" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__CORRECTIO__hazar__1AD3FDA4" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.TASK" Width="1.5" PointX="8.75" PointY="5.25" />
