@@ -17,7 +17,7 @@ namespace TeamI.Controllers
         // GET: INSPECTIONs
         public ActionResult Index()
         {
-            var iNSPECTION = db.INSPECTION.Include(i => i.CORRECTION).Include(i => i.LAB).Include(i => i.LAB1).Include(i => i.LAB2).Include(i => i.LAB3).Include(i => i.USER).Include(i => i.USER1).Include(i => i.USER2).Include(i => i.USER3);
+            var iNSPECTION = db.INSPECTION.Include(i => i.CORRECTION).Include(i => i.LAB).Include(i => i.USER);
             return View(iNSPECTION.ToList());
         }
 
@@ -41,12 +41,6 @@ namespace TeamI.Controllers
         {
             ViewBag.correctionID = new SelectList(db.CORRECTION, "ID", "action");
             ViewBag.labID = new SelectList(db.LAB, "ID", "building");
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building");
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building");
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building");
-            ViewBag.userID = new SelectList(db.USER, "ID", "firstName");
-            ViewBag.userID = new SelectList(db.USER, "ID", "firstName");
-            ViewBag.userID = new SelectList(db.USER, "ID", "firstName");
             ViewBag.userID = new SelectList(db.USER, "ID", "firstName");
             return View();
         }
@@ -67,12 +61,6 @@ namespace TeamI.Controllers
 
             ViewBag.correctionID = new SelectList(db.CORRECTION, "ID", "action", iNSPECTION.correctionID);
             ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
-            ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
-            ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
-            ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
             ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
             return View(iNSPECTION);
         }
@@ -91,12 +79,6 @@ namespace TeamI.Controllers
             }
             ViewBag.correctionID = new SelectList(db.CORRECTION, "ID", "action", iNSPECTION.correctionID);
             ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
-            ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
-            ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
-            ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
             ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
             return View(iNSPECTION);
         }
@@ -116,12 +98,6 @@ namespace TeamI.Controllers
             }
             ViewBag.correctionID = new SelectList(db.CORRECTION, "ID", "action", iNSPECTION.correctionID);
             ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
-            ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
-            ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
-            ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
             ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
             return View(iNSPECTION);
         }

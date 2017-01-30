@@ -17,7 +17,7 @@ namespace TeamI.Controllers
         // GET: EQUIPMENTs
         public ActionResult Index()
         {
-            var eQUIPMENT = db.EQUIPMENT.Include(e => e.LAB).Include(e => e.LAB1).Include(e => e.LAB2).Include(e => e.LAB3);
+            var eQUIPMENT = db.EQUIPMENT.Include(e => e.LAB);
             return View(eQUIPMENT.ToList());
         }
 
@@ -40,9 +40,6 @@ namespace TeamI.Controllers
         public ActionResult Create()
         {
             ViewBag.labID = new SelectList(db.LAB, "ID", "building");
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building");
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building");
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building");
             return View();
         }
 
@@ -61,9 +58,6 @@ namespace TeamI.Controllers
             }
 
             ViewBag.labID = new SelectList(db.LAB, "ID", "building", eQUIPMENT.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", eQUIPMENT.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", eQUIPMENT.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", eQUIPMENT.labID);
             return View(eQUIPMENT);
         }
 
@@ -79,9 +73,6 @@ namespace TeamI.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", eQUIPMENT.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", eQUIPMENT.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", eQUIPMENT.labID);
             ViewBag.labID = new SelectList(db.LAB, "ID", "building", eQUIPMENT.labID);
             return View(eQUIPMENT);
         }
@@ -99,9 +90,6 @@ namespace TeamI.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", eQUIPMENT.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", eQUIPMENT.labID);
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", eQUIPMENT.labID);
             ViewBag.labID = new SelectList(db.LAB, "ID", "building", eQUIPMENT.labID);
             return View(eQUIPMENT);
         }

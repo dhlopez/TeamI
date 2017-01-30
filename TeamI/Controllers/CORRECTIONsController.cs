@@ -17,7 +17,7 @@ namespace TeamI.Controllers
         // GET: CORRECTIONs
         public ActionResult Index()
         {
-            var cORRECTION = db.CORRECTION.Include(c => c.EQUIPMENT).Include(c => c.EQUIPMENT1).Include(c => c.EQUIPMENT2).Include(c => c.EQUIPMENT3).Include(c => c.HAZARD).Include(c => c.HAZARD1).Include(c => c.HAZARD2).Include(c => c.HAZARD3);
+            var cORRECTION = db.CORRECTION.Include(c => c.EQUIPMENT).Include(c => c.HAZARD);
             return View(cORRECTION.ToList());
         }
 
@@ -40,12 +40,6 @@ namespace TeamI.Controllers
         public ActionResult Create()
         {
             ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name");
-            ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name");
-            ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name");
-            ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name");
-            ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name");
-            ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name");
-            ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name");
             ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name");
             return View();
         }
@@ -65,12 +59,6 @@ namespace TeamI.Controllers
             }
 
             ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name", cORRECTION.equipmentID);
-            ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name", cORRECTION.equipmentID);
-            ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name", cORRECTION.equipmentID);
-            ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name", cORRECTION.equipmentID);
-            ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name", cORRECTION.hazardID);
-            ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name", cORRECTION.hazardID);
-            ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name", cORRECTION.hazardID);
             ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name", cORRECTION.hazardID);
             return View(cORRECTION);
         }
@@ -88,12 +76,6 @@ namespace TeamI.Controllers
                 return HttpNotFound();
             }
             ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name", cORRECTION.equipmentID);
-            ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name", cORRECTION.equipmentID);
-            ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name", cORRECTION.equipmentID);
-            ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name", cORRECTION.equipmentID);
-            ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name", cORRECTION.hazardID);
-            ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name", cORRECTION.hazardID);
-            ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name", cORRECTION.hazardID);
             ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name", cORRECTION.hazardID);
             return View(cORRECTION);
         }
@@ -112,12 +94,6 @@ namespace TeamI.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name", cORRECTION.equipmentID);
-            ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name", cORRECTION.equipmentID);
-            ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name", cORRECTION.equipmentID);
-            ViewBag.equipmentID = new SelectList(db.EQUIPMENT, "id", "name", cORRECTION.equipmentID);
-            ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name", cORRECTION.hazardID);
-            ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name", cORRECTION.hazardID);
-            ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name", cORRECTION.hazardID);
             ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "name", cORRECTION.hazardID);
             return View(cORRECTION);
         }

@@ -4,6 +4,8 @@
     <EntitySetMapping Name="CORRECTION">
       <EntityTypeMapping TypeName="NCSafteyInspectionModel.CORRECTION">
         <MappingFragment StoreEntitySet="CORRECTION">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="equipmentID" ColumnName="equipmentID" />
           <ScalarProperty Name="hazardID" ColumnName="hazardID" />
@@ -70,11 +72,29 @@
           <ScalarProperty Name="lastName" ColumnName="lastName" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="phone" ColumnName="phone" />
-          <ScalarProperty Name="taskID" ColumnName="taskID" />
           <ScalarProperty Name="postalCode" ColumnName="postalCode" />
           <ScalarProperty Name="role" ColumnName="role" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="HAZARDOBSERVED">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.HAZARDOBSERVED">
+        <MappingFragment StoreEntitySet="HAZARDOBSERVED">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="FormID" ColumnName="FormID" />
+          <ScalarProperty Name="HazardDescription" ColumnName="HazardDescription" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_HAZARDOBSERVED_INSPECTION" TypeName="NCSafteyInspectionModel.FK_HAZARDOBSERVED_INSPECTION" StoreEntitySet="HAZARDOBSERVED">
+      <EndProperty Name="HAZARDOBSERVED">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <EndProperty Name="INSPECTION">
+        <ScalarProperty Name="ID" ColumnName="InspectionID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

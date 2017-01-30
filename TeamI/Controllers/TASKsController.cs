@@ -17,7 +17,8 @@ namespace TeamI.Controllers
         // GET: TASKs
         public ActionResult Index()
         {
-            return View(db.TASK.ToList());
+            var tASK = db.TASK.Include(u => u.USER);
+            return View(tASK.ToList());
         }
 
         // GET: TASKs/Details/5
@@ -38,6 +39,7 @@ namespace TeamI.Controllers
         // GET: TASKs/Create
         public ActionResult Create()
         {
+            ViewBag.userID = new SelectList(db.USER, "ID", "description");
             return View();
         }
 
@@ -54,7 +56,7 @@ namespace TeamI.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.userID = new SelectList(db.USER, "ID", "description", tASK.ID);
             return View(tASK);
         }
 
@@ -70,6 +72,7 @@ namespace TeamI.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.userID = new SelectList(db.USER, "ID", "description", tASK.ID);
             return View(tASK);
         }
 
@@ -86,6 +89,7 @@ namespace TeamI.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.userID = new SelectList(db.USER, "ID", "description", tASK.ID);
             return View(tASK);
         }
 

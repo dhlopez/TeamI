@@ -8,20 +8,19 @@
         <EntityTypeShape EntityType="NCSafteyInspectionModel.CORRECTION" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.EQUIPMENT" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.HAZARD" Width="1.5" PointX="2.625" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="NCSafteyInspectionModel.INSPECTION" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NCSafteyInspectionModel.INSPECTION" Width="1.875" PointX="7.625" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.LAB" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.TASK" Width="1.5" PointX="8.5" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.USER" Width="1.5" PointX="6.375" PointY="4.875" IsExpanded="true" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__CORRECTIO__equip__4CA06362" ManuallyRouted="false" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__CORRECTIO__equip__5070F446" ManuallyRouted="false" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__CORRECTIO__hazar__4F7CD00D" ManuallyRouted="false" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__corre__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__EQUIPMENT__labID__34C8D9D1" ManuallyRouted="false" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__labID__32E0915F" ManuallyRouted="false" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__userI__3D5E1FD2" ManuallyRouted="false" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.HAZARDOBSERVED" Width="1.5" PointX="9.75" PointY="2.375" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK_HAZARDOBSERVED_INSPECTION" />
-        <AssociationConnector Association="NCSafteyInspectionModel.FK__TASK__userID__03F0984C" />
+        <AssociationConnector Association="NCSafteyInspectionModel.FK__CORRECTIO__hazar__1AD3FDA4" />
+        <AssociationConnector Association="NCSafteyInspectionModel.USERTASK" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
