@@ -39,6 +39,7 @@ namespace TeamI
                       "~/Content/site.css",
                       "~/Content/navigation.css",
                       "~/Content/Custom.css",
+                      "~/Content/TabView.css",
                       "~/Content/Modal.css",
                       "~/Content/circleStats/jquery.circliful.css",
                       "~/Content/circleStats/material-design-iconic-font.css",
