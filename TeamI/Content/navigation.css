@@ -92,8 +92,7 @@ html { height: 100%;}
             transition: width .2s ease-in;
 
 }
-.sidebar-nav li:first-child a {
-    color: #fff;
+.sidebar-nav ul li:first-child:before {
     background-color: #0073cf;
 }
 .sidebar-nav li:nth-child(2):before {
@@ -164,9 +163,7 @@ html { height: 100%;}
     box-shadow: none;
 }
 
-/*-------------------------------*/
-/*       Hamburger-Cross         */
-/*-------------------------------*/
+/*
 
 .hamburger {
   position: fixed;
@@ -276,7 +273,7 @@ html { height: 100%;}
   display: block;
   -webkit-transform: translate3d(-100px,0,0);
   -webkit-transition: all .35s ease-in-out;
-}
+}*/
 
 /*-------------------------------*/
 /*            Overlay            */
