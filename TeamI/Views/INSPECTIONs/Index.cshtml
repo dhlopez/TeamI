@@ -5,36 +5,18 @@
 }
 
 
-<script>
-function openInspection(evt, optName) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
-
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the link that opened the tab
-    document.getElementById(optName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-</script>
 <div class="container">
-    <h2>Inspections</h2>
+    <div>
+        <h2>Inspections</h2>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    </div>
 
 
 
     <ul class="tab">
-        <li><a href="javascript:void(0)" class="tablinks" onclick="openInspection(event, 'User')">Your inspections</a></li>
+        <li><a href="javascript:void(0)" class="tablinks" onclick="openInspection(event, 'User')" id="defaultOpen">Your inspections</a></li>
         <li><a href="javascript:void(0)" class="tablinks" onclick="openInspection(event, 'All')">All inspections</a></li>
         <li><a href="javascript:void(0)" class="tablinks" onclick="openInspection(event, 'Corrective')">Corrective actions</a></li>
     </ul>
@@ -323,5 +305,4 @@ function openInspection(evt, optName) {
             </div>
         </div>
     </div>
-
 </div>
