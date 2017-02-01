@@ -546,6 +546,5 @@ C:\Users\Administrator\Desktop\TeamI\TeamI\bin\ko\Microsoft.Spatial.resources.dl
 C:\Users\Administrator\Desktop\TeamI\TeamI\bin\ru\Microsoft.Spatial.resources.dll
 C:\Users\Administrator\Desktop\TeamI\TeamI\bin\zh-Hans\Microsoft.Spatial.resources.dll
 C:\Users\Administrator\Desktop\TeamI\TeamI\bin\zh-Hant\Microsoft.Spatial.resources.dll
-C:\Users\Administrator\Desktop\TeamI\TeamI\obj\Debug\TeamI.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\TeamI\TeamI\obj\Debug\TeamI.dll
 C:\Users\Administrator\Desktop\TeamI\TeamI\obj\Debug\TeamI.pdb

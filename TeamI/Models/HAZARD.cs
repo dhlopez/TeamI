@@ -14,17 +14,7 @@ namespace TeamI.Models
     
     public partial class HAZARD
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HAZARD()
-        {
-            this.CORRECTION = new HashSet<CORRECTION>();
-        }
-    
         public int ID { get; set; }
-        public int equipmentID { get; set; }
-        public string name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CORRECTION> CORRECTION { get; set; }
+        public string Description { get; set; }
     }
 }

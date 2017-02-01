@@ -17,7 +17,7 @@ namespace TeamI.Controllers
         // GET: INSPECTIONs
         public ActionResult Index()
         {
-            var iNSPECTION = db.INSPECTION.Include(i => i.CORRECTION).Include(i => i.LAB).Include(i => i.USER);
+            var iNSPECTION = db.INSPECTION.Include(i => i.LAB).Include(i => i.USER);
             return View(iNSPECTION.ToList());
         }
 
@@ -39,7 +39,6 @@ namespace TeamI.Controllers
         // GET: INSPECTIONs/Create
         public ActionResult Create()
         {
-            ViewBag.correctionID = new SelectList(db.CORRECTION, "ID", "action");
             ViewBag.labID = new SelectList(db.LAB, "ID", "building");
             ViewBag.userID = new SelectList(db.USER, "ID", "firstName");
             return View();
@@ -50,7 +49,7 @@ namespace TeamI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,date,labID,userID,correctionID,status")] INSPECTION iNSPECTION)
+        public ActionResult Create([Bind(Include = "ID,date,labID,userID,status")] INSPECTION iNSPECTION)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +58,6 @@ namespace TeamI.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.correctionID = new SelectList(db.CORRECTION, "ID", "action", iNSPECTION.correctionID);
             ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
             ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
             return View(iNSPECTION);
@@ -77,7 +75,6 @@ namespace TeamI.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.correctionID = new SelectList(db.CORRECTION, "ID", "action", iNSPECTION.correctionID);
             ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
             ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
             return View(iNSPECTION);
@@ -88,7 +85,7 @@ namespace TeamI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,date,labID,userID,correctionID,status")] INSPECTION iNSPECTION)
+        public ActionResult Edit([Bind(Include = "ID,date,labID,userID,status")] INSPECTION iNSPECTION)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +93,6 @@ namespace TeamI.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.correctionID = new SelectList(db.CORRECTION, "ID", "action", iNSPECTION.correctionID);
             ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
             ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
             return View(iNSPECTION);

@@ -243,10 +243,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StartupBak.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CORRECTIONsController.cs" />
-    <Compile Include="Controllers\EQUIPMENTsController.cs" />
+    <Compile Include="Controllers\HAZARDOBSERVEDsController.cs" />
     <Compile Include="Controllers\HAZARDsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\INSPECTIONDETAILSController.cs" />
     <Compile Include="Controllers\INSPECTIONsController.cs" />
     <Compile Include="Controllers\LABsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -256,15 +256,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CORRECTION.cs">
-      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DisplayContact.cs" />
     <Compile Include="Models\DisplayEvent.cs" />
     <Compile Include="Models\DisplayMessage.cs" />
-    <Compile Include="Models\EQUIPMENT.cs">
-      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\HAZARD.cs">
       <DependentUpon>NCSafteyInspection.tt</DependentUpon>
     </Compile>
@@ -273,6 +267,9 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\INSPECTION.cs">
+      <DependentUpon>NCSafteyInspection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INSPECTIONDETAILS.cs">
       <DependentUpon>NCSafteyInspection.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LAB.cs">
@@ -422,11 +419,6 @@
     <Content Include="Views\EQUIPMENTs\Details.cshtml" />
     <Content Include="Views\EQUIPMENTs\Edit.cshtml" />
     <Content Include="Views\EQUIPMENTs\Index.cshtml" />
-    <Content Include="Views\HAZARDs\Create.cshtml" />
-    <Content Include="Views\HAZARDs\Delete.cshtml" />
-    <Content Include="Views\HAZARDs\Details.cshtml" />
-    <Content Include="Views\HAZARDs\Edit.cshtml" />
-    <Content Include="Views\HAZARDs\Index.cshtml" />
     <Content Include="Views\INSPECTIONs\Create.cshtml" />
     <Content Include="Views\INSPECTIONs\Delete.cshtml" />
     <Content Include="Views\INSPECTIONs\Details.cshtml" />
@@ -445,6 +437,21 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\HAZARDs\Create.cshtml" />
+    <Content Include="Views\HAZARDs\Delete.cshtml" />
+    <Content Include="Views\HAZARDs\Details.cshtml" />
+    <Content Include="Views\HAZARDs\Edit.cshtml" />
+    <Content Include="Views\HAZARDs\Index.cshtml" />
+    <Content Include="Views\HAZARDOBSERVEDs\Create.cshtml" />
+    <Content Include="Views\HAZARDOBSERVEDs\Delete.cshtml" />
+    <Content Include="Views\HAZARDOBSERVEDs\Details.cshtml" />
+    <Content Include="Views\HAZARDOBSERVEDs\Edit.cshtml" />
+    <Content Include="Views\HAZARDOBSERVEDs\Index.cshtml" />
+    <Content Include="Views\INSPECTIONDETAILS\Create.cshtml" />
+    <Content Include="Views\INSPECTIONDETAILS\Delete.cshtml" />
+    <Content Include="Views\INSPECTIONDETAILS\Details.cshtml" />
+    <Content Include="Views\INSPECTIONDETAILS\Edit.cshtml" />
+    <Content Include="Views\INSPECTIONDETAILS\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

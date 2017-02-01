@@ -17,7 +17,6 @@ namespace TeamI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LAB()
         {
-            this.EQUIPMENT = new HashSet<EQUIPMENT>();
             this.INSPECTION = new HashSet<INSPECTION>();
         }
     
@@ -26,8 +25,6 @@ namespace TeamI.Models
         public Nullable<int> room { get; set; }
         public string type { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EQUIPMENT> EQUIPMENT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INSPECTION> INSPECTION { get; set; }
     }

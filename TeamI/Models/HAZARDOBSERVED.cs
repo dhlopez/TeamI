@@ -14,12 +14,13 @@ namespace TeamI.Models
     
     public partial class HAZARDOBSERVED
     {
-        public int Id { get; set; }
-        public string HazardDescription { get; set; }
-        public Nullable<int> FormID { get; set; }
         public string Comments { get; set; }
         public bool Status { get; set; }
+        public int ID { get; set; }
+        public int InspectionDetailID { get; set; }
+        public int HazardID { get; set; }
     
-        public virtual INSPECTION INSPECTION { get; set; }
+        public virtual INSPECTIONDETAILS INSPECTIONDETAILS { get; set; }
+        public virtual HAZARD HAZARD { get; set; }
     }
 }

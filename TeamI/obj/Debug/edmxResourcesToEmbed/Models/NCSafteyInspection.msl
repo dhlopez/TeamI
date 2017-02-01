@@ -1,34 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="NCSafteyInspectionModelStoreContainer" CdmEntityContainer="NCSafteyInspectionEntities">
-    <EntitySetMapping Name="CORRECTION">
-      <EntityTypeMapping TypeName="NCSafteyInspectionModel.CORRECTION">
-        <MappingFragment StoreEntitySet="CORRECTION">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="equipmentID" ColumnName="equipmentID" />
-          <ScalarProperty Name="hazardID" ColumnName="hazardID" />
-          <ScalarProperty Name="action" ColumnName="action" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="EQUIPMENT">
-      <EntityTypeMapping TypeName="NCSafteyInspectionModel.EQUIPMENT">
-        <MappingFragment StoreEntitySet="EQUIPMENT">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="labID" ColumnName="labID" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="type" ColumnName="type" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="HAZARD">
       <EntityTypeMapping TypeName="NCSafteyInspectionModel.HAZARD">
         <MappingFragment StoreEntitySet="HAZARD">
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="equipmentID" ColumnName="equipmentID" />
-          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -39,7 +16,6 @@
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="labID" ColumnName="labID" />
           <ScalarProperty Name="userID" ColumnName="userID" />
-          <ScalarProperty Name="correctionID" ColumnName="correctionID" />
           <ScalarProperty Name="status" ColumnName="status" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -57,22 +33,14 @@
     <EntitySetMapping Name="HAZARDOBSERVED">
       <EntityTypeMapping TypeName="NCSafteyInspectionModel.HAZARDOBSERVED">
         <MappingFragment StoreEntitySet="HAZARDOBSERVED">
+          <ScalarProperty Name="HazardID" ColumnName="HazardID" />
+          <ScalarProperty Name="InspectionDetailID" ColumnName="InspectionDetailID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Comments" ColumnName="Comments" />
-          <ScalarProperty Name="FormID" ColumnName="FormID" />
-          <ScalarProperty Name="HazardDescription" ColumnName="HazardDescription" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="FK_HAZARDOBSERVED_INSPECTION" TypeName="NCSafteyInspectionModel.FK_HAZARDOBSERVED_INSPECTION" StoreEntitySet="HAZARDOBSERVED">
-      <EndProperty Name="HAZARDOBSERVED">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <EndProperty Name="INSPECTION">
-        <ScalarProperty Name="ID" ColumnName="InspectionID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <EntitySetMapping Name="TASK">
       <EntityTypeMapping TypeName="NCSafteyInspectionModel.TASK">
         <MappingFragment StoreEntitySet="TASK">
@@ -93,6 +61,17 @@
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="lastName" ColumnName="lastName" />
           <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INSPECTIONDETAILS">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.INSPECTIONDETAILS">
+        <MappingFragment StoreEntitySet="INSPECTIONDETAILS">
+          <ScalarProperty Name="AreaEquipment" ColumnName="AreaEquipment" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="InspectionID" ColumnName="InspectionID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -17,20 +17,18 @@ namespace TeamI.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public INSPECTION()
         {
-            this.HAZARDOBSERVED = new HashSet<HAZARDOBSERVED>();
+            this.INSPECTIONDETAILS = new HashSet<INSPECTIONDETAILS>();
         }
     
         public int ID { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<int> labID { get; set; }
         public Nullable<int> userID { get; set; }
-        public Nullable<int> correctionID { get; set; }
         public Nullable<bool> status { get; set; }
     
-        public virtual CORRECTION CORRECTION { get; set; }
         public virtual LAB LAB { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HAZARDOBSERVED> HAZARDOBSERVED { get; set; }
         public virtual USER USER { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<INSPECTIONDETAILS> INSPECTIONDETAILS { get; set; }
     }
 }

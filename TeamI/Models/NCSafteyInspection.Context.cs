@@ -25,13 +25,12 @@ namespace TeamI.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CORRECTION> CORRECTION { get; set; }
-        public virtual DbSet<EQUIPMENT> EQUIPMENT { get; set; }
         public virtual DbSet<HAZARD> HAZARD { get; set; }
         public virtual DbSet<INSPECTION> INSPECTION { get; set; }
         public virtual DbSet<LAB> LAB { get; set; }
         public virtual DbSet<HAZARDOBSERVED> HAZARDOBSERVED { get; set; }
         public virtual DbSet<TASK> TASK { get; set; }
         public virtual DbSet<USER> USER { get; set; }
+        public virtual DbSet<INSPECTIONDETAILS> INSPECTIONDETAILS { get; set; }
     }
 }
