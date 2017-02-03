@@ -1,0 +1,185 @@
+﻿@model IEnumerable<TeamI.Models.CORRECTION>
+
+@{
+    ViewBag.Title = "Corrections";
+}
+
+<div class="container">
+
+    <h2>Report an issue</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <div class="row">
+        <div class="col-sm-4"><h2>Unresolved: 2</h2></div>
+        <div class="col-sm-4"><h2>Resolved: 4</h2></div>
+
+        <div class="col-sm-4"><h2>Total: 6</h2></div>
+    </div>
+    <ul class="tab">
+        <li><a href="javascript:void(0)" class="tablinks" onclick="openInspection(event, 'Unresolved')" id="defaultOpen">Unresolved</a></li>
+        <li><a href="javascript:void(0)" class="tablinks" onclick="openInspection(event, 'Resolved')">Resolved</a></li>
+    </ul>
+
+
+
+
+
+    <div id="Unresolved" class="tabcontent">
+
+        <div id="table-wrapper">
+            <div id="table-scroll">
+                <table class="table-cust" style="height:150px;overflow:auto;">
+                    <thead>
+                        <tr>
+                            <th>Snapshot</th>
+                            <th>Description</th>
+                            <th>Lab</th>
+                            <th>Location</th>
+                            <th>Found</th>
+                            <th>Go</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="~/Images/hoist.jpg" />
+                            </td>
+                            <td>Needs new chains</td>
+                            <td>TC02</td>
+                            <td>s201</td>
+                            <td>2017/07/12</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="~/Images/welder.jpg" />
+                            </td>
+                            <td>Ground clamp broken</td>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="Resolved" class="tabcontent">
+
+        <div id="table-wrapper">
+            <div id="table-scroll">
+                <table class="table-cust" style="height:150px;overflow:auto;">
+                    <thead>
+                        <tr>
+
+                            <th>Description</th>
+                            <th>Action</th>
+                            <th>Lab</th>
+                            <th>Location</th>
+                            <th>Found</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+
+                            <td>Oil spill</td>
+                            <td>Cleaned</td>
+                            <td>TC02</td>
+                            <td>s201</td>
+                            <td>2017/12/02</td>
+
+                        </tr>
+                        <tr>
+                            <td>Loose pannel</td>
+                            <td>Re mounted pannel</td>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/10/02</td>
+
+                        </tr>
+                        <tr>
+                            <td>Exposed wire</td>
+                            <td>New wire installed</td>
+                            <td>TC12</td>
+                            <td>s205</td>
+                            <td>2017/09/14</td>
+
+                        </tr>
+                        <tr>
+                            <td>Trip hazard</td>
+                            <td>Removed trip hazard</td>
+                            <td>TC12</td>
+                            <td>s207</td>
+                            <td>2017/09/10</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @*<table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.action)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EQUIPMENT.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HAZARD.name)
+                </th>
+                <th></th>
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.action)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EQUIPMENT.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HAZARD.name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+                </td>
+            </tr>
+        }
+
+        </table>*@
+</div>

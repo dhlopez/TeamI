@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NCSafteyInspectionModelStoreContainer" CdmEntityContainer="NCSafteyInspectionEntities">
+    <EntitySetMapping Name="HAZARD">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.HAZARD">
+        <MappingFragment StoreEntitySet="HAZARD">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INSPECTION">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.INSPECTION">
+        <MappingFragment StoreEntitySet="INSPECTION">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="labID" ColumnName="labID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LAB">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.LAB">
+        <MappingFragment StoreEntitySet="LAB">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="building" ColumnName="building" />
+          <ScalarProperty Name="room" ColumnName="room" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HAZARDOBSERVED">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.HAZARDOBSERVED">
+        <MappingFragment StoreEntitySet="HAZARDOBSERVED">
+          <ScalarProperty Name="HazardID" ColumnName="HazardID" />
+          <ScalarProperty Name="InspectionDetailID" ColumnName="InspectionDetailID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TASK">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.TASK">
+        <MappingFragment StoreEntitySet="TASK">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.USER">
+        <MappingFragment StoreEntitySet="USER">
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INSPECTIONDETAILS">
+      <EntityTypeMapping TypeName="NCSafteyInspectionModel.INSPECTIONDETAILS">
+        <MappingFragment StoreEntitySet="INSPECTIONDETAILS">
+          <ScalarProperty Name="AreaEquipment" ColumnName="AreaEquipment" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="InspectionID" ColumnName="InspectionID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

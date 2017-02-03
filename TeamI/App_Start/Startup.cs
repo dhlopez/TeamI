@@ -40,7 +40,7 @@ namespace TeamI.App_Start
                   Authority = "https://login.microsoftonline.com/common/v2.0",
                   Scope = "openid offline_access profile email " + string.Join(" ", scopes),
                   RedirectUri = redirectUri,
-                  PostLogoutRedirectUri = "/",
+                  PostLogoutRedirectUri = "/Home/Index",
                   TokenValidationParameters = new TokenValidationParameters
                   {
                       // For demo purposes only, see below

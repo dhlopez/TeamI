@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>@ViewBag.Title - Niagara College</title>
+    @Styles.Render("~/Content/css")
+
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav" style="z-index: -1000">
+                <li>
+                    <img src="~/Images/ncc-logo-transparent.png" class="sidebar-brand img-responsive navimg" />
+                </li>
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("About", "About", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("Inspection", "Index", "INSPECTIONs")
+                </li>
+                @*<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inspection<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>*@
+                <li>
+                    @Html.ActionLink("Report an Issue", "Index", "INSPECTIONDETAILS")
+                </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Labs", "Index", "Labs")</li>
+                            <li>@Html.ActionLink("Hazards", "Index", "Hazards")</li>
+                            <li>@Html.ActionLink("Tasks", "Index", "Tasks")</li>
+                            <li>@Html.ActionLink("Users", "Index", "Users")</li>
+                        </ul>
+                    </li>
+                <li>
+                    <a href="http://www.niagaracollege.ca/visit/contact-us/">Contact</a>
+                </li>
+                <li>
+                    <a href="http://www.niagaracollege.ca">Niagara College</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <!-- /#sidebar-wrapper -->
+
+
+        <nav class="navbar navbar-inverse" style="z-index:1; border-radius:0px;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="#" data-toggle="offcanvas"><span class="glyphicon glyphicon-th"></span>Menu</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Inbox", "Inbox", "Home")</li>
+                        <li>@Html.ActionLink("Calendar", "Calendar", "Home")</li>
+                        <li>@Html.ActionLink("Contacts", "Contacts", "Home")</li>
+                        <li>@Html.ActionLink("Sign Out", "SignOut", "Home")</li>
+                        <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span> @(ViewBag.UserName)</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("SignIn", "Home")"><span class="glyphicon glyphicon-envelope"></span> Mail</a></li>
+                        <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span> User</a></li>
+                    }                                    
+                </ul>
+            </div>
+        </nav>
+      
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            
+            <div class="container" style="width:1200px">
+                @RenderBody()
+                <div class="row">
+
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <span class="close">&times;</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="~/Images/user.png" alt="User Picture" class="modalimg img-responsive"/>
+                                        <h3>@ViewBag.UserName</h3>
+                                        <p>Position</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4>Enrolled Labs</h4>
+                                        <ul>
+                                            <li>Lab 1</li>
+                                            <li>Lab 2</li>
+                                            <li>Lab 3</li>
+                                        </ul>
+                                        <br />
+                                        <h4>Email</h4>
+                                        <p>user@outlook.com</p>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        @*Alerts or mail maybe??*@
+                                    </div>
+                                </div>                       
+                            </div>
+                            <div class="modal-footer">
+                                @Html.ActionLink("Sign Out", "SignOut", "Home")
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr />
+                    <footer>
+                        <div class="row">
+                            <div class="col-sm-6">&copy; @DateTime.Now.Year - Lucid Technologies</div>
+                            <div class="col-sm-6 text-right">Niagara College Canada</div>
+                        </div>
+                    </footer>
+
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/navigation")
+    @Scripts.Render("~/bundles/modal")
+    @Scripts.Render("~/bundles/stats")
+    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $("#circle1").circliful({
+                animationStep: 5,
+                foregroundBorderWidth: 5,
+                backgroundBorderWidth: 15,
+                text: "Safety",
+                backgroundcolor: "#1a1a1a",
+                foregroundColor: "#0073cf"
+
+
+            });
+
+            $("#circle2").circliful({
+                animationStep: 5,
+                foregroundBorderWidth: 5,
+                backgroundBorderWidth: 15,
+                text: "Pending Tasks",
+                foregroundColor: "#0073cf"
+            });
+
+            $("#circle3").circliful({
+                animationStep: 5,
+                foregroundBorderWidth: 5,
+                backgroundBorderWidth: 15,
+
+                text: "Something?",
+                foregroundColor: "#0073cf"
+            });
+        });
+    </script>
+</body>
+</html>

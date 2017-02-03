@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="NCSafety" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Casa\\Desktop\\Practice\\MVC\\TeamI\\TeamI\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Casa\\Desktop\\Practice\\MVC\\TeamI\\TeamI\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="NCSafety/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Casa\\Desktop\\Practice\\MVC\\TeamI\\TeamI\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="NCSafteyInspectionEntities-Web.config Connection String" description="" value="metadata=res://*/Models.NCSafteyInspection.csdl|res://*/Models.NCSafteyInspection.ssdl|res://*/Models.NCSafteyInspection.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=tcp:ncsafetydbserver.database.windows.net,1433;initial catalog=NCSafety_db;user id=adminnc@ncsafetydbserver;password=NCSafety1;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Casa\\Desktop\\Practice\\MVC\\TeamI\\TeamI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='NCSafteyInspectionEntities']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." value="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-TeamI-20170114114840.mdf;Initial Catalog=aspnet-TeamI-20170114114840;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Casa\\Desktop\\Practice\\MVC\\TeamI\\TeamI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

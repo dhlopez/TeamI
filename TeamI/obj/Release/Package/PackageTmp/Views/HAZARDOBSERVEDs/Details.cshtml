@@ -1,0 +1,50 @@
+﻿@model TeamI.Models.HAZARDOBSERVED
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HAZARDOBSERVED</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.INSPECTIONDETAILS.AreaEquipment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INSPECTIONDETAILS.AreaEquipment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HAZARD.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HAZARD.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

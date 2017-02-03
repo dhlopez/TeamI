@@ -1,0 +1,308 @@
+﻿@model IEnumerable<TeamI.Models.INSPECTION>
+
+@{
+    ViewBag.Title = "Inspection";
+}
+
+
+<div class="container">
+    <div>
+        <h2>Inspections</h2>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    </div>
+
+
+
+    <ul class="tab">
+        <li><a href="javascript:void(0)" class="tablinks" onclick="openInspection(event, 'User')" id="defaultOpen">Your inspections</a></li>
+        <li><a href="javascript:void(0)" class="tablinks" onclick="openInspection(event, 'All')">All inspections</a></li>
+        <li><a href="javascript:void(0)" class="tablinks" onclick="openInspection(event, 'Corrective')">Corrective actions</a></li>
+    </ul>
+
+
+
+
+    <div id="User" class="tabcontent">
+        <ul class="tab">
+            <li><a href="#" class="tablinks">Sort By:</a></li>
+            <li><a href="#" class="tablinks">Date</a></li>
+            <li><a href="#" class="tablinks">Location</a></li>
+        </ul>
+
+
+
+
+        <div id="table-wrapper">
+            <div id="table-scroll">
+                <table class="table-cust" style="height:150px;overflow:auto;">
+                    <thead>
+                        <tr>
+                            <th>Lab</th>
+                            <th>Location</th>
+                            <th>Scheduled</th>
+                            <th>Go</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TC02</td>
+                            <td>s201</td>
+                            <td>2017/07/12</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="All" class="tabcontent">
+        <ul class="tab">
+            <li><a href="#" class="tablinks">Sort By:</a></li>
+            <li><a href="#" class="tablinks">Date</a></li>
+            <li><a href="#" class="tablinks">Location</a></li>
+        </ul>
+        <div id="table-wrapper">
+            <div id="table-scroll">
+                <table class="table-cust" style="height:150px;overflow:auto;">
+                    <thead>
+                        <tr>
+                            <th>Lab</th>
+                            <th>Location</th>
+                            <th>Scheduled</th>
+                            <th>Go</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TC02</td>
+                            <td>s201</td>
+                            <td>2017/07/12</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="Corrective" class="tabcontent">
+        <h2>Hazards this month</h2>
+        <div class="row">
+            <div class="col-sm-4"><h2>Resolved: 4</h2></div>
+            <div class="col-sm-4"><h2>Unresolved: 2</h2></div>
+            <div class="col-sm-4"><h2>Total: 6</h2></div>
+        </div>
+        <hr />
+        <div id="table-wrapper">
+            <div id="table-scroll">
+                <table class="table-cust" style="height:150px;overflow:auto;">
+                    <thead>
+                        <tr>
+                            <th>Snapshot</th>
+                            <th>Description</th>
+                            <th>Lab</th>
+                            <th>Location</th>
+                            <th>Found</th>
+                            <th>Go</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <img src="~/Images/hoist.jpg" />
+                            </td>
+                            <td>Needs new chains</td>
+                            <td>TC02</td>
+                            <td>s201</td>
+                            <td>2017/07/12</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="~/Images/welder.jpg" />
+                            </td>
+                            <td>Ground clamp broken</td>
+                            <td>TC12</td>
+                            <td>s204</td>
+                            <td>2017/09/16</td>
+                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

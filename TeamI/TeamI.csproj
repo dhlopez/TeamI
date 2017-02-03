@@ -354,6 +354,7 @@
     <Content Include="fonts\Material-Design-Iconic-Font.ttf" />
     <Content Include="fonts\Material-Design-Iconic-Font.woff" />
     <Content Include="fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="Properties\PublishProfiles\NCSafety - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\circleStats\jquery.circliful.js" />
     <Content Include="Scripts\circleStats\jquery.circliful.min.js" />
@@ -452,6 +453,7 @@
     <Content Include="Views\INSPECTIONDETAILS\Details.cshtml" />
     <Content Include="Views\INSPECTIONDETAILS\Edit.cshtml" />
     <Content Include="Views\INSPECTIONDETAILS\Index.cshtml" />
+    <Content Include="Views\Home\Inbox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
