@@ -83,7 +83,7 @@ namespace TeamI.Controllers
                 // Signal OWIN to send an authorization request to Azure
                 HttpContext.GetOwinContext().Authentication.Challenge(
                     //new AuthenticationProperties { RedirectUri = "/Home/EmailLogin" },
-                    new AuthenticationProperties { RedirectUri = "/" },
+                    new AuthenticationProperties { RedirectUri = "/Home/Index" },
                     OpenIdConnectAuthenticationDefaults.AuthenticationType);
             }
         }
@@ -104,7 +104,7 @@ namespace TeamI.Controllers
             // Send an OpenID Connect sign-out request. 
             HttpContext.GetOwinContext().Authentication.SignOut(
               CookieAuthenticationDefaults.AuthenticationType);
-            Response.Redirect("/");
+            Response.Redirect("/Home/Index");
         }
         public async Task<string> GetAccessToken()
         {
@@ -160,7 +160,7 @@ namespace TeamI.Controllers
             if (string.IsNullOrEmpty(token))
             {
                 // If there's no token in the session, redirect to Home
-                return Redirect("/");
+                return Redirect("/Home/Index");
             }
 
             string userEmail = await GetUserEmail();
@@ -194,7 +194,7 @@ namespace TeamI.Controllers
             if (string.IsNullOrEmpty(token))
             {
                 // If there's no token in the session, redirect to Home
-                return Redirect("/");
+                return Redirect("/Home/Index");
             }
 
             string userEmail = await GetUserEmail();
@@ -227,7 +227,7 @@ namespace TeamI.Controllers
             if (string.IsNullOrEmpty(token))
             {
                 // If there's no token in the session, redirect to Home
-                return Redirect("/");
+                return Redirect("/Home/Index");
             }
 
             string userEmail = await GetUserEmail();
