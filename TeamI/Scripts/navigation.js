@@ -52,4 +52,7 @@ function openInspection(evt, optName) {
     
 }
 
+if(document.getElementById("defaultOpen")!=null)
+{
     document.getElementById("defaultOpen").click();
+}
