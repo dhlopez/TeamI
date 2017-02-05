@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TeamI.Models;
+using TeamI.ViewModel;
 
 namespace TeamI.Controllers
 {
@@ -39,9 +40,16 @@ namespace TeamI.Controllers
         // GET: INSPECTIONs/Create
         public ActionResult Create()
         {
+            FullInspection fullIns = new FullInspection();
+            fullIns.inspection = (from i in  db.INSPECTION select i).ToList();
+            fullIns.inspectionDetails = (from ins in db.INSPECTIONDETAILS select ins).ToList();
+            fullIns.HazardsObserved = (from haz in db.HAZARDOBSERVED select haz).ToList();
+
+            ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "Description");
+            //ViewBag.AreaEquipment = db.INSPECTIONDETAILS;
             ViewBag.labID = new SelectList(db.LAB, "ID", "building");
             ViewBag.userID = new SelectList(db.USER, "ID", "firstName");
-            return View();
+            return View(fullIns);
         }
 
         // POST: INSPECTIONs/Create
