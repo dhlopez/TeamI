@@ -361,6 +361,7 @@
     <Content Include="fonts\Material-Design-Iconic-Font.woff" />
     <Content Include="fonts\Material-Design-Iconic-Font.woff2" />
     <None Include="Properties\PublishProfiles\NCSafety - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\NCSafetyLucid - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\circleStats\jquery.circliful.js" />
     <Content Include="Scripts\circleStats\jquery.circliful.min.js" />
