@@ -22,7 +22,7 @@ namespace TeamI.Models
     
         public int ID { get; set; }
         public string building { get; set; }
-        public Nullable<int> room { get; set; }
+        public string room { get; set; }
         public string type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

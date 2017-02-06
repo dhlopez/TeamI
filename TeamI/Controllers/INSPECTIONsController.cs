@@ -47,8 +47,8 @@ namespace TeamI.Controllers
 
             ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "Description");
             //ViewBag.AreaEquipment = db.INSPECTIONDETAILS;
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building");
-            ViewBag.userID = new SelectList(db.USER, "ID", "firstName");
+            ViewBag.labID = new SelectList(db.LAB, "ID", "room");
+            ViewBag.userID = new SelectList(db.USER, "ID", "FullName");
             return View(fullIns);
         }
 

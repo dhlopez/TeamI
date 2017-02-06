@@ -15,5 +15,6 @@ namespace TeamI.ViewModel
         public List<HAZARDOBSERVED> HazardsObserved { get; set; }
 
         public List<HAZARD> Hazards { get; set; }
+
     }
 }

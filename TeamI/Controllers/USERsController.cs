@@ -54,8 +54,8 @@ namespace TeamI.Controllers
                 {
                     db.USER.Add(uSER);
                     db.SaveChanges();
-                    return View(uSER);
-                   
+                    return RedirectToAction("Index");
+
                 }
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
@@ -75,13 +75,6 @@ namespace TeamI.Controllers
                 }
                 throw raise;
             }
-
-            //if (ModelState.IsValid)
-            //{
-            //    db.USER.Add(uSER);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
 
             return View(uSER);
         }

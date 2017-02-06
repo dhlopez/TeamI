@@ -43,7 +43,7 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="building" Type="varchar" MaxLength="100" />
-    <Property Name="room" Type="int" />
+    <Property Name="room" Type="varchar" MaxLength="10" />
     <Property Name="type" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="TASK">

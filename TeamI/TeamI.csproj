@@ -275,6 +275,11 @@
     <Compile Include="Models\LAB.cs">
       <DependentUpon>NCSafteyInspection.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HazardMetaData.cs" />
+    <Compile Include="Models\InspectionMetaData.cs" />
+    <Compile Include="Models\UserMetaData.cs" />
+    <Compile Include="Models\TaskMetaData.cs" />
+    <Compile Include="Models\LabMetaData.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NCSafteyInspection.Context.cs">
       <AutoGen>True</AutoGen>

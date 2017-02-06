@@ -5,17 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="538a1b5dabdd4514bd731ace9d69dc8d" Name="Diagram1" ZoomLevel="75">
-        <EntityTypeShape EntityType="NCSafteyInspectionModel.HAZARD" Width="1.5" PointX="9.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NCSafteyInspectionModel.HAZARD" Width="1.5" PointX="6.625" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.INSPECTION" Width="1.875" PointX="4.125" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.LAB" Width="1.5" PointX="1" PointY="0.625" IsExpanded="true" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__labID__32E0915F" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="NCSafteyInspectionModel.HAZARDOBSERVED" Width="1.5" PointX="7" PointY="5.5" />
+        <EntityTypeShape EntityType="NCSafteyInspectionModel.HAZARDOBSERVED" Width="1.5" PointX="8.75" PointY="2.25" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.TASK" Width="1.5" PointX="1.25" PointY="6.875" />
         <EntityTypeShape EntityType="NCSafteyInspectionModel.USER" Width="1.5" PointX="1.375" PointY="3.5" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__INSPECTIO__userI__2DE6D218" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK__TASK__userID__74794A92" ManuallyRouted="false" >
         </AssociationConnector>
-        <EntityTypeShape EntityType="NCSafteyInspectionModel.INSPECTIONDETAILS" Width="1.5" PointX="7.125" PointY="2.375" />
+        <EntityTypeShape EntityType="NCSafteyInspectionModel.INSPECTIONDETAILS" Width="1.5" PointX="6.75" PointY="1.375" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK_HAZARDOBSERVED_INSPECTION1" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK_INSPECTIONDETAILS_INSPECTION" />
         <AssociationConnector Association="NCSafteyInspectionModel.FK_INSPECTIONDETAILS_USER" />
