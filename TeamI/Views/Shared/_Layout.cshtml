@@ -27,27 +27,27 @@
                     @Html.ActionLink("Inspection", "Index", "INSPECTIONs")
                 </li>
                 @*<li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inspection<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>*@
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inspection<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>*@
                 <li>
                     @Html.ActionLink("Report an Issue", "Index", "INSPECTIONDETAILS")
                 </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>@Html.ActionLink("Labs", "Index", "Labs")</li>
-                            <li>@Html.ActionLink("Hazards", "Index", "Hazards")</li>
-                            <li>@Html.ActionLink("Tasks", "Index", "Tasks")</li>
-                            <li>@Html.ActionLink("Users", "Index", "Users")</li>
-                        </ul>
-                    </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>@Html.ActionLink("Labs", "Index", "Labs")</li>
+                        <li>@Html.ActionLink("Hazards", "Index", "Hazards")</li>
+                        <li>@Html.ActionLink("Tasks", "Index", "Tasks")</li>
+                        <li>@Html.ActionLink("Users", "Index", "Users")</li>
+                    </ul>
+                </li>
                 <li>
                     <a href="http://www.niagaracollege.ca/visit/contact-us/">Contact</a>
                 </li>
@@ -79,15 +79,15 @@
                     {
                         <li><a href="@Url.Action("SignIn", "Home")"><span class="glyphicon glyphicon-envelope"></span> Mail</a></li>
                         <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span> User</a></li>
-                    }                                    
+                    }
                 </ul>
             </div>
         </nav>
-      
+
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            
+
             <div class="container" style="width:1200px">
                 @RenderBody()
                 <div class="row">
@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <img src="~/Images/user.png" alt="User Picture" class="modalimg img-responsive"/>
+                                        <img src="~/Images/user.png" alt="User Picture" class="modalimg img-responsive" />
                                         <h3>@ViewBag.UserName</h3>
                                         <p>Position</p>
                                     </div>
@@ -126,13 +126,19 @@
                                     <div class="col-sm-6">
                                         @*Alerts or mail maybe??*@
                                     </div>
-                                </div>                       
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 @Html.ActionLink("Sign Out", "SignOut", "Home")
                             </div>
                         </div>
 
+                    </div>
+
+                    <div id="fontSizeChange">
+                        <button class="fontButton btn btn-toolbar" id="linkIncrease"><span class="glyphicon glyphicon-plus"></span></button>
+                        <button class="fontButton btn btn-toolbar" id="linkDecrease"><span class="glyphicon glyphicon-minus"></span></button>
+                        <button class="fontButton btn btn-toolbar" id="linkReset"><span class="glyphicon glyphicon-repeat"></span></button>
                     </div>
 
                     <hr />
@@ -154,6 +160,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/navigation")
     @Scripts.Render("~/bundles/modal")
+    @Scripts.Render("~/bundles/fontsize")
     @Scripts.Render("~/bundles/stats")
     @RenderSection("scripts", required: false)
     <script>

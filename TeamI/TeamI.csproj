@@ -319,6 +319,7 @@
     <Content Include="Content\circleStats\material-design-iconic-font.css" />
     <Content Include="Content\circleStats\material-design-iconic-font.min.css" />
     <Content Include="Content\Custom.css" />
+    <Content Include="Content\FontSizeChange.css" />
     <Content Include="Content\Modal.css" />
     <Content Include="Content\navigation.css" />
     <Content Include="Content\Normalize.css" />
@@ -365,6 +366,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\circleStats\jquery.circliful.js" />
     <Content Include="Scripts\circleStats\jquery.circliful.min.js" />
+    <Content Include="Scripts\FontSize.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

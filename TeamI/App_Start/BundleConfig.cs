@@ -33,6 +33,9 @@ namespace TeamI
             bundles.Add(new ScriptBundle("~/bundles/modal").Include(
                       "~/Scripts/Modal.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/fontsize").Include(
+                      "~/Scripts/FontSize.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/Normalize.css",
@@ -41,6 +44,7 @@ namespace TeamI
                       "~/Content/Custom.css",
                       "~/Content/TabView.css",
                       "~/Content/Modal.css",
+                      "~/Content/FontSizeChange.css",
                       "~/Content/circleStats/jquery.circliful.css",
                       "~/Content/circleStats/material-design-iconic-font.css",
                       "~/Content/circleStats/material-design-iconic-font.min.css"));
