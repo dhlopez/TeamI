@@ -40,16 +40,20 @@ namespace TeamI.Controllers
         // GET: INSPECTIONs/Create
         public ActionResult Create()
         {
+            /*
             FullInspection fullIns = new FullInspection();
             fullIns.inspection = (from i in  db.INSPECTION select i).ToList();
             fullIns.inspectionDetails = (from ins in db.INSPECTIONDETAILS select ins).ToList();
             fullIns.HazardsObserved = (from haz in db.HAZARDOBSERVED select haz).ToList();
+            */
 
             ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "Description");
             //ViewBag.AreaEquipment = db.INSPECTIONDETAILS;
             ViewBag.labID = new SelectList(db.LAB, "ID", "room");
-            ViewBag.userID = new SelectList(db.USER, "ID", "FullName");
-            return View(fullIns);
+            ViewBag.userIDIns = new SelectList(db.USER, "ID", "FullName");
+            ViewBag.InspectionID = new SelectList(db.INSPECTIONDETAILS, "ID", "AreaEquipment");
+            //return View(fullIns);
+            return View();
         }
 
         // POST: INSPECTIONs/Create
@@ -57,18 +61,53 @@ namespace TeamI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,date,labID,userID,status")] INSPECTION iNSPECTION)
+        //public ActionResult Create([Bind(Include = "ID,date,labID,userID,status")] INSPECTION iNSPECTION)
+        //public ActionResult Create([Bind(Include = "ID,date,labID,userID,status")] FullInspection model)
+        public ActionResult Create(FullInspection model)
         {
             if (ModelState.IsValid)
             {
-                db.INSPECTION.Add(iNSPECTION);
+                var inspection = new INSPECTION();
+                var inspectionDetails = new INSPECTIONDETAILS();
+                var hazardObserved = new HAZARDOBSERVED();
+
+                inspection.date = model.dateIns;
+                inspection.labID = model.labID;
+                inspection.userID = model.userIDIns;
+                inspection.status = model.status;
+
+                //inspectionDetails.InspectionID = model.InspectionID;
+                inspectionDetails.AreaEquipment = model.AreaEquipment;
+                inspectionDetails.UserID = model.userIDIns;
+                inspectionDetails.Date = model.dateIns;
+
+                hazardObserved.InspectionDetailID = model.InspectionDetailID;
+                hazardObserved.HazardID = model.HazardID;
+                hazardObserved.Comments = model.Comments;
+                hazardObserved.Status = model.statusHO;
+
+                hazardObserved.INSPECTIONDETAILS = inspectionDetails;
+                inspectionDetails.INSPECTION = inspection;
+                
+
+                //add all the required fields
+                db.INSPECTION.Add(inspection);
                 db.SaveChanges();
+                db.INSPECTIONDETAILS.Add(inspectionDetails);
+                db.SaveChanges();
+                db.HAZARDOBSERVED.Add(hazardObserved);
+                db.SaveChanges();
+
+                //db.INSPECTION.Add(iNSPECTION);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.labID = new SelectList(db.LAB, "ID", "building", iNSPECTION.labID);
-            ViewBag.userID = new SelectList(db.USER, "ID", "firstName", iNSPECTION.userID);
-            return View(iNSPECTION);
+            ViewBag.labID = new SelectList(db.LAB, "ID", "building", model.labID);
+            ViewBag.userID = new SelectList(db.USER, "ID", "firstName", model.userIDIns);
+            ViewBag.hazardID = new SelectList(db.HAZARD, "ID", "Description");
+            ViewBag.InspectionID = new SelectList(db.INSPECTIONDETAILS, "ID", "AreaEquipment");
+            //return View(iNSPECTION);
+            return View();
         }
 
         // GET: INSPECTIONs/Edit/5
