@@ -31,8 +31,6 @@ ul.tab li a:focus, .active {background-color: #0073cf; color:white;}
 
 /* Style the tab content */
 .tabcontent {
-    display: none;
-   
-   
+    display: none;   
     border-top: none;
 }

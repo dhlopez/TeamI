@@ -319,6 +319,7 @@
     <Content Include="Content\circleStats\material-design-iconic-font.css" />
     <Content Include="Content\circleStats\material-design-iconic-font.min.css" />
     <Content Include="Content\Custom.css" />
+    <Content Include="Content\FontSizeChange.css" />
     <Content Include="Content\Modal.css" />
     <Content Include="Content\navigation.css" />
     <Content Include="Content\Normalize.css" />
@@ -330,6 +331,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\hoist.jpg" />
     <Content Include="Images\ncc-logo-transparent.png" />
+    <Content Include="Images\placeholder-image.jpg" />
     <Content Include="Images\user.png" />
     <Content Include="Images\welder.jpg" />
     <Content Include="Models\NCSafteyInspection.Context.tt">
@@ -361,9 +363,12 @@
     <Content Include="fonts\Material-Design-Iconic-Font.woff" />
     <Content Include="fonts\Material-Design-Iconic-Font.woff2" />
     <None Include="Properties\PublishProfiles\NCSafety - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\NCSafetyLucid - Web Deploy.pubxml" />
+    <Content Include="Queries\NCSafetyLucid.PublishSettings" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\circleStats\jquery.circliful.js" />
     <Content Include="Scripts\circleStats\jquery.circliful.min.js" />
+    <Content Include="Scripts\FontSize.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
