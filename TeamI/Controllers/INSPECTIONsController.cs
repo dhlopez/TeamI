@@ -63,10 +63,18 @@ namespace TeamI.Controllers
         [ValidateAntiForgeryToken]
         //public ActionResult Create([Bind(Include = "ID,date,labID,userID,status")] INSPECTION iNSPECTION)
         //public ActionResult Create([Bind(Include = "ID,date,labID,userID,status")] FullInspection model)
-        public ActionResult Create(FullInspection model)
+        public ActionResult Create(FormCollection form,  FullInspection model)
         {
             if (ModelState.IsValid)
             {
+                foreach (var key in form.AllKeys) {
+                    //key is the name of the field
+                    //value is the actual value for that field
+                    var details = form[5].Split(',');
+                    var hazards = form[6].Split(',');
+                    var statusHO = form[7].Split(',');
+                    var comments = form[8].Split(',');
+                }
                 var inspection = new INSPECTION();
                 var inspectionDetails = new INSPECTIONDETAILS();
                 var hazardObserved = new HAZARDOBSERVED();
