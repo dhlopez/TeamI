@@ -1,142 +1,183 @@
 ﻿@*@model TeamI.Models.INSPECTION*@
 @model TeamI.ViewModel.FullInspection
-
 @{
     ViewBag.Title = "Create Inspection";
 }
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-vertical">
+
+
+    <style>
+        .tableLable {
+            vertical-align: middle;
+            width: 80px;
+            float: left;
+            display: table-cell;
+        }
+
+        .tableData {
+            width: 200px;
+            float: left;
+            display: table-cell;
+        }
+    </style>
+
+
+
+
+
+
+    <div class="container">
+
         <h4>INSPECTION</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group row">
-            @*@Html.LabelFor(model => model.inspection.SingleOrDefault().ID, htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <div class="tableLable">
+                    @Html.LabelFor(model => model.labID, "Lab:", htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="tableData">
+                    @Html.DropDownList("labID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.labID, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <div class="col-md-4">
+
+                <div class="tableLable">
+                    @Html.LabelFor(model => model.dateIns, "Date:", htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="tableData">
+                    @Html.EditorFor(model => model.dateIns, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.dateIns, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="tableLable">
+                    @Html.LabelFor(model => model.userIDIns, "Inspector:", htmlAttributes: new { @class = "" })
+                </div>
+                <div class="tableData">
+                    @Html.DropDownList("userIDIns", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.userIDIns, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tableLable">
+                    @Html.LabelFor(model => model.status, "Status:", htmlAttributes: new { @class = "" })
+                </div>
+                <div class="tableData">
+                    @Html.EditorFor(model => model.status)
+                    @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+        @*commented code*@
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.correctionID, "correctionID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("correctionID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.correctionID, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        @*@Html.LabelFor(model => model.inspection.SingleOrDefault().ID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
                 @Html.EditorFor(model => model.inspection.SingleOrDefault().ID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model =>model.inspection.SingleOrDefault().ID, "", new { @class = "text-danger" })
             </div>*@
         @*</div>
 
-        <div class="form-group">*@
-            @Html.LabelFor(model => model.dateIns, "Date", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.dateIns, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.dateIns, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div class="form-group">*@
+        @*commented code*@
 
-        <div class="form-group row">
-            @Html.LabelFor(model => model.labID, "Lab", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.DropDownList("labID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.labID, "", new { @class = "text-danger" })
-            </div>
-        @*</div>
 
-        <div class="form-group">*@
-            @Html.LabelFor(model => model.userIDIns, "User", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                @Html.DropDownList("userIDIns", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.userIDIns, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        
+            <table id="inspTable" class="table-bordered" style="width:100%;">
+                <tr>
+                    <th>
+                        <h4>Areas/Equipment</h4>
+                    </th>
+                    <th>
+                        <h4>Hazards Observed - Details</h4>
+                    </th>
+                    <th>
+                        <h4>Fault</h4>
+                    </th>
+                    <th>
+                        <h4>Comments</h4>
+                    </th>
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.correctionID, "correctionID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("correctionID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.correctionID, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                </tr>
+                    <tr id="cloneSection">
+                        <td>
+                            @Html.LabelFor(model => model.InspectionDetailID, "Area/Equipment", htmlAttributes: new { @class = "control-label2" })
 
-        <div class="form-group row">
-            @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-4">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.status)
-                    @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                            @Html.EditorFor(model => model.AreaEquipment)
+                            @Html.ValidationMessageFor(model => model.AreaEquipment, "", new { @class = "text-danger" })
+                        </td>
+                        <td>
+                            @Html.LabelFor(model => model.HazardID, "Hazard", htmlAttributes: new { @class = "" })
+
+                            @Html.DropDownList("hazardID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.HazardID, "", new { @class = "text-danger" })
+                        </td>
+                        <td>
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.statusHO)
+                                @Html.ValidationMessageFor(model => model.statusHO, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.Comments)
+                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+
+                
+               
+</table>
+        
+        <div class="row">
             <div class="col-md-offset-2 col-md-4">
                 <input type="button" id="AddInsDetail" value="Add Area/Equipment" class="btn btn-default" />
             </div>
         </div>
-
-        <div id="cloneSection"><!--Areas/Equipment or InspectionDetails table-->
-            <br />
-            <br />
-            <h4>Areas/Equipment</h4>
-            <hr />
-            <div class="form-group row">
-                @Html.LabelFor(model => model.InspectionDetailID, "Area/Equipment", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-4">
-                    @Html.EditorFor(model => model.AreaEquipment)
-                    @Html.ValidationMessageFor(model => model.AreaEquipment, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            
-            <div><!--Hazards observed-->
-                <div class="form-group row">
-                    <br />
-                    <h4>Hazards Observed - Details</h4>
-                    <hr />
-                    @Html.LabelFor(model => model.HazardID, "Hazard", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-4">
-                        @Html.DropDownList("hazardID", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.HazardID, "", new { @class = "text-danger" })
-                    </div>
-                    @Html.LabelFor(model => model.statusHO, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-4">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.statusHO)
-                            @Html.ValidationMessageFor(model => model.statusHO, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    @Html.LabelFor(model => model.Comments, "Comments", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-4">
-                        @Html.EditorFor(model => model.Comments)
-                        @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
+        <hr />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
-
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+   
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-<script>
-    $(document).ready(function () {
-        $("#AddInsDetail").click(function () {
-        //alert("test");
-        //var index = // assign a unique value
-            var clone = $('#cloneSection').clone();
-      // Update the index of the clone
-      //clone.html($(clone).html().replace(/\[#\]/g, '[' + index + ']'));
-            //clone.html($(clone).html().replace(/"%"/g, '"' + index  + '"'));
-        $("#cloneSection").append(clone);
-        @*$("#cloneSection").append('@Html.LabelFor(model => model.inspection.SingleOrDefault().date, htmlAttributes: new { @class = "control-label col-md-2" })');
+    <script>
+        $(document).ready(function () {
+            $("#AddInsDetail").click(function () {
+                //alert("test");
+                //var index = // assign a unique value
+                var clone = $('#cloneSection').clone();
+                // Update the index of the clone
+                //clone.html($(clone).html().replace(/\[#\]/g, '[' + index + ']'));
+                //clone.html($(clone).html().replace(/"%"/g, '"' + index  + '"'));
+                $("#inspTable").append(clone);
+                @*$("#cloneSection").append('@Html.LabelFor(model => model.inspection.SingleOrDefault().date, htmlAttributes: new { @class = "control-label col-md-2" })');
         $("#cloneSection").append('@Html.EditorFor(model => model.inspection.SingleOrDefault().date, new { htmlAttributes = new { @class = "form-control" } })');*@
+            });
         });
-    });
-</script>
+    </script>
 }
