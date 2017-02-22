@@ -4,14 +4,17 @@ using System.Linq;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Office365.OutlookServices;
 
 namespace TeamI.ViewModel
 {
-    public static class UserStatic
+    public class UserStatic
     {
-        //public static string UserName()
+        //public string UserName
         //{
-
+        //    get
+        //    {
+        //    }
         //}
     }
 }
