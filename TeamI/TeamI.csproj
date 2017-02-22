@@ -334,6 +334,7 @@
     <Content Include="Images\NiagaraCollegeMediaTrades.png" />
     <Content Include="Images\placeholder-image.jpg" />
     <Content Include="Images\PPE.png" />
+    <Content Include="Images\SafetyHeaderGeneric1.png" />
     <Content Include="Images\user.png" />
     <Content Include="Images\welder.jpg" />
     <Content Include="Models\NCSafteyInspection.Context.tt">
