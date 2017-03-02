@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using TeamI.Models;
@@ -13,7 +14,60 @@ namespace TeamI.Controllers
 {
     public class INSPECTIONsController : Controller
     {
+
         private NCSafteyInspectionEntities db = new NCSafteyInspectionEntities();
+
+        // POST: /INSPECTIONs/LoadIns
+        //public JsonResult LoadIns()
+        //{
+        //    var transactions = from i in db.INSPECTION
+        //                       where i.ID != 0
+        //                       select i;
+        //    return Json(transactions, JsonRequestBehavior.AllowGet);
+        //}
+        public JsonResult LoadIns()
+        {
+            var inspections = from i in db.INSPECTION
+                              .Include(i => i.LAB)
+                              .Include(i => i.USER).ToList()
+                              select new InsDTO()
+                        {
+                            Id = i.ID,
+                            date = i.date.GetValueOrDefault().ToString("dd.MM.yyyy"),
+                            labDesc = i.LAB.building + " "+ i.LAB.type,
+                            username = i.USER.firstName + " " + i.USER.lastName
+                        };
+
+            return Json(inspections, JsonRequestBehavior.AllowGet);
+        }
+
+        
+        public JsonResult LoadInsDet(int id)
+        {
+            var ins = from t in db.INSPECTIONDETAILS.Where(t=>t.InspectionID==id).ToList()
+                      //where t.InspectionID == id 
+                      select new InsDetDTO()
+                      {
+                          Id = t.ID,
+                          AreaEquip = t.AreaEquipment,
+                          Inspectionid = t.InspectionID
+                      };
+            return Json(ins, JsonRequestBehavior.AllowGet);
+        }
+        //public async Task<List<InsDetDTO>> LoadInsDet(int id)
+        //public async Task<List<InsDetDTO>> LoadInsDetT(int id)
+        //{
+        //    var ins = await db.INSPECTIONDETAILS
+        //        .Select(t =>
+        //        new InsDetDTO()
+        //        {
+        //            Id = t.ID,
+        //            AreaEquipment = t.AreaEquipment,
+        //            InspectionID = t.InspectionID
+        //        }).Where(t => t.InspectionID == id).ToListAsync();
+        //    return ins;
+        //}
+
 
         // GET: INSPECTIONs
         public ActionResult Index()

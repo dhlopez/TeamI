@@ -36,7 +36,11 @@ namespace TeamI
             bundles.Add(new ScriptBundle("~/bundles/fontsize").Include(
                       "~/Scripts/FontSize.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+              "~/Scripts/knockout-{version}.js",
+              "~/Scripts/app.js"));
+
+        bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/Normalize.css",
                       "~/Content/site.css",

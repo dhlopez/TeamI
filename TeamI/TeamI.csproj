@@ -266,6 +266,7 @@
       <DependentUpon>NCSafteyInspection.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\InsDTO.cs" />
     <Compile Include="Models\INSPECTION.cs">
       <DependentUpon>NCSafteyInspection.tt</DependentUpon>
     </Compile>
@@ -348,6 +349,7 @@
       <LastGenOutput>NCSafteyInspection.cs</LastGenOutput>
     </Content>
     <Content Include="Queries\HazardsObserved.sql" />
+    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -379,6 +381,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.4.1.debug.js" />
+    <Content Include="Scripts\knockout-3.4.1.js" />
     <Content Include="Scripts\Modal.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\navigation.js" />

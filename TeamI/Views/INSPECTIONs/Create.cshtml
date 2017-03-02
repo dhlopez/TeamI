@@ -25,10 +25,6 @@
     </style>
 
 
-
-
-
-
     <div class="container">
 
         <h4>INSPECTION</h4>
@@ -140,23 +136,58 @@
                             @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
                         </td>
                     </tr>
-
-                
-               
-</table>
+                </table>
         
         <div class="row">
             <div class="col-md-offset-2 col-md-4">
                 <input type="button" id="AddInsDetail" value="Add Area/Equipment" class="btn btn-default" />
             </div>
         </div>
-        <hr />
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Inspections</h2>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled" data-bind="foreach: inspections">
+                            <li>
+                                <strong><span data-bind="text: Id"></span></strong>
+                                <span data-bind="text: date"></span>
+                                <strong><span data-bind="text: labDesc"></span></strong>
+                                <span data-bind="text: username"></span>
+                                <small><a href="#" data-bind="click: $parent.getInspectionDetails">Details</a></small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
+            </div>
+
+            <!-- ko if:detail() -->
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Detail</h2>
+                    </div>
+                    <table class="table" data-bind="foreach: detail">
+                        <tr class="list-unstyled">
+                            <td>AreaEquipment</td><td data-bind="text: AreaEquip"></td>
+                            <td>InspectionID</td><td data-bind="text: Inspectionid"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- /ko -->
+        </div>
+            <hr />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
-    </div>
 }
 
         <div>
@@ -165,6 +196,7 @@
    
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/app")
     <script>
         $(document).ready(function () {
             $("#AddInsDetail").click(function () {
