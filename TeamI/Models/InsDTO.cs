@@ -20,4 +20,11 @@ namespace TeamI.Models
         public int? Inspectionid { get; set; }
         public string AreaEquip { get; set; }
     }
+    public class HazObsDTO
+    {
+        public int Id { get; set; }
+        public string HazardDesc { get; set; }
+        public string Comm { get; set; }
+        //public string Stats { get; set; }
+    }
 }

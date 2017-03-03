@@ -34,7 +34,7 @@ namespace TeamI.Controllers
                         {
                             Id = i.ID,
                             date = i.date.GetValueOrDefault().ToString("dd.MM.yyyy"),
-                            labDesc = i.LAB.building + " "+ i.LAB.type,
+                            labDesc = i.LAB.room,
                             username = i.USER.firstName + " " + i.USER.lastName
                         };
 
@@ -54,19 +54,20 @@ namespace TeamI.Controllers
                       };
             return Json(ins, JsonRequestBehavior.AllowGet);
         }
-        //public async Task<List<InsDetDTO>> LoadInsDet(int id)
-        //public async Task<List<InsDetDTO>> LoadInsDetT(int id)
-        //{
-        //    var ins = await db.INSPECTIONDETAILS
-        //        .Select(t =>
-        //        new InsDetDTO()
-        //        {
-        //            Id = t.ID,
-        //            AreaEquipment = t.AreaEquipment,
-        //            InspectionID = t.InspectionID
-        //        }).Where(t => t.InspectionID == id).ToListAsync();
-        //    return ins;
-        //}
+
+        public JsonResult HazObs(int id)
+        {
+            var haz = from t in db.HAZARDOBSERVED.Where(t => t.InspectionDetailID == id).Include(i => i.HAZARD).ToList()
+                          //where t.InspectionID == id 
+                      select new HazObsDTO()
+                      {
+                          HazardDesc = t.HAZARD.Description,
+                          Comm = t.Comments
+                          //we need to change this status from bool to string
+                          //Stats = t.Status
+                      };
+            return Json(haz, JsonRequestBehavior.AllowGet);
+        }
 
 
         // GET: INSPECTIONs

@@ -7,8 +7,12 @@
     //details
     self.detail = ko.observableArray();
 
+    //hazardsobserved
+    self.hazobs = ko.observableArray();
+
     var inspUri = '/INSPECTIONs/LoadIns';
     var insDetUri = '/INSPECTIONs/LoadInsDet/';
+    var hazUri = '/INSPECTIONs/HazObs/';
 
     //function ajaxHelper(uri, method, data) {
     function ajaxHelper(uri, method, data) {
@@ -35,6 +39,12 @@
     self.getInspectionDetails = function (item) {
         ajaxHelper(insDetUri + item.Id, 'GET').done(function (data) {
             self.detail(data);
+        });
+    }
+
+    self.getHazardsObserved = function (item) {
+        ajaxHelper(hazUri + item.Id, 'GET').done(function (data) {
+            self.hazobs(data);
         });
     }
 
