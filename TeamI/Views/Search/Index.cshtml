@@ -1,0 +1,141 @@
+﻿@model TeamI.ViewModel.SearchVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Search</h2>
+@using (Html.BeginForm("Index", "Search", FormMethod.Get))
+{
+    <b> Search Option: </b>
+    @Html.RadioButton("option", "Inpections") 
+    <text>Name</text>
+    @Html.RadioButton("option", "InspectionDetails")
+    <text> Gender </text>
+    @Html.RadioButton("option", "Hazards")
+    <text>Subject</text>
+    @Html.TextBox("search") 
+    <input type = "submit" name = "submit" value = "Search" />
+    }
+
+@*Inspections*@
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Date
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Lab Building
+            </th>
+            <th>
+                Users First Name
+            </th>
+        </tr>
+
+        @foreach (var item in Model.inspection)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LAB.building)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USER.firstName)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+@*Inspection Details*@
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Inspection ID
+            </th>
+            <th>
+                User ID
+            </th>
+            <th>
+                Area Equipment
+            </th>
+        </tr>
+
+        @foreach (var item in Model.inspectionDetails)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InspectionID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AreaEquipment)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+@*Hazards Observed*@
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Inspection Details
+            </th>
+            <th>
+                Hazard ID
+            </th>
+            <th>
+                Comments
+            </th>
+            <th>
+                Status
+            </th>
+        </tr>
+
+        @foreach (var item in Model.hazardsObserved)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InspectionDetailID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HazardID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
