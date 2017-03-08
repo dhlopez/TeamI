@@ -16,12 +16,28 @@ namespace TeamI.Controllers
         private NCSafteyInspectionEntities db = new NCSafteyInspectionEntities();
 
         // GET: Search
-        public ActionResult Index()
+        public ActionResult Index(string labSearch, string techSearch, string status)
         {
             
             var inspection = db.INSPECTION.Include(i => i.LAB).Include(i => i.USER);
             var inspectionDetails = db.INSPECTIONDETAILS;
             var hazardsObserved = db.HAZARDOBSERVED;
+
+            if (!String.IsNullOrEmpty(labSearch))
+                inspection = inspection.Where(s => s.LAB.room.Contains(labSearch) || s.LAB.building.Contains(labSearch));
+
+            if (!String.IsNullOrEmpty(techSearch))
+                inspection = inspection.Where(s => s.USER.firstName.Contains(techSearch) || s.USER.lastName.Contains(techSearch));
+
+            string searchType = Request["status"];
+            if (!string.IsNullOrWhiteSpace(status))
+            {
+                if (searchType.Equals("Fail"))
+                    inspection = inspection.Where(s => s.status == false);
+                 else if (searchType.Equals("Pass"))
+                    inspection = inspection.Where(s => s.status == true);
+            }
+
             return View(new SearchVM(inspection.ToList(), inspectionDetails.ToList(), hazardsObserved.ToList()));
         }
 
