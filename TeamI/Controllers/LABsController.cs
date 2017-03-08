@@ -19,6 +19,7 @@ namespace TeamI.Controllers
         {
             return View(db.LAB.ToList());
         }
+    
 
         // GET: LABs/Details/5
         public ActionResult Details(int? id)

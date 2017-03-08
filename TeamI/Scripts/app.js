@@ -10,9 +10,37 @@
     //hazardsobserved
     self.hazobs = ko.observableArray();
 
+    //properties for dropdownlists
+    self.labs = ko.observableArray();
+    self.users = ko.observableArray();
+
+    self.newInspection = {
+        Date: ko.observable(),
+        Lab: ko.observable(),
+        User: ko.observable(),
+        Status: ko.observable()
+    }
+    self.newInspectionDet = {
+        InspectionNo: ko.observable(),
+        User: ko.observable(),
+        Date: ko.observable(),
+        AreaEquip: ko.observable()
+    }
+    self.newHazardObs = {
+        InspectionDetNo: ko.observable(),
+        Hazard: ko.observable(),
+        Comments: ko.observable(),
+        Status: ko.observable()
+    }
+
     var inspUri = '/INSPECTIONs/LoadIns';
     var insDetUri = '/INSPECTIONs/LoadInsDet/';
     var hazUri = '/INSPECTIONs/HazObs/';
+    var newInsUri = '/INSPECTIONs/CreatePost/';
+    var labsUri = '/INSPECTIONs/LoadLabs/';
+    var usersUri = '/INSPECTIONs/LoadUsers/';
+
+    
 
     //function ajaxHelper(uri, method, data) {
     function ajaxHelper(uri, method, data) {
@@ -48,8 +76,44 @@
         });
     }
 
+    function getLabs() {
+        ajaxHelper(labsUri, 'GET').done(function (data) {
+            self.labs(data);
+        });
+    }
+    function getUsers() {
+        ajaxHelper(usersUri, 'GET').done(function (data) {
+            self.users(data);
+        });
+    }
+    
+
+    self.addInspection = function (formElement) {
+        var inspec = {
+            date: self.newInspection.Date(),
+            labID: self.newInspection.Lab().ID,
+            userID: self.newInspection.User().ID,
+            status: self.newInspection.Status
+        };      
+        ajaxHelper(newInsUri, 'POST', inspec).done(function (item) {
+            console.info(item);
+            self.inspections.push(item);
+        });
+    }
+
     // Fetch the initial data.
     getAllInspections();
+    getLabs();
+    getUsers();
+    /*
+    self.addInspectionDet = new function (formElement) {
+
+    }
+    self.addHazardObs = new function (formElement) {
+
+    }
+    */
+    
 };
 
 ko.applyBindings(new ViewModel());

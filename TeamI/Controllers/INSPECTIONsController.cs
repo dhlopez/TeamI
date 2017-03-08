@@ -55,6 +55,21 @@ namespace TeamI.Controllers
             return Json(ins, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult LoadLabs()
+        {
+            var labs = from l in db.LAB
+                       select new { l.ID, l.room };
+                       //.ToList();
+
+            return Json(labs.ToList(), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult LoadUsers()
+        {
+            var users = from l in db.USER
+                        select new { l.ID, l.firstName, l.lastName };
+            return Json(users.ToList(), JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult HazObs(int id)
         {
             var haz = from t in db.HAZARDOBSERVED.Where(t => t.InspectionDetailID == id).Include(i => i.HAZARD).ToList()
@@ -111,6 +126,29 @@ namespace TeamI.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult CreatePost(INSPECTION inspec)
+        {
+            if (ModelState.IsValid)
+            {
+                db.INSPECTION.Add(inspec);
+                db.SaveChanges();
+                int id = inspec.ID;
+                //return View(id);
+                
+                var ins = new InsDTO()
+                {
+                    Id = inspec.ID,
+                    labDesc = db.LAB.Find(inspec.labID).room,
+                    username = db.USER.Find(inspec.userID).firstName + " " + db.USER.Find(inspec.userID).lastName
+                    //inspec.USER.firstName + inspec.USER.lastName
+                };
+                
+                return Json(ins);
+            }
+            return View(inspec);
+        }
+
         // POST: INSPECTIONs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -122,6 +160,7 @@ namespace TeamI.Controllers
         {
             if (ModelState.IsValid)
             {
+                /*
                 foreach (var key in form.AllKeys) {
                     //key is the name of the field
                     //value is the actual value for that field
@@ -130,6 +169,7 @@ namespace TeamI.Controllers
                     var statusHO = form[7].Split(',');
                     var comments = form[8].Split(',');
                 }
+                
                 var inspection = new INSPECTION();
                 var inspectionDetails = new INSPECTIONDETAILS();
                 var hazardObserved = new HAZARDOBSERVED();
@@ -155,14 +195,13 @@ namespace TeamI.Controllers
 
                 //add all the required fields
                 db.INSPECTION.Add(inspection);
-                db.SaveChanges();
                 db.INSPECTIONDETAILS.Add(inspectionDetails);
-                db.SaveChanges();
                 db.HAZARDOBSERVED.Add(hazardObserved);
+                */
                 db.SaveChanges();
 
                 //db.INSPECTION.Add(iNSPECTION);
-                return RedirectToAction("Index");
+                //return RedirectToAction("Create");
             }
 
             ViewBag.labID = new SelectList(db.LAB, "ID", "building", model.labID);
@@ -172,6 +211,7 @@ namespace TeamI.Controllers
             //return View(iNSPECTION);
             return View();
         }
+       
 
         // GET: INSPECTIONs/Edit/5
         public ActionResult Edit(int? id)

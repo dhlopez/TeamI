@@ -4,9 +4,9 @@
     ViewBag.Title = "Create Inspection";
 }
 
-@using (Html.BeginForm())
+@*@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()*@
 
 
     <style>
@@ -31,7 +31,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="row">
+        @*<div class="row">
             <div class="col-md-8">
 
                 <div class="tableLable">
@@ -55,6 +55,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="row">
             <div class="col-md-8">
                 <div class="tableLable">
@@ -75,7 +77,9 @@
                 </div>
             </div>
 
-        </div>
+        </div>*@
+
+
         @*commented code*@
         @*<div class="form-group">
                 @Html.LabelFor(model => model.correctionID, "correctionID", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -96,7 +100,7 @@
 
 
         
-            <table id="inspTable" class="table-bordered" style="width:100%;">
+            @*<table id="inspTable" class="table-bordered" style="width:100%;">
                 <tr>
                     <th>
                         <h4>Areas/Equipment</h4>
@@ -136,7 +140,7 @@
                             @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
                         </td>
                     </tr>
-                </table>
+                </table>*@
         
         <div class="row">
             <div class="col-md-offset-2 col-md-4">
@@ -203,15 +207,63 @@
            
             <!-- /ko -->
 
-        </div>
+        @*</div>
             <hr />
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Create" class="btn btn-default" />
                 </div>
             </div>
+        </div>*@
+
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Add Inspection</h2>
+                </div>
+
+                <div class="panel-body">
+
+                    <form class="form-horizontal" data-bind="submit: addInspection">
+                        <div class="form-group">
+                            <label for="inputLabs" class="col-sm-2 control-label">Labs</label>
+                            <div class="col-sm-10">
+                                <select data-bind="options:labs, optionsText: 'room', value: newInspection.Lab"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputUser" class="col-sm-2 control-label">User</label>
+                            <div class="col-sm-10">
+                                <select data-bind="options:users, optionsText: 'firstName', value: newInspection.User"></select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group" data-bind="with: newInspection">
+                            <label for="inputDate" class="col-sm-2 control-label">Date</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputDate" data-bind="value:Date" />
+                            </div>
+
+                            <!--
+                            <label for="inputPrice" class="col-sm-2 control-label">Price</label>
+                            <div class="col-sm-10">
+                                <input type="number" step="any" class="form-control" id="inputPrice" data-bind="value:Status" />
+                            </div>-->
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
-}
+    </div>
+        </div>
+
+
+@* } *@
+
+
 
         <div>
             @Html.ActionLink("Back to List", "Index")
