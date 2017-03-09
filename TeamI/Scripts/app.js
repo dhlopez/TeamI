@@ -10,6 +10,9 @@
     //hazardsobserved
     self.hazobs = ko.observableArray();
 
+    //empty space
+    self.allInfo = ko.observableArray();
+
     //properties for dropdownlists
     self.labs = ko.observableArray();
     self.users = ko.observableArray();
@@ -89,15 +92,20 @@
     
 
     self.addInspection = function (formElement) {
+        console.info(self.newInspection.Date());
         var inspec = {
             date: self.newInspection.Date(),
             labID: self.newInspection.Lab().ID,
             userID: self.newInspection.User().ID,
             status: self.newInspection.Status
-        };      
+        };
+        /*
         ajaxHelper(newInsUri, 'POST', inspec).done(function (item) {
-            console.info(item);
             self.inspections.push(item);
+        });
+        */
+        ajaxHelper(newInsUri, 'POST', inspec).done(function (item) {
+            self.allInfo.push(item);
         });
     }
 

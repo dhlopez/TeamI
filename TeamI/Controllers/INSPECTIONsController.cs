@@ -135,12 +135,13 @@ namespace TeamI.Controllers
                 db.SaveChanges();
                 int id = inspec.ID;
                 //return View(id);
-                
+
                 var ins = new InsDTO()
                 {
                     Id = inspec.ID,
                     labDesc = db.LAB.Find(inspec.labID).room,
-                    username = db.USER.Find(inspec.userID).firstName + " " + db.USER.Find(inspec.userID).lastName
+                    username = db.USER.Find(inspec.userID).firstName + " " + db.USER.Find(inspec.userID).lastName,
+                    date = inspec.date.ToString()
                     //inspec.USER.firstName + inspec.USER.lastName
                 };
                 
