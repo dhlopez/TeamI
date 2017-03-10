@@ -19,6 +19,7 @@ namespace TeamI.Models
         public int Id { get; set; }
         public int? Inspectionid { get; set; }
         public string AreaEquip { get; set; }
+        //public string UserID { get; set; }
     }
     public class HazObsDTO
     {

@@ -69,7 +69,14 @@ namespace TeamI.Controllers
                         select new { l.ID, l.firstName, l.lastName };
             return Json(users.ToList(), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult LoadHazards()
+        {
+            var hazards = from h in db.HAZARD
+                       select new { h.ID, h.Description };
+            //.ToList();
 
+            return Json(hazards.ToList(), JsonRequestBehavior.AllowGet);
+        }
         public JsonResult HazObs(int id)
         {
             var haz = from t in db.HAZARDOBSERVED.Where(t => t.InspectionDetailID == id).Include(i => i.HAZARD).ToList()
@@ -148,6 +155,52 @@ namespace TeamI.Controllers
                 return Json(ins);
             }
             return View(inspec);
+        }
+        [HttpPost]
+        public ActionResult CreateDetailPost(INSPECTIONDETAILS insDetail)
+        {
+            if (ModelState.IsValid)
+            {
+                db.INSPECTIONDETAILS.Add(insDetail);
+                db.SaveChanges();
+                //int id = inspec.ID;
+                //return View(id);
+
+                if (insDetail.InspectionID.HasValue)
+                {
+                    var insDet = new InsDetDTO()
+                    {
+                        Id = insDetail.ID,
+                        Inspectionid = (int)insDetail.InspectionID,
+                        AreaEquip = insDetail.AreaEquipment
+                        //inspec.USER.firstName + inspec.USER.lastName
+                    };
+                    return Json(insDet);
+                }
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateHazardObsPost(HAZARDOBSERVED hazObs)
+        {
+            if (ModelState.IsValid)
+            {
+                db.HAZARDOBSERVED.Add(hazObs);
+                db.SaveChanges();
+                //int id = inspec.ID;
+                //return View(id);
+                
+                var hazObserved = new HazObsDTO()
+                {
+                    Id = hazObs.ID,
+                    HazardDesc = db.HAZARD.Find(hazObs.HazardID).Description,
+                    Comm = hazObs.Comments
+                };
+                return Json(hazObserved);
+
+            }
+            return View();
         }
 
         // POST: INSPECTIONs/Create

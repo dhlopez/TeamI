@@ -142,12 +142,13 @@
                     </tr>
                 </table>*@
         
-        <div class="row">
+        @*<div class="row">*@
             @*<div class="col-md-offset-2 col-md-4">
                 <input type="button" id="AddInsDetail" value="Add Area/Equipment" class="btn btn-default" />
             </div>*@
-        </div>
+        @*</div>*@
         <div class="row">
+            <!-- ko if:allInfo -->
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -171,22 +172,22 @@
                 </div>
                 <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
             </div>
-
-            <!-- ko if:detail -->
+            <!-- /ko -->
+            <!-- ko if:areas -->
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h2 class="panel-title">Area/Equipment</h2>
                     </div>
                     <div class="panel-body">
-                        <table class="table" data-bind="foreach: detail">
+                        <table class="table" data-bind="foreach: areas">
                             <tr class="list-unstyled">
-                                <td><b>Inspection #</b></td><td data-bind="text: Inspectionid"></td>
+                                <td><b>Inspection Line #</b></td><td data-bind="text: Inspectionid"></td>
                             </tr>
                             <tr>
                                 <td><b>Area/Equipment</b></td>
                                 <td data-bind="text: AreaEquip"></td>
-                                <td><a href="#" data-bind="click: $parent.getHazardsObserved">View Hazards</a></td>
+                                @*<td><a href="#" data-bind="click: $parent.getHazardsObserved">View Hazards</a></td>*@
                             </tr>
                         </table>
                     </div>
@@ -199,9 +200,10 @@
                     <div class="panel-heading">
                         <h2 class="panel-title">Hazards Observed</h2>
                     </div>
-                    <table class="table" data-bind="foreach: hazobs">
+                    <table class="table" data-bind="foreach: hazObsSec">
                         <tr class="list-unstyled" >
-                            <td><b>Hazard</b></td><td data-bind="text: HazardDesc"></td>
+                            <td><b>Hazard</b></td><td data-bind="text: Id"></td>
+                            <td><b>Comments</b></td><td data-bind="text: HazardDesc"></td>
                             <td><b>Comments</b></td><td data-bind="text: Comm"></td>
                     </table>
                 </div>
@@ -247,12 +249,6 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputDate" data-bind="value:Date" />
                             </div>
-
-                            <!--
-                            <label for="inputPrice" class="col-sm-2 control-label">Price</label>
-                            <div class="col-sm-10">
-                                <input type="number" step="any" class="form-control" id="inputPrice" data-bind="value:Status" />
-                            </div>-->
                         </div>
                         <button id="submitIns" type="submit" class="btn btn-default">Submit</button>
                     </form>
@@ -269,25 +265,11 @@
 
                     <div class="panel-body">
 
-                        <form class="form-horizontal" data-bind="submit: addInspection">
-                            <div class="form-group">
-                                <label for="inputLabs" class="col-sm-2 control-label">Labs</label>
-                                <div class="col-sm-10">
-                                    <select data-bind="options:labs, optionsText: 'room', value: newInspection.Lab"></select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputUser" class="col-sm-2 control-label">User</label>
-                                <div class="col-sm-10">
-                                    <select data-bind="options:users, optionsText: 'firstName', value: newInspection.User"></select>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group" data-bind="with: newInspection">
-                                <label for="inputDate" class="col-sm-2 control-label">Date</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputDate" data-bind="value:Date" />
+                        <form class="form-horizontal" data-bind="submit: addInspectionDetail">
+                            <div class="form-group" data-bind="with: newInspectionDet">
+                                <label for="inputAreaEquip" class="col-sm-4 control-label">Area/Equipment</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputAreaEquip" data-bind="value:AreaEquip" />
                                 </div>
                             </div>
                             <button id="submitInsDet" type="submit" class="btn btn-default">Submit</button>
@@ -304,25 +286,18 @@
 
                     <div class="panel-body">
 
-                        <form class="form-horizontal" data-bind="submit: addInspection">
+                        <form class="form-horizontal" data-bind="submit: addHazardObserved">
                             <div class="form-group">
-                                <label for="inputLabs" class="col-sm-2 control-label">Labs</label>
+                                <label for="inputLabs" class="col-sm-2 control-label">Hazard</label>
                                 <div class="col-sm-10">
-                                    <select data-bind="options:labs, optionsText: 'room', value: newInspection.Lab"></select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputUser" class="col-sm-2 control-label">User</label>
-                                <div class="col-sm-10">
-                                    <select data-bind="options:users, optionsText: 'firstName', value: newInspection.User"></select>
-
+                                    <select data-bind="options:hazards, optionsText: 'Description', value: newHazardObs.Hazard"></select>
                                 </div>
                             </div>
 
-                            <div class="form-group" data-bind="with: newInspection">
-                                <label for="inputDate" class="col-sm-2 control-label">Date</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputDate" data-bind="value:Date" />
+                            <div class="form-group" data-bind="with: newHazardObs">
+                                <label for="inputComm" class="col-sm-4 control-label">Comments</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputComm" data-bind="value:Comments" />
                                 </div>
                             </div>
                             <button id="submitHazObs" type="submit" class="btn btn-default">Submit</button>

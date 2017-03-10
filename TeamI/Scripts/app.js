@@ -3,6 +3,7 @@
     //inspection
     self.inspections = ko.observableArray();
     self.error = ko.observable();
+    self.insIDAfterSave = ko.observable();
 
     //details
     self.detail = ko.observableArray();
@@ -10,12 +11,15 @@
     //hazardsobserved
     self.hazobs = ko.observableArray();
 
-    //empty space
+    //empty space and all fields to add new ins, det and hazs
     self.allInfo = ko.observableArray();
+    self.areas = ko.observableArray();
+    self.hazObsSec = ko.observableArray();
 
     //properties for dropdownlists
     self.labs = ko.observableArray();
     self.users = ko.observableArray();
+    self.hazards = ko.observableArray();
 
     self.newInspection = {
         Date: ko.observable(),
@@ -39,10 +43,15 @@
     var inspUri = '/INSPECTIONs/LoadIns';
     var insDetUri = '/INSPECTIONs/LoadInsDet/';
     var hazUri = '/INSPECTIONs/HazObs/';
-    var newInsUri = '/INSPECTIONs/CreatePost/';
     var labsUri = '/INSPECTIONs/LoadLabs/';
     var usersUri = '/INSPECTIONs/LoadUsers/';
+    var hazardsUri = '/INSPECTIONs/LoadHazards/';
 
+    //creates
+    var newInsUri = '/INSPECTIONs/CreatePost/';
+    var newInsDetUri = '/INSPECTIONs/CreateDetailPost/';
+    var newHazardObsUri = '/INSPECTIONs/CreateHazardObsPost/';
+    
     
 
     //function ajaxHelper(uri, method, data) {
@@ -89,15 +98,20 @@
             self.users(data);
         });
     }
+    function getHazards() {
+        ajaxHelper(hazardsUri, 'GET').done(function (data) {
+            self.hazards(data);
+        });
+    }
     
 
     self.addInspection = function (formElement) {
-        console.info(self.newInspection.Date());
+        //console.info(self.newInspection.Date());
         var inspec = {
             date: self.newInspection.Date(),
             labID: self.newInspection.Lab().ID,
             userID: self.newInspection.User().ID,
-            status: self.newInspection.Status
+            status: self.newInspection.Status()
         };
         /*
         ajaxHelper(newInsUri, 'POST', inspec).done(function (item) {
@@ -105,7 +119,35 @@
         });
         */
         ajaxHelper(newInsUri, 'POST', inspec).done(function (item) {
+            self.newInspectionDet.InspectionNo = item.Id;
+            //console.info(item.Id);
             self.allInfo.push(item);
+        });
+    }
+    self.addInspectionDetail = function (formElement) {
+        var inspecDet = {
+            InspectionID: self.newInspectionDet.InspectionNo,
+            /*UserID: self.newInspectionDet.User().ID,
+            Date: self.newInspectionDet.Date,*/
+            AreaEquipment: self.newInspectionDet.AreaEquip()
+        };        
+        ajaxHelper(newInsDetUri, 'POST', inspecDet).done(function (item) {
+            self.newHazardObs.InspectionDetNo = item.Id;
+            self.areas.push(item);
+        });
+    }
+    self.addHazardObserved = function (formElement) {
+        //console.info(self.newInspectionDet.AreaEquip());
+        var hazObsRow = {
+            InspectionDetailID: self.newHazardObs.InspectionDetNo,
+            HazardID: self.newHazardObs.Hazard().ID,
+            Comments: self.newHazardObs.Comments(),
+            Status: self.newHazardObs.Status()
+            /*UserID: self.newInspectionDet.User().ID,
+            Date: self.newInspectionDet.Date,*/
+        };
+        ajaxHelper(newHazardObsUri, 'POST', hazObsRow).done(function (item) {
+            self.hazObsSec.push(item);
         });
     }
 
@@ -113,15 +155,7 @@
     getAllInspections();
     getLabs();
     getUsers();
-    /*
-    self.addInspectionDet = new function (formElement) {
-
-    }
-    self.addHazardObs = new function (formElement) {
-
-    }
-    */
-    
+    getHazards();
 };
 
 ko.applyBindings(new ViewModel());
