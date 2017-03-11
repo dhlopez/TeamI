@@ -326,6 +326,7 @@
     <Content Include="Content\Modal.css" />
     <Content Include="Content\navigation.css" />
     <Content Include="Content\Normalize.css" />
+    <Content Include="Content\PassFailBtn.css" />
     <Content Include="Content\TabView.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
