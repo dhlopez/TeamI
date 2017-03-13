@@ -20,34 +20,37 @@
                 <li>
                     @Html.ActionLink("Home", "Index", "Home")
                 </li>
-                <li>
-                    @Html.ActionLink("About", "About", "Home")
-                </li>
-                <li>
-                    @Html.ActionLink("Inspection", "Index", "INSPECTIONs")
-                </li>
-                @*<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inspection<span class="caret"></span></a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>
+                        @Html.ActionLink("Search", "Index", "Search")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Inspection", "Index", "INSPECTIONs")
+                    </li>
+                    @*<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inspection<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>*@
+                    <li>
+                        @Html.ActionLink("Report an Issue", "Index", "INSPECTIONDETAILS")
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
+                            <li>@Html.ActionLink("Labs", "Index", "Labs")</li>
+                            <li>@Html.ActionLink("Hazards", "Index", "Hazards")</li>
+                            <li>@Html.ActionLink("Tasks", "Index", "Tasks")</li>
+                            <li>@Html.ActionLink("Users", "Index", "Users")</li>
                         </ul>
-                    </li>*@
-                <li>
-                    @Html.ActionLink("Report an Issue", "Index", "INSPECTIONDETAILS")
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>@Html.ActionLink("Labs", "Index", "Labs")</li>
-                        <li>@Html.ActionLink("Hazards", "Index", "Hazards")</li>
-                        <li>@Html.ActionLink("Tasks", "Index", "Tasks")</li>
-                        <li>@Html.ActionLink("Users", "Index", "Users")</li>
-                    </ul>
-                </li>
+                    </li>
+                }              
                 <li>
                     <a href="http://www.niagaracollege.ca/visit/contact-us/">Contact</a>
                 </li>
@@ -74,11 +77,12 @@
                         <li>@Html.ActionLink("Contacts", "Contacts", "Home")</li>
                         <li>@Html.ActionLink("Sign Out", "SignOut", "Home")</li>
                         <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span> @(ViewBag.UserName)</a></li>
+                        <li><a href="@Url.Action("SignIn", "Home")"><span class="glyphicon glyphicon-envelope"></span> Mail</a></li>
+                        <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span> User</a></li>
                     }
                     else
                     {
-                        <li><a href="@Url.Action("SignIn", "Home")"><span class="glyphicon glyphicon-envelope"></span> Mail</a></li>
-                        <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span> User</a></li>
+                        <li><a href="@Url.Action("SignIn", "Home")"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
                     }
                 </ul>
             </div>
@@ -144,8 +148,9 @@
                     <hr />
                     <footer>
                         <div class="row">
-                            <div class="col-sm-6">&copy; @DateTime.Now.Year - Lucid Technologies</div>
-                            <div class="col-sm-6 text-right">Niagara College Canada</div>
+                            <div class="col-sm-6"><img src="~/Images/logo_done_black.png" style="height:50px; width:190px;"/></div>
+                            <div class="col-sm-6 text-right">Niagara College Canada - &copy; @DateTime.Now.Year</div>
+                            
                         </div>
                     </footer>
 
@@ -169,9 +174,9 @@
                 animationStep: 5,
                 foregroundBorderWidth: 5,
                 backgroundBorderWidth: 15,
-                text: "Safety",
+                text: "Passed",
                 backgroundcolor: "#1a1a1a",
-                foregroundColor: "#0073cf"
+                foregroundColor: "Green"
 
 
             });
@@ -180,8 +185,8 @@
                 animationStep: 5,
                 foregroundBorderWidth: 5,
                 backgroundBorderWidth: 15,
-                text: "Pending Tasks",
-                foregroundColor: "#0073cf"
+                text: "Failed",
+                foregroundColor: "Red"
             });
 
             $("#circle3").circliful({
@@ -189,7 +194,7 @@
                 foregroundBorderWidth: 5,
                 backgroundBorderWidth: 15,
 
-                text: "Something?",
+                text: "Total",
                 foregroundColor: "#0073cf"
             });
         });

@@ -27,8 +27,7 @@ namespace TeamI
                       "~/Scripts/navigation.js"));        
 
             bundles.Add(new ScriptBundle("~/bundles/stats").Include(
-                     "~/Scripts/circleStats/jquery.circliful.js",
-                      "~/Scripts/circleStats/jquery.circliful.min.js"));
+                     "~/Scripts/circleStats/jquery.circliful.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/modal").Include(
                       "~/Scripts/Modal.js"));

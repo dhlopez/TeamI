@@ -1,0 +1,193 @@
+﻿@model TeamI.ViewModel.SearchVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Search</h2>
+@using (Html.BeginForm("Index", "Search", FormMethod.Get, new { @class = "form-group"}))
+{
+    <div class="col-sm-4">
+        <text>Start Date:</text>
+        @Html.TextBox("startDate", null, new { @id = "datefield", type = "date", @class = "form-control" })
+        <text>End Date:</text>
+        @Html.TextBox("endDate", DateTime.Now.ToString("d:0"), new { @id = "datefield", type = "date", @class = "form-control" })
+    </div>
+   <div class="col-sm-4">
+       <text>Lab:</text>
+       @Html.TextBox("labSearch", null, new { @class = "form-control" })
+       <text>Technician:</text>
+       @Html.TextBox("techSearch", null, new { @class = "form-control" })
+   </div>
+    <div class="funkyradio col-sm-4">
+        <div class="funkyradio-success">
+            @Html.RadioButton("status", "Pass", false, new { @id="Pass" })
+            <label for="Pass">Pass</label>
+        </div>
+        <div class="funkyradio-danger">
+            @Html.RadioButton("status", "Fail", false, new { @id = "Fail" })
+            <label for="Fail">Fail</label>
+        </div>
+    </div>
+    <input type = "submit" name = "submit" value = "Search" class="btn btn-primary btn-lg"/>
+    } 
+
+@if (Model.inspection.Count() > 0)
+{
+@*Inspections*@
+    <br />
+<h3>Inspections</h3>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Date
+            </th>
+            <th>
+                Technician's Name
+            </th>
+            <th>
+                Lab Building
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.inspection)
+        {
+            int subHeader = 0;
+            <tr style="background-color:#dddddd; border-bottom: 2px solid black;"  class="inspectionClick">
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USER.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LAB.building)
+                </td>
+
+                <td>
+                    @{if (item.status == false)
+                        {
+                            <span style="color:red; font-weight: bold;">Fail</span>
+                        }
+                        else
+                        {
+                            <span style="color:green; font-weight:bold;">Pass</span>
+                        }
+                    }
+                </td>
+                <td>
+                    <span class="glyphicon glyphicon-arrow-right activeButton" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-arrow-down activeButton" aria-hidden="true" style="display: none"></span>
+                </td>
+            </tr>
+                                    foreach (var subItem in Model.hazardsObserved.Where(x => x.INSPECTIONDETAILS.InspectionID == item.ID))
+                                    {
+                                        while (subHeader < 1){
+                                            subHeader++;
+                        <tr style="background-color:#f2f2f2; display:none;" class="subMenu#@item.ID">
+                        <th>Hazard</th>
+                        <th>Area/Equipment</th>
+                        <th colspan="3">Comment</th>
+
+                        </tr>
+                        
+                    }
+                    <tr style="background-color:white; display:none;" class="subMenu#@item.ID"> 
+                    
+                    <td>@Html.DisplayFor(modelItem => subItem.HAZARD.Description)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => subItem.INSPECTIONDETAILS.AreaEquipment)
+                    </td>
+                    <td colspan="3">
+                        @Html.DisplayFor(modelItem => subItem.Comments)
+                    </td>
+                    </tr>
+                }
+         }
+    </table>
+</div>
+                        }
+@*Inspection Details*@
+@if (Model.inspectionDetails.Where(y => y.InspectionID == null).Count() > 0)
+{
+    <h3>Corrective Actions</h3>
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Technician's Name
+                </th>
+                <th>
+                    Area Equipment
+                </th>
+            </tr>
+
+            @foreach (var item in Model.inspectionDetails.Where(y => y.InspectionID == null))
+            {
+                int subHeader = 0;
+                <tr style="background-color:#dddddd">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.USER.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AreaEquipment)
+                    </td>
+                </tr>
+                foreach (var subItem in Model.hazardsObserved.Where(x => x.InspectionDetailID == item.ID))
+                {
+                    while (subHeader < 1)
+                    {
+                        subHeader++;
+                        <tr style="background-color:#f2f2f2">
+                            <th></th>
+                            <th>
+                                Hazard
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                        </tr>
+                    }
+
+                    <tr style="background-color:white" >
+                        <td></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => subItem.HAZARD.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => subItem.Comments)
+                        </td>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="@Url.Content("https://code.jquery.com/ui/1.12.1/jquery-ui.js")"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script>
+      $( function() {
+        $( "#datepick" ).datepicker();
+      });
+      $(".inspectionClick").click(function () {
+          $(this).find(".activeButton").toggle();
+          $(this).nextUntil('.inspectionClick').slideToggle(100, function () {
+          });         
+      });
+    </script>
+}
+

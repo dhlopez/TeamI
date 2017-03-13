@@ -11,7 +11,8 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Microsoft.Office365.OutlookServices;
-
+using TeamI.Models;
+using TeamI.ViewModel;
 using TeamI.TokenStorage;
 using System.Configuration;
 
@@ -41,7 +42,7 @@ namespace TeamI.Controllers
                     // Cache is empty, sign out
                     return RedirectToAction("SignOut");
                 }
-                ViewBag.SafetyPercentage = "89";
+                ViewBag.Safety = "89";
                 ViewBag.UserName = userName;
             }
             else

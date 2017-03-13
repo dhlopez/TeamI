@@ -35,7 +35,7 @@
 			multiPercentage: 0,
 			percentages: null,
 			textBelow: false,
-			noPercentageSign: false,
+			noPercentageSign: true,
 			replacePercentageByText: null,
 			halfCircle: false,
 			animateInView: false,

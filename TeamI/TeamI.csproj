@@ -432,16 +432,6 @@
     <Content Include="Views\LABs\Details.cshtml" />
     <Content Include="Views\LABs\Edit.cshtml" />
     <Content Include="Views\LABs\Index.cshtml" />
-    <Content Include="Views\CORRECTIONs\Create.cshtml" />
-    <Content Include="Views\CORRECTIONs\Delete.cshtml" />
-    <Content Include="Views\CORRECTIONs\Details.cshtml" />
-    <Content Include="Views\CORRECTIONs\Edit.cshtml" />
-    <Content Include="Views\CORRECTIONs\Index.cshtml" />
-    <Content Include="Views\EQUIPMENTs\Create.cshtml" />
-    <Content Include="Views\EQUIPMENTs\Delete.cshtml" />
-    <Content Include="Views\EQUIPMENTs\Details.cshtml" />
-    <Content Include="Views\EQUIPMENTs\Edit.cshtml" />
-    <Content Include="Views\EQUIPMENTs\Index.cshtml" />
     <Content Include="Views\INSPECTIONs\Create.cshtml" />
     <Content Include="Views\INSPECTIONs\Delete.cshtml" />
     <Content Include="Views\INSPECTIONs\Details.cshtml" />

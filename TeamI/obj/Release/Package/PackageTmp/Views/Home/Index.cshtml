@@ -1,4 +1,5 @@
-﻿@{
+﻿@model TeamI.ViewModel.SearchVM
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -19,25 +20,18 @@
                         <li data-target="#ncImgCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#ncImgCarousel" data-slide-to="1"></li>
                         <li data-target="#ncImgCarousel" data-slide-to="2"></li>
-                        <li data-target="#ncImgCarousel" data-slide-to="3"></li>
                     </ol>
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active carouselcolour">
-                            <img src="~/Images/placeholder-image.jpg" alt="placeHolder"/>
+                            <img src="~/Images/NiagaraCollegeMediaTrades.png" alt="ncMttLogo" />
                         </div>
-
                         <div class="item carouselcolour">
-                            <img src="~/Images/placeholder-image.jpg" alt="placeHolder"/>
+                            <img src="~/Images/SafetyHeaderGeneric1.png" alt="Generic Safety Photo" />
                         </div>
-
                         <div class="item carouselcolour">
-                            <img src="~/Images/placeholder-image.jpg" alt="placeHolder"/>
-                        </div>
-
-                        <div class="item carouselcolour">
-                            <img src="~/Images/placeholder-image.jpg" alt="placeHolder"/>
+                            <img src="~/Images/PPE.png" alt="Personal Protective Equipment" />
                         </div>
                     </div>
 
@@ -56,25 +50,26 @@
         }
         if (User.Identity.IsAuthenticated)
         {
-
-            <div class="section">
+            
+            <div class="section" style="margin-bottom:10px;">
+                <h2>This Months Inspections</h2>
                 <div class="row" id="dataCircles">
                     <div class="col-xs-4">
-                        <div id="circle1" data-animation="1" data-animationStep="5" data-percent="@ViewBag.SafetyPercentage"></div>
+                        <div id="circle1" data-animation="1" data-animationStep="5" data-percent="25" ></div>
                     </div>
                     <div class="col-xs-4">
-                        <div id="circle2" data-animation="1" data-animationStep="5" data-percent="97"></div>
+                        <div id="circle2" data-animation="1" data-animationStep="5" data-percent="2"></div>
                     </div>
                     <div class="col-xs-4">
-                        <div id="circle3" data-animation="1" data-animationStep="5" data-percent="33"></div>
+                        <div id="circle3" data-animation="1" data-animationStep="5" data-percent="27"></div>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-xs-8">
+                <div class="col-xs-6">
                     <div class="section">
-                        <h2>Quick Inspection</h2>
+                        <h2>Upcoming Inspections</h2>
                         <hr />
                         <div id="table-wrapper">
                             <div id="table-scroll">
@@ -156,9 +151,9 @@
 
                     </div>
                 </div>
-                <div class="col-xs-4" style="padding-left: 0px;">
+                <div class="col-xs-6" style="padding-left: 0px;">
                     <div class="section">
-                        <h2>Alerts!</h2>
+                        <h2>Corrective Action Required</h2>
                         <hr />
                         <table class="table-cust">
                             <tr>
@@ -329,29 +324,3 @@
 
 
     </div>*@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
