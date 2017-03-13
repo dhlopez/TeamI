@@ -334,6 +334,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\hoist.jpg" />
+    <Content Include="Images\logo_done_black.png" />
     <Content Include="Images\ncc-logo-transparent.png" />
     <Content Include="Images\NiagaraCollegeMediaTrades.png" />
     <Content Include="Images\placeholder-image.jpg" />

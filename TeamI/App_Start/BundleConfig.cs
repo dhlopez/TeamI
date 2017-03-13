@@ -48,6 +48,7 @@ namespace TeamI
                       "~/Content/Custom.css",
                       "~/Content/TabView.css",
                       "~/Content/Modal.css",
+                      "~/Content/PassFailBtn.css",
                       "~/Content/FontSizeChange.css",
                       "~/Content/circleStats/jquery.circliful.css",
                       "~/Content/circleStats/material-design-iconic-font.css",
