@@ -26,105 +26,46 @@
 
 
     <div id="User" class="tabcontent">
-        <ul class="tab">
-            <li><a href="#" class="tablinks">Sort By:</a></li>
-            <li><a href="#" class="tablinks">Date</a></li>
-            <li><a href="#" class="tablinks">Location</a></li>
-        </ul>
+        <table class="table">
+            <tr>
+                <th>
+                    Day Of Month
+                </th>
+                <th>
+                    Building
+                </th>
+                <th>
+                   Room
+                </th>
+                <th>
+                    Section
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date.Value.Day)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LAB.building)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LAB.room)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LAB.type)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) 
+                    </td>
+                </tr>
+            }
+            </table>
 
 
 
-
-        <div id="table-wrapper">
-            <div id="table-scroll">
-                <table class="table-cust" style="height:150px;overflow:auto;">
-                    <thead>
-                        <tr>
-                            <th>Lab</th>
-                            <th>Location</th>
-                            <th>Scheduled</th>
-                            <th>Go</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>TC02</td>
-                            <td>s201</td>
-                            <td>2017/07/12</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                    </tbody>
-
-                </table>
-            </div>
-        </div>
-    </div>
+</div>
     <div id="Browse" class="tabcontent">
         <div class="row">
             <div class="col-md-4">
@@ -200,132 +141,13 @@
             <li><a href="#" class="tablinks">Date</a></li>
             <li><a href="#" class="tablinks">Location</a></li>
         </ul>
-        <div id="table-wrapper">
-            <div id="table-scroll">
-                <table class="table-cust" style="height:150px;overflow:auto;">
-                    <thead>
-                        <tr>
-                            <th>Lab</th>
-                            <th>Location</th>
-                            <th>Scheduled</th>
-                            <th>Go</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>TC02</td>
-                            <td>s201</td>
-                            <td>2017/07/12</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                    </tbody>
 
-                </table>
-            </div>
-        </div>
+
+        stuff here
+
+
     </div>
+
 
     <div id="Corrective" class="tabcontent">
         <h2>Hazards this month</h2>
@@ -335,44 +157,8 @@
             <div class="col-sm-4"><h2>Total: 6</h2></div>
         </div>
         <hr />
-        <div id="table-wrapper">
-            <div id="table-scroll">
-                <table class="table-cust" style="height:150px;overflow:auto;">
-                    <thead>
-                        <tr>
-                            <th>Snapshot</th>
-                            <th>Description</th>
-                            <th>Lab</th>
-                            <th>Location</th>
-                            <th>Found</th>
-                            <th>Go</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <img src="~/Images/hoist.jpg" />
-                            </td>
-                            <td>Needs new chains</td>
-                            <td>TC02</td>
-                            <td>s201</td>
-                            <td>2017/07/12</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="~/Images/welder.jpg" />
-                            </td>
-                            <td>Ground clamp broken</td>
-                            <td>TC12</td>
-                            <td>s204</td>
-                            <td>2017/09/16</td>
-                            <td><span class="glyphicon glyphicon-play-circle"></span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+
+        stuff here
     </div>
     @section Scripts {
       
