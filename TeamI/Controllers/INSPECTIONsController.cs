@@ -93,15 +93,21 @@ namespace TeamI.Controllers
 
 
         // GET: INSPECTIONs
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
+           
+            
+
             var viewmodel = new InspectionIndexViewModel();
-            var iNSPECTION = db.INSPECTION.Include(i => i.LAB).Include(i => i.USER);
+            var INSPECTION = db.INSPECTION.Include(i => i.LAB).Include(i => i.USER);
             var HAZARDSOBSERVED = db.HAZARDOBSERVED;
             var HAZARD = db.HAZARD;
+
+
             viewmodel.hazardsobserved = HAZARDSOBSERVED.ToList();
-            viewmodel.inspection = iNSPECTION.ToList();
+            viewmodel.inspection = INSPECTION.ToList();
             viewmodel.hazard = HAZARD.ToList();
+
             return View(viewmodel);
         }
 

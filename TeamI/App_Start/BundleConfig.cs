@@ -25,7 +25,10 @@ namespace TeamI
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/navigation").Include(
-                      "~/Scripts/navigation.js"));        
+                      "~/Scripts/navigation.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/sorttable").Include(
+                     "~/Scripts/sorttable.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/stats").Include(
                      "~/Scripts/circleStats/jquery.circliful.js"));
