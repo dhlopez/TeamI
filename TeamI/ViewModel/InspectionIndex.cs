@@ -11,5 +11,6 @@ namespace TeamI.ViewModel
         public List<INSPECTION> inspection { get; set; }
         public List<HAZARDOBSERVED> hazardsobserved { get; set; }
         public List <HAZARD> hazard { get; set; }
+        //hello
     }
 }
