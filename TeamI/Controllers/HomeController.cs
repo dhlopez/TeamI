@@ -15,6 +15,7 @@ using TeamI.Models;
 using TeamI.ViewModel;
 using TeamI.TokenStorage;
 using System.Configuration;
+using System.Web.SessionState;
 
 namespace TeamI.Controllers
 {
@@ -23,7 +24,7 @@ namespace TeamI.Controllers
         public ActionResult Index()
         {
             if (Request.IsAuthenticated)
-            {
+            {         
                 string userName = ClaimsPrincipal.Current.FindFirst("name").Value;
                 string userId = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
                 if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(userId))
@@ -42,12 +43,14 @@ namespace TeamI.Controllers
                     // Cache is empty, sign out
                     return RedirectToAction("SignOut");
                 }
-                ViewBag.Safety = "89";
-                ViewBag.UserName = userName;
+                UserInformation CurrentUser = new UserInformation(userName, "");
+                Session["UserName"] = CurrentUser.Name;
+                Session["UserEmail"] = CurrentUser.Email;
+                Session["UserPhone"] = CurrentUser.Phone;
             }
             else
             {
-                ViewBag.UserName = "Unknown User";
+                Session["UserName"] = "Unknown User";
             }
             return View();
         }
@@ -101,11 +104,13 @@ namespace TeamI.Controllers
                     // Get the user's token cache and clear it
                     SessionTokenCache tokenCache = new SessionTokenCache(userId, HttpContext);
                     tokenCache.Clear(appId);
-                }
+                    Session.Clear();
+                }       
             }
             // Send an OpenID Connect sign-out request. 
             HttpContext.GetOwinContext().Authentication.SignOut(
               CookieAuthenticationDefaults.AuthenticationType);
+            Session.Clear();
             Response.Redirect("/Home/Index");
         }
         public async Task<string> GetAccessToken()
