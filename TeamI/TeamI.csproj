@@ -307,9 +307,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="TokenStorage\SessionTokenCache.cs" />
+    <Compile Include="ViewModel\InspectionIndex.cs" />
     <Compile Include="ViewModel\SearchVM.cs" />
     <Compile Include="ViewModel\FullInspection.cs" />
-    <Compile Include="ViewModel\UserStatic.cs" />
+    <Compile Include="ViewModel\UserInformation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\NCSafteyInspection.mdf" />
@@ -371,6 +372,7 @@
     <Content Include="fonts\Material-Design-Iconic-Font.ttf" />
     <Content Include="fonts\Material-Design-Iconic-Font.woff" />
     <Content Include="fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\NCSafety - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\NCSafetyLucid - Web Deploy.pubxml" />
     <Content Include="Queries\NCSafetyLucid.PublishSettings" />
@@ -381,6 +383,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.cookie-1.4.1.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
