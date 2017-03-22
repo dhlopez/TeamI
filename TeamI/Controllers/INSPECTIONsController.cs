@@ -95,14 +95,23 @@ namespace TeamI.Controllers
         // GET: INSPECTIONs
         public ActionResult Index(string sortOrder)
         {
-           
-            
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
 
             var viewmodel = new InspectionIndexViewModel();
             var INSPECTION = db.INSPECTION.Include(i => i.LAB).Include(i => i.USER);
             var HAZARDSOBSERVED = db.HAZARDOBSERVED;
             var HAZARD = db.HAZARD;
 
+            switch (sortOrder)
+            {
+                case "date_desc":
+                    INSPECTION = INSPECTION.OrderByDescending(i => i.date);
+                    break;
+                case "Date":
+                    INSPECTION = INSPECTION.OrderBy(i => i.date);
+                    break;
+            }
 
             viewmodel.hazardsobserved = HAZARDSOBSERVED.ToList();
             viewmodel.inspection = INSPECTION.ToList();

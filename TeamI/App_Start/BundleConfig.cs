@@ -26,8 +26,7 @@ namespace TeamI
             bundles.Add(new ScriptBundle("~/bundles/navigation").Include(
                       "~/Scripts/navigation.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/sorttable").Include(
-                     "~/Scripts/sorttable.js"));
+           
 
             bundles.Add(new ScriptBundle("~/bundles/stats").Include(
                      "~/Scripts/circleStats/jquery.circliful.js"));
@@ -42,7 +41,10 @@ namespace TeamI
               "~/Scripts/knockout-{version}.js",
               "~/Scripts/app.js"));
 
-        bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new ScriptBundle("~/bundles/tabSaveState").Include(
+                     "~/Scripts/tabsSaveState.js"));
+
+            bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/Normalize.css",
                       "~/Content/site.css",
