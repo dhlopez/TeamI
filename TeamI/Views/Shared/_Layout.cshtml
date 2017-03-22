@@ -20,7 +20,7 @@
                 <li>
                     @Html.ActionLink("Home", "Index", "Home")
                 </li>
-                @if (User.Identity.IsAuthenticated)
+                @if (1 == 1)
                 {
                     <li>
                         @Html.ActionLink("Search", "Index", "Search")
@@ -68,8 +68,13 @@
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
                     <li><a href="#" data-toggle="offcanvas"><span class="glyphicon glyphicon-th"></span>Menu</a></li>
+                    <li><a>@ViewBag.Title</a></li>
                 </ul>
+               
+                    
+                
                 <ul class="nav navbar-nav navbar-right">
+                    
                     @if (Request.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Inbox", "Inbox", "Home")</li>
