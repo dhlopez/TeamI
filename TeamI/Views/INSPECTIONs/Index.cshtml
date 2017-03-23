@@ -54,9 +54,21 @@
                 @foreach (var item in Model.inspection)
             {
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.date.Value.Day)
-                        </td>
+                        @{
+                            if (item.date == null)
+                            {
+                                <td>
+
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.date.Value.Day)
+                                </td>
+                            }
+                        }
+                      
                         <td>
                             @Html.DisplayFor(modelItem => item.LAB.building)
                         </td>
@@ -98,9 +110,18 @@
                 @foreach (var item in Model.inspection)
             {
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.date.Value.Day)
-                        </td>
+                        @{
+                            if (item.date == null)
+                            {
+                                <td></td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.date.Value.Day)
+                                </td>
+                            }
+                        }
                         <td>
                             @Html.DisplayFor(modelItem => item.LAB.building)
                         </td>
