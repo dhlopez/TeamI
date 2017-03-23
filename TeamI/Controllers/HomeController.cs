@@ -21,6 +21,8 @@ namespace TeamI.Controllers
 {
     public class HomeController : Controller
     {
+        private NCSafteyInspectionEntities db = new NCSafteyInspectionEntities();
+
         public ActionResult Index()
         {
             if (Request.IsAuthenticated)
@@ -52,7 +54,17 @@ namespace TeamI.Controllers
             {
                 Session["UserName"] = "Unknown User";
             }
-            return View();
+
+
+            var viewmodel = new InspectionIndexViewModel();
+            var INSPECTION = db.INSPECTION;
+            var HAZARDSOBSERVED = db.HAZARDOBSERVED;
+            var HAZARD = db.HAZARD;
+
+            viewmodel.hazardsobserved = HAZARDSOBSERVED.ToList();
+            viewmodel.inspection = INSPECTION.ToList();
+            viewmodel.hazard = HAZARD.ToList();
+            return View(viewmodel);
         }
 
         public ActionResult EmailLogin()
