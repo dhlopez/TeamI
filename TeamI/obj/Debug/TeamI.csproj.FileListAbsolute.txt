@@ -410,7 +410,6 @@ C:\Users\Administrator\Desktop\TeamI\TeamI\bin\zh-Hans\Microsoft.Spatial.resourc
 C:\Users\Administrator\Desktop\TeamI\TeamI\bin\zh-Hant\Microsoft.Spatial.resources.dll
 C:\Users\Administrator\Desktop\TeamI\TeamI\obj\Debug\TeamI.dll
 C:\Users\Administrator\Desktop\TeamI\TeamI\obj\Debug\TeamI.pdb
-C:\Users\Administrator\Source\Repos\TeamI\TeamI\obj\Debug\TeamI.csprojResolveAssemblyReference.cache
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\ApplicationInsights.config
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\roslyn\csc.exe
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -687,3 +686,4 @@ C:\Users\Devin\Source\Repos\TeamI\TeamI\bin\zh-Hant\Microsoft.Spatial.resources.
 C:\Users\Devin\Source\Repos\TeamI\TeamI\obj\Debug\TeamI.csprojResolveAssemblyReference.cache
 C:\Users\Devin\Source\Repos\TeamI\TeamI\obj\Debug\TeamI.dll
 C:\Users\Devin\Source\Repos\TeamI\TeamI\obj\Debug\TeamI.pdb
+C:\Users\Administrator\Source\Repos\TeamI\TeamI\obj\Debug\TeamI.csprojResolveAssemblyReference.cache

@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-
+    
     $('#linkIncrease').click(function () {
         //alert("Increase");
         modifyFontSize('increase');
@@ -13,7 +13,7 @@
     $('#linkReset').click(function () {
         //alert("Reset");
         modifyFontSize('reset');
-    })
+    });
 
     function modifyFontSize(direction) {
         var divElement = $('body');
@@ -36,6 +36,7 @@
         else
             currentFontSize = 14;
 
+        $.cookie("UserFontSize", currentFontSize);
         circles.css('font-size', 14);
         divElement.css('font-size', currentFontSize);
     }
