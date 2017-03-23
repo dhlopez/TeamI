@@ -134,7 +134,10 @@ namespace TeamI.Controllers
             }
             return View(iNSPECTION);
         }
-
+        public ActionResult CreateInsDet() {
+            //return Create();
+            return View("~/Views/INSPECTIONs/CreateInsDet.cshtml");
+        }
         // GET: INSPECTIONs/Create
         public ActionResult Create()
         {
@@ -193,6 +196,16 @@ namespace TeamI.Controllers
                     {
                         Id = insDetail.ID,
                         Inspectionid = (int)insDetail.InspectionID,
+                        AreaEquip = insDetail.AreaEquipment
+                        //inspec.USER.firstName + inspec.USER.lastName
+                    };
+                    return Json(insDet);
+                }
+                else {
+                    var insDet = new InsDetDTO()
+                    {
+                        Id = insDetail.ID,
+                        /*Inspectionid = (int)insDetail.InspectionID,*/
                         AreaEquip = insDetail.AreaEquipment
                         //inspec.USER.firstName + inspec.USER.lastName
                     };

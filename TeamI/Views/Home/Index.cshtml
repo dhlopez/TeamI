@@ -1,39 +1,19 @@
-﻿@model TeamI.ViewModel.InspectionIndexViewModel
-@{ 
-    ViewBag.Title = "Welcome!";
-}
+﻿@model TeamI.ViewModel.SearchVM
 @{
-    var g = 0;
-    var b = 0;
-    var t = 0;
-
-    foreach (var item in Model.inspection)
-    {
-        if (item.date.Value.ToUniversalTime() < DateTime.Now.ToUniversalTime() && item.date.Value.ToUniversalTime() > DateTime.Now.AddDays(-30).ToUniversalTime())
-        {
-            if (item.status == true)
-            {
-                g++;
-            }
-            else
-            {
-                b++;
-            }
-        }
-        t = g + b;
-    }
+    ViewBag.Title = "Home Page";
 }
+
 <div class="container">
 
     @{
-        if (1 == 2)
-        {
+//if (!User.Identity.IsAuthenticated)
+//{
             <style>
-                .carouselcolour {
+                .carouselcolour{
                     background-color: white;
                 }
             </style>
-            <div>
+            <div>              
                 <div id="ncImgCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
@@ -67,25 +47,21 @@
                 </div>
             </div>
 
-        }
-        if (1 == 1)
-        {
-
-
-
+        @*}*@
+        //if (User.Identity.IsAuthenticated)
+        //{
 
             <div class="section" style="margin-bottom:10px;">
-                <h2>Past 30 days</h2>
-               
+                <h2>This Months Inspections</h2>
                 <div class="row" id="dataCircles">
                     <div class="col-xs-4">
-                        <div id="circle1" data-animation="1" data-animationStep="5" data-percent="@g"></div>
+                        <div id="circle1" data-animation="1" data-animationStep="5" data-percent="25" ></div>
                     </div>
                     <div class="col-xs-4">
-                        <div id="circle2" data-animation="1" data-animationStep="5" data-percent="@b"></div>
+                        <div id="circle2" data-animation="1" data-animationStep="5" data-percent="2"></div>
                     </div>
                     <div class="col-xs-4">
-                        <div id="circle3" data-animation="1" data-animationStep="5" data-percent="@t"></div>
+                        <div id="circle3" data-animation="1" data-animationStep="5" data-percent="27"></div>
                     </div>
                 </div>
             </div>
@@ -94,95 +70,108 @@
                 <div class="col-xs-6">
                     <div class="section">
                         <h2>Upcoming Inspections</h2>
-                        
-                        <table class="table">
-                            <tr>
-                                <th>
-                                    @Html.ActionLink("Day Of Month", "Index", new { sortOrder = ViewBag.DateSortParm })
-                                </th>
-                                <th>
-                                    Building
-                                </th>
-                                <th>
-                                    Room
-                                </th>
-                                <th>
-                                    Section
-                                </th>
-                                
-                            </tr>
-                            @foreach (var item in Model.inspection)
-                            {
-                                if (item.date > DateTime.Now)
-                                {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.date.Value.Day)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.LAB.building)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.LAB.room)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.LAB.type)
-                                    </td>
-                                  
-                                </tr>
-                                }
-                            }
-                        </table>
+                        <hr />
+                        <div id="table-wrapper">
+                            <div id="table-scroll">
+                                <table class="table-cust" style="height:150px;overflow:auto;">
+                                    <thead>
+                                        <tr>
+                                            <th>Lab</th>
+                                            <th>Location</th>
+                                            <th>Scheduled</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>TC02</td>
+                                            <td>s201</td>
+                                            <td>2017/07/12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TC12</td>
+                                            <td>s204</td>
+                                            <td>2017/09/16</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TC12</td>
+                                            <td>s204</td>
+                                            <td>2017/09/16</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TC12</td>
+                                            <td>s204</td>
+                                            <td>2017/09/16</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TC12</td>
+                                            <td>s204</td>
+                                            <td>2017/09/16</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TC12</td>
+                                            <td>s204</td>
+                                            <td>2017/09/16</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TC12</td>
+                                            <td>s204</td>
+                                            <td>2017/09/16</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TC12</td>
+                                            <td>s204</td>
+                                            <td>2017/09/16</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TC12</td>
+                                            <td>s204</td>
+                                            <td>2017/09/16</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TC12</td>
+                                            <td>s204</td>
+                                            <td>2017/09/16</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TC12</td>
+                                            <td>s204</td>
+                                            <td>2017/09/16</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TC12</td>
+                                            <td>s204</td>
+                                            <td>2017/09/16</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
                 <div class="col-xs-6" style="padding-left: 0px;">
                     <div class="section">
                         <h2>Corrective Action Required</h2>
-                        <div id="Corrective">
-
-
-
-
-                            <table class="table">
-                                <tr>
-                                    <th>
-                                        Description
-                                    </th>
-                                    <th>
-                                        Comments
-                                    </th>
-                                    <th>
-                                        Resolved
-                                    </th>
-                              
-                                </tr>
-                                @foreach (var item in Model.hazardsobserved)
-                                {
-                                    string value = "";
-                                    if (item.Status == true)
-                                    {
-                                        value = "Yes";
-                                    }
-                                    else
-                                    {
-                                        value = "No";
-                                    }
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.HAZARD.Description)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Comments)
-                                        </td>
-                                        <td>
-                                            @value
-                                        </td>
-                                  
-
-                                    </tr>
-                                }
-                            </table>
-                        </div>@*Corrective Actions*@
+                        <hr />
+                        <table class="table-cust">
+                            <tr>
+                                <th>Title</th>
+                                <th></th>
+                                <th>By</th>
+                            </tr>
+                            <tr>
+                                <td>Electrical</td>
+                                <td>No hanging wires in...</td>
+                                <td>Jim</td>
+                            </tr>
+                            <tr>
+                                <td>Automotive</td>
+                                <td>Oil spills must be....</td>
+                                <td>Sarah</td>
+                            </tr>
+                        </table>
 
                     </div>
                 </div>
@@ -192,11 +181,146 @@
 
 
 
-        }
+        @*}
         else
         {
-        }
+        }*@
 
     }
 
 </div>
+@*<div class="container">
+
+        <div>
+
+        </div>
+
+        <div class="section">
+            <div class="row" id="dataCircles">
+                <div class="col-xs-4">
+                    <div id="circle1" data-animation="1" data-animationStep="5" data-percent="@ViewBag.SafetyPercentage"></div>
+                </div>
+                <div class="col-xs-4">
+                    <div id="circle2" data-animation="1" data-animationStep="5" data-percent="97"></div>
+                </div>
+                <div class="col-xs-4">
+                    <div id="circle3" data-animation="1" data-animationStep="5" data-percent="33"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="section">
+                    <h2>Quick Inspection</h2>
+                    <hr />
+                    <div id="table-wrapper">
+                        <div id="table-scroll">
+                            <table class="table-cust" style="height:150px;overflow:auto;">
+                                <thead>
+                                    <tr>
+                                        <th>Lab</th>
+                                        <th>Location</th>
+                                        <th>Scheduled</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>TC02</td>
+                                        <td>s201</td>
+                                        <td>2017/07/12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TC12</td>
+                                        <td>s204</td>
+                                        <td>2017/09/16</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TC12</td>
+                                        <td>s204</td>
+                                        <td>2017/09/16</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TC12</td>
+                                        <td>s204</td>
+                                        <td>2017/09/16</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TC12</td>
+                                        <td>s204</td>
+                                        <td>2017/09/16</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TC12</td>
+                                        <td>s204</td>
+                                        <td>2017/09/16</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TC12</td>
+                                        <td>s204</td>
+                                        <td>2017/09/16</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TC12</td>
+                                        <td>s204</td>
+                                        <td>2017/09/16</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TC12</td>
+                                        <td>s204</td>
+                                        <td>2017/09/16</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TC12</td>
+                                        <td>s204</td>
+                                        <td>2017/09/16</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TC12</td>
+                                        <td>s204</td>
+                                        <td>2017/09/16</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TC12</td>
+                                        <td>s204</td>
+                                        <td>2017/09/16</td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-xs-4" style="padding-left: 0px;">
+                <div class="section">
+                    <h2>Alerts!</h2>
+                    <hr />
+                    <table class="table-cust">
+                        <tr>
+                            <th>Title</th>
+                            <th></th>
+                            <th>By</th>
+                        </tr>
+                        <tr>
+                            <td>Electrical</td>
+                            <td>No hanging wires in...</td>
+                            <td>Jim</td>
+                        </tr>
+                        <tr>
+                            <td>Automotive</td>
+                            <td>Oil spills must be....</td>
+                            <td>Sarah</td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>*@
