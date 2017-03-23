@@ -54,6 +54,12 @@
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
                     <li><a href="#" data-toggle="offcanvas"><span class="glyphicon glyphicon-th"></span>Menu</a></li>
+                    @{
+                        if (@ViewBag.Title.ToString() != "Welcome!")
+                        {
+                            <li><a href="javascript:void(0);" onclick="history.go(-1);"><span class="glyphicon glyphicon-circle-arrow-left"></span></a></li>
+                        }
+                    }
                     <li><a>@ViewBag.Title</a></li>
                 </ul>
                
