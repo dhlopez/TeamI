@@ -468,6 +468,7 @@
     <Content Include="Views\Home\Inbox.cshtml" />
     <Content Include="Views\Search\Details.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\INSPECTIONs\CreateInsDet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

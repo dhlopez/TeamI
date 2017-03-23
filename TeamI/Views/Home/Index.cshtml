@@ -6,8 +6,8 @@
 <div class="container">
 
     @{
-        if (!User.Identity.IsAuthenticated)
-        {
+//if (!User.Identity.IsAuthenticated)
+//{
             <style>
                 .carouselcolour{
                     background-color: white;
@@ -47,10 +47,10 @@
                 </div>
             </div>
 
-        }
-        if (User.Identity.IsAuthenticated)
-        {
-            
+        @*}*@
+        //if (User.Identity.IsAuthenticated)
+        //{
+
             <div class="section" style="margin-bottom:10px;">
                 <h2>This Months Inspections</h2>
                 <div class="row" id="dataCircles">
@@ -181,10 +181,10 @@
 
 
 
-        }
+        @*}
         else
         {
-        }
+        }*@
 
     }
 
