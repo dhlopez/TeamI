@@ -2,37 +2,39 @@
 @{
     ViewBag.Title = "Welcome!";
 }
-@{
-    var g = 0;
-    var b = 0;
-    var t = 0;
+@Styles.Render("~/style/CircleStats")
+@Styles.Render("~/style/SiteTour")
+<div>
+    @{
+        var g = 0;
+        var b = 0;
+        var t = 0;
 
-    foreach (var item in Model.inspection)
-    {
-        if(item.date == null)
+        foreach (var item in Model.inspection)
         {
-
-        }
-        else
-        {
-            if (item.date.Value.ToUniversalTime() < DateTime.Now.ToUniversalTime() && item.date.Value.ToUniversalTime() > DateTime.Now.AddDays(-30).ToUniversalTime())
+            if (item.date == null)
             {
-                if (item.status == true)
+
+            }
+            else
+            {
+                if (item.date.Value.ToUniversalTime() < DateTime.Now.ToUniversalTime() && item.date.Value.ToUniversalTime() > DateTime.Now.AddDays(-30).ToUniversalTime())
                 {
-                    g++;
-                }
-                else
-                {
-                    b++;
+                    if (item.status == true)
+                    {
+                        g++;
+                    }
+                    else
+                    {
+                        b++;
+                    }
                 }
             }
+
+            t = g + b;
         }
-
-        t = g + b;
     }
-}
-
-@{ TeamI.ViewModel.UserInformation user = (TeamI.ViewModel.UserInformation)HttpContext.Current.Session["CurrentUser"]; }
+</div>
 <div class="container">
 
     @{
@@ -82,7 +84,7 @@
         {
 
 
-         
+
             <div class="section" style="margin-bottom:10px;">
                 <div class="row">
                     <div class="col-sm-4" style="padding-top:15px; text-align:center;">
@@ -142,7 +144,7 @@
                                 </th>
 
                             </tr>
-                            @foreach (var item in Model.inspection.Where(x => x.userID == user.ID))
+                            @foreach (var item in Model.inspection)
                             {
                                 if (item.date > DateTime.Now)
                                 {
@@ -213,7 +215,7 @@
                                     </tr>
                                 }
                             </table>
-                        </div>@*Corrective Actions*@
+                        </div>
 
                     </div>
                 </div>
@@ -231,3 +233,6 @@
     }
 
 </div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/scripts/CircleStats")
+@Scripts.Render("~/scripts/SiteTour")
