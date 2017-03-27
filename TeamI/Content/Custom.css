@@ -18,7 +18,7 @@ hr {
 .section {
     border: 2px solid;
     border-radius: 5px;
-    border-color: rgba(0, 0, 0, 0.13);
+    border-color: rgba(0, 0, 0, 0.59);
 }
 
 .table-cust {
