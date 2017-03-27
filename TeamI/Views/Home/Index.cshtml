@@ -82,9 +82,6 @@
         }
         if (1 == 1)
         {
-
-
-
             <div class="section" style="margin-bottom:10px;">
                 <div class="row">
                     <div class="col-sm-4" style="padding-top:15px; text-align:center;">
@@ -109,7 +106,6 @@
                 </div>
 
                 <h2>Past 30 days</h2>
-
                 <div class="row" id="dataCircles">
                     <div class="col-xs-4">
                         <div id="circle1" data-animation="1" data-animationStep="5" data-percent="@g"></div>
@@ -122,7 +118,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-xs-6">
                     <div class="section">
@@ -172,10 +167,6 @@
                     <div class="section">
                         <h2>Corrective Action Required</h2>
                         <div id="Corrective">
-
-
-
-
                             <table class="table">
                                 <tr>
                                     <th>
@@ -187,7 +178,6 @@
                                     <th>
                                         Resolved
                                     </th>
-
                                 </tr>
                                 @foreach (var item in Model.hazardsobserved)
                                 {
@@ -220,11 +210,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
         }
         else
         {
@@ -233,6 +218,8 @@
     }
 
 </div>
+@section Scripts{
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/scripts/CircleStats")
 @Scripts.Render("~/scripts/SiteTour")
+    }

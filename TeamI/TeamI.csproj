@@ -311,6 +311,13 @@
     <Compile Include="ViewModel\SearchVM.cs" />
     <Compile Include="ViewModel\FullInspection.cs" />
     <Compile Include="ViewModel\UserInformation.cs" />
+    <Compile Include="Views\Menu.Master.cs">
+      <DependentUpon>Menu.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Menu.Master.designer.cs">
+      <DependentUpon>Menu.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\NCSafteyInspection.mdf" />
@@ -328,7 +335,10 @@
     <Content Include="Content\navigation.css" />
     <Content Include="Content\Normalize.css" />
     <Content Include="Content\PassFailBtn.css" />
-    <Content Include="Content\TabView.css" />
+    <Content Include="Content\SiteTour\bootstrap-tour-standalone.css" />
+    <Content Include="Content\SiteTour\bootstrap-tour-standalone.min.css" />
+    <Content Include="Content\SiteTour\bootstrap-tour.css" />
+    <Content Include="Content\SiteTour\bootstrap-tour.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\Material-Design-Iconic-Font.svg" />
@@ -377,6 +387,7 @@
     <None Include="Properties\PublishProfiles\NCSafetyLucid - Web Deploy.pubxml" />
     <Content Include="Queries\NCSafetyLucid.PublishSettings" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\circleStats\CircleStats.js" />
     <Content Include="Scripts\circleStats\jquery.circliful.js" />
     <Content Include="Scripts\circleStats\jquery.circliful.min.js" />
     <Content Include="Scripts\FontSize.js" />
@@ -396,6 +407,12 @@
     <Content Include="Scripts\navigation.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SiteTour\bootstrap-tour-standalone.js" />
+    <Content Include="Scripts\SiteTour\bootstrap-tour-standalone.min.js" />
+    <Content Include="Scripts\SiteTour\bootstrap-tour.js" />
+    <Content Include="Scripts\SiteTour\bootstrap-tour.min.js" />
+    <Content Include="Scripts\sorttable.js" />
+    <Content Include="Scripts\tabsSaveState.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -473,6 +490,7 @@
     <Content Include="Views\Search\Details.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\INSPECTIONs\CreateInsDet.cshtml" />
+    <Content Include="Views\Menu.Master" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

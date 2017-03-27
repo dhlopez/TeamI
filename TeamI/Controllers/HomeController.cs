@@ -49,7 +49,7 @@ namespace TeamI.Controllers
             }
             else
             {
-                UserInformation CurrentUser = new UserInformation();
+                UserInformation CurrentUser = new UserInformation("userName", "dhelaman@hotmail.com");
                 Session["CurrentUser"] = CurrentUser;
             }
 

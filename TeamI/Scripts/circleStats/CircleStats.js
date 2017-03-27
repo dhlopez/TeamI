@@ -1,8 +1,4 @@
 ﻿$(document).ready(function () {
-    if ($.cookie('UserFontSize')) {
-        $('body').css('font-size', $.cookie('UserFontSize'));
-    }
-
     $("#circle1").circliful({
         animationStep: 5,
         foregroundBorderWidth: 5,
@@ -10,8 +6,6 @@
         text: "Passed",
         backgroundcolor: "#1a1a1a",
         foregroundColor: "Green"
-
-
     });
 
     $("#circle2").circliful({

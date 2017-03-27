@@ -26,6 +26,7 @@ namespace TeamI
 
             bundles.Add(new ScriptBundle("~/scripts/CircleStats").Include(
                  "~/Scripts/circleStats/jquery.circliful.js",
+                 "~/Scripts/circleStats/jquery.circliful.min.js",
                 "~/Scripts/circleStats/CircleStats.js"));
 
             bundles.Add(new ScriptBundle("~/scripts/SiteTour").Include(
@@ -69,9 +70,6 @@ namespace TeamI
                    "~/Content/PassFailBtn.css",
                    "~/Content/FontSizeChange.css"
                   ));
-
-
-
 
         }
     }
