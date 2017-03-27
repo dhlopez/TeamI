@@ -84,18 +84,19 @@
                     <span class="glyphicon glyphicon-arrow-down activeButton" aria-hidden="true" style="display: none"></span>
                 </td>
             </tr>
-                                    foreach (var subItem in Model.hazardsObserved.Where(x => x.INSPECTIONDETAILS.InspectionID == item.ID))
-                                    {
-                                        while (subHeader < 1){
-                                            subHeader++;
+                        foreach (var subItem in Model.hazardsObserved.Where(x => x.INSPECTIONDETAILS.InspectionID == item.ID))
+                        {
+                            while (subHeader < 1)
+                            {
+                                subHeader++;
                         <tr style="background-color:#f2f2f2; display:none;" class="subMenu#@item.ID">
                         <th>Hazard</th>
                         <th>Area/Equipment</th>
                         <th colspan="3">Comment</th>
 
                         </tr>
-                        
-                    }
+
+                            }
                     <tr style="background-color:white; display:none;" class="subMenu#@item.ID"> 
                     
                     <td>@Html.DisplayFor(modelItem => subItem.HAZARD.Description)</td>
@@ -106,83 +107,88 @@
                         @Html.DisplayFor(modelItem => subItem.Comments)
                     </td>
                     </tr>
-                }
-         }
+                            }
+                        }
     </table>
 </div>
                         }
-@*Inspection Details*@
-@if (Model.inspectionDetails.Where(y => y.InspectionID == null).Count() > 0)
-{
-    <h3>Corrective Actions</h3>
-    <div>
-        <table class="table">
-            <tr>
-                <th>
-                    Date
-                </th>
-                <th>
-                    Technician's Name
-                </th>
-                <th>
-                    Area Equipment
-                </th>
-            </tr>
 
-            @foreach (var item in Model.inspectionDetails.Where(y => y.InspectionID == null))
-            {
-                int subHeader = 0;
-                <tr style="background-color:#dddddd">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Date)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.USER.FullName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AreaEquipment)
-                    </td>
+@*@if (Model.inspectionDetails.Count() > 0)
+{*@
+    @*Inspection Details*@
+    @*if (Model.inspectionDetails.Where(y => y.InspectionID == null).Count() > 0)
+    {
+        <h3>Corrective Actions</h3>
+        <div>
+            <table class="table">
+                <tr>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Technician's Name
+                    </th>
+                    <th>
+                        Area Equipment
+                    </th>
                 </tr>
-                foreach (var subItem in Model.hazardsObserved.Where(x => x.InspectionDetailID == item.ID))
-                {
-                    while (subHeader < 1)
-                    {
-                        subHeader++;
-                        <tr style="background-color:#f2f2f2">
-                            <th></th>
-                            <th>
-                                Hazard
-                            </th>
-                            <th>
-                                Description
-                            </th>
-                        </tr>
-                    }
 
-                    <tr style="background-color:white" >
-                        <td></td>
+                @foreach (var item in Model.inspectionDetails.Where(y => y.InspectionID == null))
+                {
+                    int subHeader = 0;
+                    <tr style="background-color:#dddddd">
                         <td>
-                            @Html.DisplayFor(modelItem => subItem.HAZARD.Description)
+                            @Html.DisplayFor(modelItem => item.Date)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => subItem.Comments)
+                            @Html.DisplayFor(modelItem => item.USER.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AreaEquipment)
                         </td>
                     </tr>
-                }
-            }
+                    foreach (var subItem in Model.hazardsObserved.Where(x => x.InspectionDetailID == item.ID))
+                    {
+                        while (subHeader < 1)
+                        {
+                            subHeader++;
+                            <tr style="background-color:#f2f2f2">
+                                <th></th>
+                                <th>
+                                    Hazard
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                            </tr>
+                        }
 
-        </table>
-    </div>
-}
+                        <tr style="background-color:white">
+                            <td></td>
+                            <td>
+                                @Html.DisplayFor(modelItem => subItem.HAZARD.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => subItem.Comments)
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </table>
+        </div>
+    }*@
+@*}*@
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript" src="@Url.Content("https://code.jquery.com/ui/1.12.1/jquery-ui.js")"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script>
-      $( function() {
-        $( "#datepick" ).datepicker();
-      });
+      //$( function() {
+      //  $( "#datepick" ).datepicker();
+      //});
       $(".inspectionClick").click(function () {
           $(this).find(".activeButton").toggle();
           $(this).nextUntil('.inspectionClick').slideToggle(100, function () {

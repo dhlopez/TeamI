@@ -1,4 +1,6 @@
 ﻿@model TeamI.ViewModel.InspectionIndexViewModel
+
+<div id="Title">
 @{
     var unrs = 0;
     string status = "";
@@ -13,232 +15,257 @@
     {
         status = " : Unresolved Corrective Actions: " + unrs;
     }
-}
-
-
-
-@{
     ViewBag.Title = "Inspection Information" + status;
 }
+</div>@*Title*@
+<div style="padding-bottom:15px;">
+    <a href="@Url.Action("Create", "INSPECTIONs")" class="btn-lg btn-primary">
+        Start New Inspection
+        <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+    </a>
+</div>
+<ul class="nav nav-tabs">
+    
+    <li class="active"><a data-toggle="tab" href="#menu1">Your Inspections</a></li>
+    <li><a data-toggle="tab" href="#menu2">All Inspections</a></li>
+    <li><a data-toggle="tab" href="#menu3">Browse</a></li>
+    <li><a data-toggle="tab" href="#menu4">Corrective Actions</a></li>
+</ul>
 
-
-<div class="container">
-
-    <ul class="tab">
-        <li><a href="javascript:void(0)" class="tablinks" onclick="openInspection(event, 'User')" id="defaultOpen">Your inspections</a></li>
-        <li><a href="javascript:void(0)" class="tablinks" onclick="openInspection(event, 'Browse')">Browse</a></li>
-        <li><a href="javascript:void(0)" class="tablinks" onclick="openInspection(event, 'All')">All inspections</a></li>
-        <li><a href="javascript:void(0)" class="tablinks" onclick="openInspection(event, 'Corrective')">Corrective actions</a></li>
-        <li style="float:right; box-shadow: inset 0 0 30px #0073cf;">@Html.ActionLink("Start new inspection", "Create")</li>
-    </ul>
-
-
-
-
-    <div id="User" class="tabcontent">
-        <table class="table">
-            <tr>
-                <th>
-                    Day Of Month
-                </th>
-                <th>
-                    Building
-                </th>
-                <th>
-                    Room
-                </th>
-                <th>
-                    Section
-                </th>
-            </tr>
-            @foreach (var item in Model.inspection)
-            {
+<div class="tab-content">
+    <div id="menu1" class="tab-pane active">
+        <div id="user">
+            <table class="table">
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.date.Value.Day)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LAB.building)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LAB.room)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LAB.type)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Details", "Details", new { id = item.ID })
-                    </td>
+                    <th>
+                        @Html.ActionLink("Day Of Month", "Index", new { sortOrder = ViewBag.DateSortParm })
+                    </th>
+                    <th>
+                        Building
+                    </th>
+                    <th>
+                        Room
+                    </th>
+                    <th>
+                        Section
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </table>
+                @foreach (var item in Model.inspection)
+            {
+                    <tr>
+                        @{
+                            if (item.date == null)
+                            {
+                                <td>
 
-
-
-    </div>
-    <div id="Browse" class="tabcontent">
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h2 class="panel-title">Inspections</h2>
-                    </div>
-                    <div class="panel-body">
-                        
-                            <table class="table" data-bind="foreach: inspections">
-                                <tr class="list-unstyled">
-                                    <td><strong>Inspection:</strong></td>
-                                    <td><span data-bind="text: Id"></span></td>
-                                    <td><strong>Date:</strong></td>
-                                    <td><span data-bind="text: date"></span></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Lab:</strong><span data-bind="text: labDesc"></span></td>
-                                    <td><span data-bind="text: username"></span>
-                                    <td>
-                                    <td><small><a href="#" data-bind="click: $parent.getInspectionDetails">Details</a></small></td>
-                                </tr>
-                            </table>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.date.Value.Day)
+                                </td>
+                            }
+                        }
                       
-                    </div>
-                </div>
-                <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
-            </div>
-
-            <!-- ko if:detail -->
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h2 class="panel-title">Details</h2>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table" data-bind="foreach: detail">
-                            <tr class="list-unstyled">
-                                <td><b>Inspection #</b></td>
-                                <td data-bind="text: Inspectionid"></td>
-                            </tr>
-                            <tr>
-                                <td><b>Area/Equipment</b></td>
-                                <td data-bind="text: AreaEquip"></td>
-                                <td><a href="#" data-bind="click: $parent.getHazardsObserved">View Hazards</a></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!-- /ko -->
-            <!-- ko if:hazobs -->
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h2 class="panel-title">Hazards</h2>
-                    </div>
-                    <table class="table" data-bind="foreach: hazobs">
-                        <tr class="list-unstyled">
-                            <td><b>Hazard</b></td>
-                            <td data-bind="text: HazardDesc"></td>
-                            <td><b>Comments</b></td>
-                            <td data-bind="text: Comm"></td>
-                    </table>
-                </div>
-            </div>
-
-            <!-- /ko -->
-
-        </div>
-
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LAB.building)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LAB.room)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LAB.type)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { id = item.ID })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>@*user table*@
     </div>
-    <div id="All" class="tabcontent">
-        <table class="table">
-            <tr>
-                <th>
-                    Day Of Month
-                </th>
-                <th>
-                    Building
-                </th>
-                <th>
-                    Room
-                </th>
-                <th>
-                    Section
-                </th>
-                <th>
-                    Inspector
-                </th>
-            </tr>
-            @foreach (var item in Model.inspection)
-            {
+    <div id="menu2" class="tab-pane">
+        <div id="All">
+            <table class="table">
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.date.Value.Day)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LAB.building)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LAB.room)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LAB.type)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.USER.FullName)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Details", "Details", new { id = item.ID })
-                    </td>
+                    <th>
+                        @Html.ActionLink("Day Of Month", "Index", new { sortOrder = ViewBag.DateSortParm })
+                    </th>
+                    <th>
+                        Building
+                    </th>
+                    <th>
+                        Room
+                    </th>
+                    <th>
+                        Section
+                    </th>
+                    <th>
+                        Inspector
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </table>
-    </div>
-
-
-    <div id="Corrective" class="tabcontent">
-@{
-            var g = 0;
-            var b = 0;
-            var t = 0;
-            foreach (var item in Model.hazardsobserved)
+                @foreach (var item in Model.inspection)
             {
-                if (item.Status == true)
-                {
-                    g++;
+                    <tr>
+                        @{
+                            if (item.date == null)
+                            {
+                                <td></td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.date.Value.Day)
+                                </td>
+                            }
+                        }
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LAB.building)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LAB.room)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LAB.type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.USER.FullName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { id = item.ID })
+                        </td>
+                    </tr>
                 }
-                if (item.Status == false)
-                {
-                    b++;
-                }
-                t = g + b;
-            }
-}
-       
-        <div class="row">
-            <div class="col-sm-4"><h2>Resolved: @g.ToString() </h2></div>
-            <div class="col-sm-4"><h2 style="color:red;">Unresolved: @b.ToString()</h2></div>
-            <div class="col-sm-4"><h2>Total: @t.ToString()</h2></div>
+            </table>
+        </div>@*All inspections*@
+    </div>
+    <div id="menu3" class="tab-pane">
+        <div id="Browse">
+            <div id="table-wrapper">
+                <div id="table-scroll">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h2 class="panel-title">Inspections</h2>
+                                    </div>
+                                    <div class="panel-body">
+
+                                        <table class="sortable table" data-bind="foreach: inspections">
+                                            <tr class="list-unstyled">
+                                                <td><strong>Inspection:</strong></td>
+                                                <td><span data-bind="text: Id"></span></td>
+                                                <td><strong>Date:</strong></td>
+                                                <td><span data-bind="text: date"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Lab:</strong><span data-bind="text: labDesc"></span></td>
+                                                <td><span data-bind="text: username"></span>
+                                                <td>
+                                                <td><small><a href="#" data-bind="click: $parent.getInspectionDetails">Details</a></small></td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
+                            </div>
+
+                            <!-- ko if:detail -->
+                            <div class="col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h2 class="panel-title">Details</h2>
+                                    </div>
+                                    <div class="panel-body">
+                                        <table class="table" data-bind="foreach: detail">
+                                            <tr class="list-unstyled">
+                                                <td><b>Inspection #</b></td>
+                                                <td data-bind="text: Inspectionid"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Area/Equipment</b></td>
+                                                <td data-bind="text: AreaEquip"></td>
+                                                <td><a href="#" data-bind="click: $parent.getHazardsObserved">View Hazards</a></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /ko -->
+                            <!-- ko if:hazobs -->
+                            <div class="col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h2 class="panel-title">Hazards</h2>
+                                    </div>
+                                    <table class="table" data-bind="foreach: hazobs">
+                                        <tr class="list-unstyled">
+                                            <td><b>Hazard</b></td>
+                                            <td data-bind="text: HazardDesc"></td>
+                                            <td><b>Comments</b></td>
+                                            <td data-bind="text: Comm"></td>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- /ko -->
+
+                        </div>
+                    </div>@*Browse inspections*@
+                </div>
+            </div>
         </div>
-     
-        <table class="table">
-            <tr>
-                <th>
-                    Description
-                </th>
-                <th>
-                    Comments
-                </th>
-                <th>
-                    Resolved
-                </th>
-                <th>
-                    Area
-                </th>
-                <th>
-                    Inspector
-                </th>
-            </tr>
-            @foreach (var item in Model.hazardsobserved)
+    </div>
+    <div id="menu4" class="tab-pane">
+        <div id="Corrective">
+            @{
+                var g = 0;
+                var b = 0;
+                var t = 0;
+                foreach (var item in Model.hazardsobserved)
+                {
+                    if (item.Status == true)
+                    {
+                        g++;
+                    }
+                    if (item.Status == false)
+                    {
+                        b++;
+                    }
+                    t = g + b;
+                }
+            }
+
+            <div class="row">
+                <div class="col-sm-4"><h2>Resolved: @g.ToString() </h2></div>
+                <div class="col-sm-4"><h2 style="color:red;">Unresolved: @b.ToString()</h2></div>
+                <div class="col-sm-4"><h2>Total: @t.ToString()</h2></div>
+            </div>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Comments
+                    </th>
+                    <th>
+                        Resolved
+                    </th>
+                    <th>
+                        Area
+                    </th>
+                    <th>
+                        Inspector
+                    </th>
+                </tr>
+                @foreach (var item in Model.hazardsobserved)
             {
                 string value = "";
                 if (item.Status == true)
@@ -267,12 +294,14 @@
                     </td>
 
                 </tr>
-            }
-        </table>
+                }
+            </table>
+        </div>@*Corrective Actions*@
+
     </div>
-    @section Scripts {
-
-        @Scripts.Render("~/bundles/app")}
-
-
 </div>
+
+@section Scripts { 
+    @Scripts.Render("~/bundles/app"),
+    @Scripts.Render("~/bundles/tabSaveState")
+    }

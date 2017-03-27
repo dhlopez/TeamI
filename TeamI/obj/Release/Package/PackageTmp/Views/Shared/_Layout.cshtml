@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>@ViewBag.Title - Niagara College</title>
     @Styles.Render("~/Content/css")
-
 </head>
 <body>
     <div id="wrapper">
@@ -55,6 +54,12 @@
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
                     <li><a href="#" data-toggle="offcanvas"><span class="glyphicon glyphicon-th"></span>Menu</a></li>
+                    @{
+                        if (@ViewBag.Title.ToString() != "Welcome!")
+                        {
+                            <li><a href="javascript:void(0);" onclick="history.go(-1);"><span class="glyphicon glyphicon-circle-arrow-left"></span></a></li>
+                        }
+                    }
                     <li><a>@ViewBag.Title</a></li>
                 </ul>
                
@@ -68,7 +73,7 @@
                         <li>@Html.ActionLink("Inbox", "Inbox", "Home")</li>
                         <li>@Html.ActionLink("Calendar", "Calendar", "Home")</li>
                         <li>@Html.ActionLink("Contacts", "Contacts", "Home")</li>
-                        <li>@Html.ActionLink("Sign Out", "SignOut", "Home")</li>                     
+                        <li>@Html.ActionLink("Sign Out", "SignOut", "Home")</li>
                     }
                     else
                     {
@@ -99,7 +104,7 @@
                                     <div class="col-sm-6">
                                         <img src="~/Images/user.png" alt="User Picture" class="modalimg img-responsive" />
                                         <h3>@HttpContext.Current.Session["UserName"]</h3>
-                                        <p>Position</p>
+                                        <p>@HttpContext.Current.Session["UserPhone"]</p>
                                     </div>
                                     <div class="col-sm-6">
                                         <h4>Enrolled Labs</h4>
@@ -160,6 +165,10 @@
     @RenderSection("scripts", required: false)
     <script>
         $(document).ready(function () {
+            if ($.cookie('UserFontSize')) {
+                $('body').css('font-size', $.cookie('UserFontSize'));
+            }
+
             $("#circle1").circliful({
                 animationStep: 5,
                 foregroundBorderWidth: 5,
