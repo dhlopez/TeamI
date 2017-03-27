@@ -7,8 +7,8 @@
     @Styles.Render("~/Content/css")
 </head>
 <body>
+    @{ TeamI.ViewModel.UserInformation user = (TeamI.ViewModel.UserInformation)HttpContext.Current.Session["CurrentUser"]; }
     <div id="wrapper">
-
         <!-- Sidebar -->
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav" style="z-index: -1000">
@@ -66,10 +66,11 @@
                     
                 
                 <ul class="nav navbar-nav navbar-right">
-                    
+
+
                     @if (Request.IsAuthenticated)
                     {
-                        <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span> @HttpContext.Current.Session["UserName"]</a></li>
+                        <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span> @user.Name</a></li>
                         <li>@Html.ActionLink("Inbox", "Inbox", "Home")</li>
                         <li>@Html.ActionLink("Calendar", "Calendar", "Home")</li>
                         <li>@Html.ActionLink("Contacts", "Contacts", "Home")</li>
@@ -103,19 +104,15 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <img src="~/Images/user.png" alt="User Picture" class="modalimg img-responsive" />
-                                        <h3>@HttpContext.Current.Session["UserName"]</h3>
-                                        <p>@HttpContext.Current.Session["UserPhone"]</p>
+                                        <h3>@user.Name</h3>
+                                        <p>@user.Phone</p>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h4>Enrolled Labs</h4>
-                                        <ul>
-                                            <li>Lab 1</li>
-                                            <li>Lab 2</li>
-                                            <li>Lab 3</li>
-                                        </ul>
-                                        <br />
-                                        <h4>Email</h4>
-                                        <p>@HttpContext.Current.Session["UserEmail"]</p>
+                                        <h4>User Information</h4>
+                                        <p>Role - @user.Role</p>
+                                        <p>Email - @user.Email</p>
+                                        <p>Phone - @user.Phone</p>
+                                        <p>Postal Code - @user.PostalCode</p>
                                     </div>
                                 </div>
                                 <hr />

@@ -31,6 +31,8 @@
         t = g + b;
     }
 }
+
+@{ TeamI.ViewModel.UserInformation user = (TeamI.ViewModel.UserInformation)HttpContext.Current.Session["CurrentUser"]; }
 <div class="container">
 
     @{
@@ -140,7 +142,7 @@
                                 </th>
 
                             </tr>
-                            @foreach (var item in Model.inspection)
+                            @foreach (var item in Model.inspection.Where(x => x.userID == user.ID))
                             {
                                 if (item.date > DateTime.Now)
                                 {

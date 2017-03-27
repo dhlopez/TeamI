@@ -22,7 +22,6 @@ namespace TeamI.Controllers
     public class HomeController : Controller
     {
         private NCSafteyInspectionEntities db = new NCSafteyInspectionEntities();
-
         public ActionResult Index()
         {
             if (Request.IsAuthenticated)
@@ -45,14 +44,13 @@ namespace TeamI.Controllers
                     // Cache is empty, sign out
                     return RedirectToAction("SignOut");
                 }
-                UserInformation CurrentUser = new UserInformation(userName, "");
-                Session["UserName"] = CurrentUser.Name;
-                Session["UserEmail"] = CurrentUser.Email;
-                Session["UserPhone"] = CurrentUser.Phone;
+                UserInformation CurrentUser = new UserInformation(userName, "CantFigureOutHowToGetEmail");
+                Session["CurrentUser"] = CurrentUser;
             }
             else
             {
-                Session["UserName"] = "Unknown User";
+                UserInformation CurrentUser = new UserInformation();
+                Session["CurrentUser"] = CurrentUser;
             }
 
 
@@ -173,6 +171,11 @@ namespace TeamI.Controllers
                 return string.Format("#ERROR#: Could not get user's email address. {0}", ex.Message);
             }
         }
+        public async Task<string> userEmail()
+        {
+            return await GetUserEmail();
+        }
+
         public async Task<ActionResult> Inbox()
         {
             string token = await GetAccessToken();

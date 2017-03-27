@@ -20,6 +20,10 @@ namespace TeamI.ViewModel
         private string postalCode = "";
         private string role = "";
 
+        public UserInformation()
+        {
+        }
+
         public UserInformation(string username, string useremail)
         {
             try
@@ -55,10 +59,13 @@ namespace TeamI.ViewModel
             }
             
         }
+        public int ID { get { return id; } }
         public string Name { get { return name; } }
         public string Email { get { return email; } }
         public string Phone { get { return phone; } }
         public string PostalCode { get { return postalCode; } }
         public string Role { get { return role; } }
+
+        
     }
 }
