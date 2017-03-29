@@ -303,10 +303,12 @@
                                         <input type="text" class="form-control" id="inputComm" data-bind="value:Comments" />
                                     </div>
                                 </div>
+                                <button id="btnAddEquip" type="button" class="btn btn-default">Add new Area/Equipment</button>
                                 <button id="submitHazObs" type="submit" class="btn btn-default">Submit</button>
                             </form>
                         </div>
                     </div>
+                    <button id="btnFinish" type="button" class="btn btn-default">Finish Inspection</button>
                 </div>
 
             </div>
@@ -324,6 +326,7 @@
     <script>
         $(document).ready(function () {
             $("#addHazardsObsDiv").hide();
+            $("#btnFinish").hide();
             $("#AddInsDetail").click(function () {
                 //alert("test");
                 //var index = // assign a unique value
@@ -340,6 +343,7 @@
                 $("#addHazardsObsDiv").show();
             });
             $("#submitHazObs").click(function () {
+                $("#btnFinish").show();
                 //$("#addInspectionDiv").hide();
                 //$("#addInspectionDetDiv").show();
             });

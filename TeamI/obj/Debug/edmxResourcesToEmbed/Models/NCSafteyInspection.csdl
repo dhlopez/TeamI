@@ -19,6 +19,7 @@
     <NavigationProperty Name="LAB" Relationship="Self.FK__INSPECTIO__labID__32E0915F" FromRole="INSPECTION" ToRole="LAB" />
     <NavigationProperty Name="USER" Relationship="NCSafteyInspectionModel.FK__INSPECTIO__userI__2DE6D218" FromRole="INSPECTION" ToRole="USER" />
     <NavigationProperty Name="INSPECTIONDETAILS" Relationship="NCSafteyInspectionModel.FK_INSPECTIONDETAILS_INSPECTION" FromRole="INSPECTION" ToRole="INSPECTIONDETAILS" />
+    <Property Name="dueStatus" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="LAB">
     <Key>

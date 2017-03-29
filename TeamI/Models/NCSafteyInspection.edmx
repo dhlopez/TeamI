@@ -31,6 +31,7 @@
           <Property Name="labID" Type="int" />
           <Property Name="userID" Type="int" />
           <Property Name="status" Type="bit" />
+          <Property Name="dueStatus" Type="nchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="INSPECTIONDETAILS">
           <Key>
@@ -217,6 +218,7 @@
           <NavigationProperty Name="LAB" Relationship="Self.FK__INSPECTIO__labID__32E0915F" FromRole="INSPECTION" ToRole="LAB" />
           <NavigationProperty Name="USER" Relationship="NCSafteyInspectionModel.FK__INSPECTIO__userI__2DE6D218" FromRole="INSPECTION" ToRole="USER" />
           <NavigationProperty Name="INSPECTIONDETAILS" Relationship="NCSafteyInspectionModel.FK_INSPECTIONDETAILS_INSPECTION" FromRole="INSPECTION" ToRole="INSPECTIONDETAILS" />
+          <Property Name="dueStatus" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="LAB">
           <Key>
@@ -415,6 +417,7 @@
           <EntitySetMapping Name="INSPECTION">
             <EntityTypeMapping TypeName="NCSafteyInspectionModel.INSPECTION">
               <MappingFragment StoreEntitySet="INSPECTION">
+                <ScalarProperty Name="dueStatus" ColumnName="dueStatus" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="labID" ColumnName="labID" />

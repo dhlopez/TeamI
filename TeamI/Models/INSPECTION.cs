@@ -25,6 +25,7 @@ namespace TeamI.Models
         public Nullable<int> labID { get; set; }
         public Nullable<int> userID { get; set; }
         public Nullable<bool> status { get; set; }
+        public string dueStatus { get; set; }
     
         public virtual LAB LAB { get; set; }
         public virtual USER USER { get; set; }

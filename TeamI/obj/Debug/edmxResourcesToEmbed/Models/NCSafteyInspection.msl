@@ -12,6 +12,7 @@
     <EntitySetMapping Name="INSPECTION">
       <EntityTypeMapping TypeName="NCSafteyInspectionModel.INSPECTION">
         <MappingFragment StoreEntitySet="INSPECTION">
+          <ScalarProperty Name="dueStatus" ColumnName="dueStatus" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="labID" ColumnName="labID" />
