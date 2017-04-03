@@ -1,22 +1,22 @@
 ﻿@model TeamI.ViewModel.InspectionIndexViewModel
 
 <div id="Title">
-@{
-    var unrs = 0;
-    string status = "";
-    foreach (var item in Model.hazardsobserved)
-    {
-        if(item.Status == false)
+    @{
+        var unrs = 0;
+        string status = "";
+        foreach (var item in Model.hazardsobserved)
         {
-            unrs++;
+            if (item.Status == false)
+            {
+                unrs++;
+            }
         }
+        if (unrs >= 1)
+        {
+            status = " : Unresolved Corrective Actions: " + unrs;
+        }
+        ViewBag.Title = "Inspection Information" + status;
     }
-    if(unrs >= 1)
-    {
-        status = " : Unresolved Corrective Actions: " + unrs;
-    }
-    ViewBag.Title = "Inspection Information" + status;
-}
 </div>@*Title*@
 @Styles.Render("~/style/SiteTour")
 <div style="padding-bottom:15px;">
@@ -26,7 +26,7 @@
     </a>
 </div>
 <ul class="nav nav-tabs">
-    
+
     <li class="active"><a data-toggle="tab" href="#menu1">Your Inspections</a></li>
     <li><a data-toggle="tab" href="#menu2">All Inspections</a></li>
     <li><a data-toggle="tab" href="#menu3">Browse</a></li>
@@ -36,111 +36,117 @@
 <div class="tab-content">
     <div id="menu1" class="tab-pane active">
         <div id="user">
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.ActionLink("Day Of Month", "Index", new { sortOrder = ViewBag.DateSortParm })
-                    </th>
-                    <th>
-                        Building
-                    </th>
-                    <th>
-                        Room
-                    </th>
-                    <th>
-                        Section
-                    </th>
-                    <th></th>
-                </tr>
-                @foreach (var item in Model.inspection)
+            <div id="table-wrapper">
+                <div id="table-scroll">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.ActionLink("Day Of Month", "Index", new { sortOrder = ViewBag.DateSortParm })
+                            </th>
+                            <th>
+                                Building
+                            </th>
+                            <th>
+                                Room
+                            </th>
+                            <th>
+                                Section
+                            </th>
+                            <th></th>
+                        </tr>
+                        @foreach (var item in Model.inspection)
             {
-                    <tr>
-                        @{
-                            if (item.date == null)
-                            {
-                                <td>
+                            <tr>
+                                @{
+                                    if (item.date == null)
+                                    {
+                                        <td></td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.date.Value.Day)
+                                        </td>
+                                    }
+                                }
 
-                                </td>
-                            }
-                            else
-                            {
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.date.Value.Day)
+                                    @Html.DisplayFor(modelItem => item.LAB.building)
                                 </td>
-                            }
-                        }
-                      
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LAB.building)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LAB.room)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LAB.type)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Details", "Details", new { id = item.ID })
-                        </td>
-                    </tr>
-                }
-            </table>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LAB.room)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LAB.type)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Details", "Details", new { id = item.ID })
+                                </td>
+                            </tr>
+                                    }
+                    </table>
+                </div>
+            </div>
         </div>@*user table*@
     </div>
     <div id="menu2" class="tab-pane">
         <div id="All">
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.ActionLink("Day Of Month", "Index", new { sortOrder = ViewBag.DateSortParm })
-                    </th>
-                    <th>
-                        Building
-                    </th>
-                    <th>
-                        Room
-                    </th>
-                    <th>
-                        Section
-                    </th>
-                    <th>
-                        Inspector
-                    </th>
-                    <th></th>
-                </tr>
-                @foreach (var item in Model.inspection)
+            <div id="table-wrapper">
+                <div id="table-scroll">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.ActionLink("Day Of Month", "Index", new { sortOrder = ViewBag.DateSortParm })
+                            </th>
+                            <th>
+                                Building
+                            </th>
+                            <th>
+                                Room
+                            </th>
+                            <th>
+                                Section
+                            </th>
+                            <th>
+                                Inspector
+                            </th>
+                            <th></th>
+                        </tr>
+                        @foreach (var item in Model.inspection)
             {
-                    <tr>
-                        @{
-                            if (item.date == null)
-                            {
-                                <td></td>
-                            }
-                            else
-                            {
+                            <tr>
+                                @{
+                                    if (item.date == null)
+                                    {
+                                        <td></td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.date.Value.Day)
+                                        </td>
+                                    }
+                                }
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.date.Value.Day)
+                                    @Html.DisplayFor(modelItem => item.LAB.building)
                                 </td>
-                            }
-                        }
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LAB.building)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LAB.room)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LAB.type)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.USER.FullName)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Details", "Details", new { id = item.ID })
-                        </td>
-                    </tr>
-                }
-            </table>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LAB.room)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LAB.type)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.USER.FullName)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Details", "Details", new { id = item.ID })
+                                </td>
+                            </tr>
+                                    }
+                    </table>
+                </div>
+            </div>
         </div>@*All inspections*@
     </div>
     <div id="menu3" class="tab-pane">
@@ -247,26 +253,28 @@
                 <div class="col-sm-4"><h2 style="color:red;">Unresolved: @b.ToString()</h2></div>
                 <div class="col-sm-4"><h2>Total: @t.ToString()</h2></div>
             </div>
+            <div id="table-wrapper">
+                <div id="table-scroll">
 
-            <table class="table">
-                <tr>
-                    <th>
-                        Description
-                    </th>
-                    <th>
-                        Comments
-                    </th>
-                    <th>
-                        Resolved
-                    </th>
-                    <th>
-                        Area
-                    </th>
-                    <th>
-                        Inspector
-                    </th>
-                </tr>
-                @foreach (var item in Model.hazardsobserved)
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Comments
+                            </th>
+                            <th>
+                                Resolved
+                            </th>
+                            <th>
+                                Area
+                            </th>
+                            <th>
+                                Inspector
+                            </th>
+                        </tr>
+                        @foreach (var item in Model.hazardsobserved)
             {
                 string value = "";
                 if (item.Status == true)
@@ -295,17 +303,18 @@
                     </td>
 
                 </tr>
-                }
-            </table>
-        </div>@*Corrective Actions*@
+                        }
+                    </table>
+                </div>
+            </div>@*Corrective Actions*@
 
+        </div>
     </div>
-</div>
 
 
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@Scripts.Render("~/scripts/SiteTour")
-@Scripts.Render("~/bundles/app")
-@Scripts.Render("~/bundles/tabSaveState")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/scripts/SiteTour")
+    @Scripts.Render("~/bundles/app")
+    @Scripts.Render("~/bundles/tabSaveState")
