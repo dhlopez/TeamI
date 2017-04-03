@@ -49,6 +49,7 @@ namespace TeamI.Controllers
         public ActionResult Create()
         {
             ViewBag.userID = new SelectList(db.USER, "ID", "firstName");
+            ViewBag.labID = new SelectList(db.LAB, "ID", "room");
             return View();
         }
 
@@ -66,6 +67,7 @@ namespace TeamI.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.userID = new SelectList(db.USER, "ID", "firstName", tASK.ID);
+            ViewBag.labID = new SelectList(db.LAB, "ID", "building" + " - " +"room");
             return View(tASK);
         }
 
