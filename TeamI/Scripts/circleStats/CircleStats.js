@@ -24,4 +24,28 @@
         text: "Total",
         foregroundColor: "#0073cf"
     });
+    $("#circle4").circliful({
+        animationStep: 5,
+        foregroundBorderWidth: 5,
+        backgroundBorderWidth: 15,
+
+        text: "Pending",
+        foregroundColor: "purple"
+    });
+    $("#circle5").circliful({
+        animationStep: 5,
+        foregroundBorderWidth: 5,
+        backgroundBorderWidth: 15,
+
+        text: "Complete",
+        foregroundColor: "lime"
+    });
+    $("#circle6").circliful({
+        animationStep: 5,
+        foregroundBorderWidth: 5,
+        backgroundBorderWidth: 15,
+
+        text: "Overdue",
+        foregroundColor: "orange"
+    });
 });
