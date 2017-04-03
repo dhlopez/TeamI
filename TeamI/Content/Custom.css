@@ -18,7 +18,7 @@ hr {
 .section {
     border: 2px solid;
     border-radius: 5px;
-    border-color: rgba(0, 0, 0, 0.59);
+    border-color: rgba(0, 0, 0, 0.30);
 }
 
 .table-cust {
@@ -58,4 +58,9 @@ table-wrapper {
   height:20px;
   width:35%;
   border:1px solid red;
+}
+
+.HomeBackground{
+     background-image: url("../Images/Welland-Campus-Frontview-1400x500.jpg");
+    background-color: #cccccc;
 }
