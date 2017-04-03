@@ -44,12 +44,12 @@ namespace TeamI.Controllers
                     // Cache is empty, sign out
                     return RedirectToAction("SignOut");
                 }
-                UserInformation CurrentUser = new UserInformation(userName, "CantFigureOutHowToGetEmail");
+                UserInformation CurrentUser = new UserInformation(userName, "devintope@outlook.com");
                 Session["CurrentUser"] = CurrentUser;
             }
             else
             {
-                UserInformation CurrentUser = new UserInformation("userName", "dhelaman@hotmail.com");
+                UserInformation CurrentUser = new UserInformation("userName", "devintope@outlook.com");
                 Session["CurrentUser"] = CurrentUser;
             }
 
@@ -80,7 +80,10 @@ namespace TeamI.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Under Construction";
+            //var inspectionDetails = db.INSPECTIONDETAILS;
+            //var maxprob = inspectionDetails.GroupBy(x => x.AreaEquipment).Select(g => g.First());
+            //ViewBag.MaxProb = maxprob.;
 
             return View();
         }

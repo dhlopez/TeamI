@@ -40,7 +40,7 @@
                     </li>
                 }              
                 <li>
-                    <a href="http://www.niagaracollege.ca/visit/contact-us/">Contact</a>
+                    @Html.ActionLink("Reports", "Contact", "Home")
                 </li>
                 <li>
                     <a href="http://www.niagaracollege.ca">Niagara College</a>
@@ -151,7 +151,7 @@
         </div>
         <!-- /#page-content-wrapper -->
     </div>
-    <!-- /#wrapper -->
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -160,5 +160,6 @@
     @Scripts.Render("~/bundles/fontsize")
 
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
