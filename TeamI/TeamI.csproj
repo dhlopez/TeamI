@@ -353,6 +353,7 @@
     <Content Include="Images\SafetyHeaderGeneric1.png" />
     <Content Include="Images\user.png" />
     <Content Include="Images\welder.jpg" />
+    <Content Include="Images\Welland-Campus-Frontview-1400x500.jpg" />
     <Content Include="Models\NCSafteyInspection.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NCSafteyInspection.edmx</DependentUpon>
