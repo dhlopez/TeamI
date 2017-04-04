@@ -56,47 +56,36 @@
         <div>
 
             <div class="row" id="dataCircles">
-                @{var g = 0;
-                    int b = 0;
-                    int t = 0;
+                @{
+
                     int c = 0;
                     int p = 0;
                     int o = 0;
+                    int f = 0;
                     foreach (var item in Model.inspection)
                     {
-                        if (item.date == null) { }
-                        else
-                        {
-                            if (item.date.Value.ToUniversalTime() < DateTime.Now.ToUniversalTime() && item.date.Value.ToUniversalTime() > DateTime.Now.AddDays(-30).ToUniversalTime())
-                            {
-                                if (item.status == true) { g++; } else { b++; }
-                            }
-                        }
-                        t = g + b;
                         if (item.dueStatus == "complete") { c++; }
                         if (item.dueStatus == "pending") { p++; }
-                        if (item.dueStatus == "overdue") { o++; }
-                    }}
-                <div class="col-xs-2">
-                    <div id="circle1" data-animation="1" data-animationStep="5" data-percent="@g"></div>
+                        if (item.dueDate < DateTime.Now) { o++; }
+                        if (item.dueStatus == "complete" && item.status == false) { f++; }
+                    }
+                }
+                <div class="col-xs-3">
+                    <div id="circle1" data-animation="1" data-animationStep="5" data-percent="@c"></div>
                 </div>
-                <div class="col-xs-2">
-                    <div id="circle2" data-animation="1" data-animationStep="5" data-percent="@b"></div>
+                <div class="col-xs-3">
+                    <div id="circle2" data-animation="1" data-animationStep="5" data-percent="@p"></div>
                 </div>
-                <div class="col-xs-2">
-                    <div id="circle3" data-animation="1" data-animationStep="5" data-percent="@t"></div>
+                <div class="col-xs-3">
+                    <div id="circle3" data-animation="1" data-animationStep="5" data-percent="@o"></div>
                 </div>
-                <div class="col-xs-2">
-                    <div id="circle6" data-animation="1" data-animationStep="5" data-percent="@o"></div>
-                </div>
-                <div class="col-xs-2">
-                    <div id="circle4" data-animation="1" data-animationStep="5" data-percent="@p"></div>
-                </div>
-                <div class="col-xs-2">
-                    <div id="circle5" data-animation="1" data-animationStep="5" data-percent="@c"></div>
+                <div class="col-xs-3">
+                    <div id="circle4" data-animation="1" data-animationStep="5" data-percent="@f"></div>
                 </div>
 
+
             </div>
+
             <div style="margin-bottom:15px;">
                 <div class="row">
                     <div class="col-sm-4" style="padding-top:15px; text-align:center;">
@@ -120,10 +109,64 @@
 
                 </div>
             </div>
+
+            @{ @*if there are overdue inspections*@
+            if (o >= 1)
+            {
+            <div class="row">
+                <h2>Overdue Inspections</h2>
+                <div id="table-wrapper">
+                    <div id="table-scroll">
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    Due Date
+                                </th>
+                                <th>
+                                    Scheduled Date
+                                </th>
+                                <th>
+                                    Building
+                                </th>
+                                <th>
+                                    Room
+                                </th>
+                            
+
+                            </tr>
+                            @foreach (var item in Model.inspection)
+                            {
+                                if (item.dueDate < DateTime.Now)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dueDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.scheduledDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LAB.building)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LAB.room)
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+                    }
+                }
+
+
             <div class="row">
                 <div class="col-xs-6">
                     <div class="section">
-                        <h2>Upcoming Inspections</h2>
+                        <h2>Pending Inspections</h2>
                         <div id="table-wrapper">
                             <div id="table-scroll">
                                 <table class="table">
@@ -212,12 +255,12 @@
                                             </tr>
                                         }
                                     </table>
-                                    </div>
                                 </div>
-                                </div>
-
                             </div>
                         </div>
+
+                    </div>
+                </div>
             </div>
         </div>
                     }
