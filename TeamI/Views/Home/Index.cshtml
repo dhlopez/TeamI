@@ -66,7 +66,7 @@
                     {
                         if (item.dueStatus == "complete") { c++; }
                         if (item.dueStatus == "pending") { p++; }
-                        if (item.dueDate < DateTime.Now) { o++; }
+                        if (Convert.ToDateTime(item.dueDate).ToUniversalTime() < DateTime.Now.ToUniversalTime()) { o++; }
                         if (item.dueStatus == "complete" && item.status == false) { f++; }
                     }
                 }
@@ -114,9 +114,8 @@
             if (o >= 1)
             {
             <div class="row">
-                <h2>Overdue Inspections</h2>
-                <div id="table-wrapper">
-                    <div id="table-scroll">
+                <h2 style="color:orange;">Overdue Inspections</h2>
+
                         <table class="table">
                             <tr>
                                 <th>
@@ -136,7 +135,7 @@
                             </tr>
                             @foreach (var item in Model.inspection)
                             {
-                                if (item.dueDate < DateTime.Now)
+                                if (Convert.ToDateTime(item.dueDate).ToUniversalTime() < DateTime.Now.ToUniversalTime())
                                 {
                                     <tr>
                                         <td>
@@ -155,8 +154,7 @@
                                 }
                             }
                         </table>
-                    </div>
-                </div>
+               
 
             </div>
                     }
@@ -187,7 +185,7 @@
                                     </tr>
                                     @foreach (var item in Model.inspection)
                                     {
-                                        if (item.date > DateTime.Now)
+                                        if (item.dueStatus == "pending")
                                         {
                                             <tr>
                                                 <td>
