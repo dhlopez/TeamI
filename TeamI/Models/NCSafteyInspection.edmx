@@ -23,6 +23,7 @@
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="actionRequired" Type="nchar" MaxLength="100" />
           <Property Name="urgentAction" Type="bit" />
+          <Property Name="solvedAction" Type="nchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="INSPECTION">
           <Key>
@@ -298,6 +299,7 @@
           <Property Name="problemFound" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
           <Property Name="actionRequired" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="urgentAction" Type="Boolean" />
+          <Property Name="solvedAction" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="TASK">
           <Key>
@@ -449,6 +451,7 @@
           <EntitySetMapping Name="HAZARDOBSERVED">
             <EntityTypeMapping TypeName="NCSafteyInspectionModel.HAZARDOBSERVED">
               <MappingFragment StoreEntitySet="HAZARDOBSERVED">
+                <ScalarProperty Name="solvedAction" ColumnName="solvedAction" />
                 <ScalarProperty Name="urgentAction" ColumnName="urgentAction" />
                 <ScalarProperty Name="actionRequired" ColumnName="actionRequired" />
                 <ScalarProperty Name="problemFound" ColumnName="problemFound" />
