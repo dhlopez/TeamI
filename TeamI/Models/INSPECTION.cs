@@ -28,7 +28,7 @@ namespace TeamI.Models
         public string dueStatus { get; set; }
         public Nullable<System.DateTime> dueDate { get; set; }
         public Nullable<System.DateTime> scheduledDate { get; set; }
-
+    
         public virtual LAB LAB { get; set; }
         public virtual USER USER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

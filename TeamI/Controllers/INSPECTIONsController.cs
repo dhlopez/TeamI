@@ -84,7 +84,7 @@ namespace TeamI.Controllers
                       select new HazObsDTO()
                       {
                           HazardDesc = t.HAZARD.Description,
-                          Comm = t.Comments
+                          Comm = t.problemFound
                           //we need to change this status from bool to string
                           //Stats = t.Status
                       };
@@ -229,7 +229,7 @@ namespace TeamI.Controllers
                 {
                     Id = hazObs.ID,
                     HazardDesc = db.HAZARD.Find(hazObs.HazardID).Description,
-                    Comm = hazObs.Comments
+                    Comm = hazObs.problemFound
                 };
                 return Json(hazObserved);
 

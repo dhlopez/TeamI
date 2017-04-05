@@ -66,7 +66,7 @@
                     {
                         if (item.dueStatus == "complete") { c++; }
                         if (item.dueStatus == "pending") { p++; }
-                        if (Convert.ToDateTime(item.dueDate).ToUniversalTime() < DateTime.Now.ToUniversalTime()) { o++; }
+                        if (Convert.ToDateTime(item.dueDate).ToUniversalTime() < DateTime.Now.ToUniversalTime() && item.dueDate != null) { o++; }
                         if (item.dueStatus == "complete" && item.status == false) { f++; }
                     }
                 }
@@ -113,52 +113,55 @@
             @{ @*if there are overdue inspections*@
             if (o >= 1)
             {
-            <div class="row">
-                <h2 style="color:orange;">Overdue Inspections</h2>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section">
 
-                        <table class="table">
-                            <tr>
-                                <th>
-                                    Due Date
-                                </th>
-                                <th>
-                                    Scheduled Date
-                                </th>
-                                <th>
-                                    Building
-                                </th>
-                                <th>
-                                    Room
-                                </th>
-                            
+                            <h2 style="color:orange;">Overdue Inspections</h2>
 
-                            </tr>
-                            @foreach (var item in Model.inspection)
-                            {
-                                if (Convert.ToDateTime(item.dueDate).ToUniversalTime() < DateTime.Now.ToUniversalTime())
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        Due Date
+                                    </th>
+                                    <th>
+                                        Scheduled Date
+                                    </th>
+                                    <th>
+                                        Building
+                                    </th>
+                                    <th>
+                                        Room
+                                    </th>
+
+
+                                </tr>
+                                @foreach (var item in Model.inspection)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.dueDate)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.scheduledDate)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.LAB.building)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.LAB.room)
-                                        </td>
-                                    </tr>
+                                    if (Convert.ToDateTime(item.dueDate).ToUniversalTime() < DateTime.Now.ToUniversalTime() && item.dueDate != null)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.dueDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.scheduledDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LAB.building)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LAB.room)
+                                            </td>
+                                        </tr>
+                                    }
                                 }
-                            }
-                        </table>
-               
-
-            </div>
-                    }
-                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+            }
 
 
             <div class="row">
@@ -261,10 +264,10 @@
                 </div>
             </div>
         </div>
-                    }
-                    else
-                    {
-                    }
+                }
+                else
+                {
+                }
 
 }
 

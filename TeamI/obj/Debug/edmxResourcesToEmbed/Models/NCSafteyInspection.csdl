@@ -20,6 +20,8 @@
     <NavigationProperty Name="USER" Relationship="NCSafteyInspectionModel.FK__INSPECTIO__userI__2DE6D218" FromRole="INSPECTION" ToRole="USER" />
     <NavigationProperty Name="INSPECTIONDETAILS" Relationship="NCSafteyInspectionModel.FK_INSPECTIONDETAILS_INSPECTION" FromRole="INSPECTION" ToRole="INSPECTIONDETAILS" />
     <Property Name="dueStatus" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="dueDate" Type="DateTime" Precision="0" />
+    <Property Name="scheduledDate" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="LAB">
     <Key>
@@ -84,13 +86,15 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="Comments" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
     <Property Name="Status" Type="Boolean" Nullable="false" />
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="InspectionDetailID" Type="Int32" Nullable="false" />
     <Property Name="HazardID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="INSPECTIONDETAILS" Relationship="NCSafteyInspectionModel.FK_HAZARDOBSERVED_INSPECTION1" FromRole="HAZARDOBSERVED" ToRole="INSPECTIONDETAILS" />
     <NavigationProperty Name="HAZARD" Relationship="NCSafteyInspectionModel.HAZARDHAZARDOBSERVED" FromRole="HAZARDOBSERVED" ToRole="HAZARD" />
+    <Property Name="problemFound" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+    <Property Name="actionRequired" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="urgentAction" Type="Boolean" />
   </EntityType>
   <EntityType Name="TASK">
     <Key>

@@ -12,6 +12,8 @@
     <EntitySetMapping Name="INSPECTION">
       <EntityTypeMapping TypeName="NCSafteyInspectionModel.INSPECTION">
         <MappingFragment StoreEntitySet="INSPECTION">
+          <ScalarProperty Name="scheduledDate" ColumnName="scheduledDate" />
+          <ScalarProperty Name="dueDate" ColumnName="dueDate" />
           <ScalarProperty Name="dueStatus" ColumnName="dueStatus" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="date" ColumnName="date" />
@@ -34,11 +36,13 @@
     <EntitySetMapping Name="HAZARDOBSERVED">
       <EntityTypeMapping TypeName="NCSafteyInspectionModel.HAZARDOBSERVED">
         <MappingFragment StoreEntitySet="HAZARDOBSERVED">
+          <ScalarProperty Name="urgentAction" ColumnName="urgentAction" />
+          <ScalarProperty Name="actionRequired" ColumnName="actionRequired" />
+          <ScalarProperty Name="problemFound" ColumnName="problemFound" />
           <ScalarProperty Name="HazardID" ColumnName="HazardID" />
           <ScalarProperty Name="InspectionDetailID" ColumnName="InspectionDetailID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Comments" ColumnName="Comments" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

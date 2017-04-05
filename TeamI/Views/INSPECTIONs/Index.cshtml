@@ -265,45 +265,36 @@
                                 Comments
                             </th>
                             <th>
-                                Resolved
+                                Date
                             </th>
                             <th>
-                                Area
+                                Room
                             </th>
                             <th>
                                 Inspector
                             </th>
                         </tr>
                         @foreach (var item in Model.hazardsobserved)
-            {
-                string value = "";
-                if (item.Status == true)
-                {
-                    value = "Yes";
-                }
-                else
-                {
-                    value = "No";
-                }
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.HAZARD.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Comments)
-                    </td>
-                    <td>
-                        @value
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.INSPECTIONDETAILS.AreaEquipment)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.INSPECTIONDETAILS.USER.FullName)
-                    </td>
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HAZARD.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.problemFound)
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.INSPECTIONDETAILS.AreaEquipment)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.INSPECTIONDETAILS.USER.)
+                                </td>
 
-                </tr>
-                        }
+                            </tr>
+                                    }
                     </table>
                 </div>
             </div>@*Corrective Actions*@
