@@ -259,13 +259,10 @@
                     <table class="table">
                         <tr>
                             <th>
-                                Description
+                                Problem
                             </th>
                             <th>
-                                Comments
-                            </th>
-                            <th>
-                                Date
+                                Urgency
                             </th>
                             <th>
                                 Room
@@ -273,24 +270,28 @@
                             <th>
                                 Inspector
                             </th>
+                            <th>
+                                Details
+                            </th>
                         </tr>
                         @foreach (var item in Model.hazardsobserved)
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.HAZARD.Description)
-                                </td>
-                                <td>
                                     @Html.DisplayFor(modelItem => item.problemFound)
                                 </td>
                                 <td>
-                                    
+                                    @Html.DisplayFor(modelItem => item.urgentAction)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.INSPECTIONDETAILS.AreaEquipment)
+                                    @Html.DisplayFor(modelItem => item.INSPECTIONDETAILS.INSPECTION.LAB.room)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.INSPECTIONDETAILS.USER.FullName)
+                                    @Html.DisplayFor(modelItem => item.INSPECTIONDETAILS.INSPECTION.USER.FullName)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", "HAZARDOBSERVEDs", new { id=item.ID }, null) |
+                                    @Html.ActionLink("Details", "Details", "HAZARDOBSERVEDs", new { id = item.ID }, null)
                                 </td>
 
                             </tr>
@@ -300,6 +301,7 @@
             </div>@*Corrective Actions*@
 
         </div>
+    </div>
     </div>
 
 

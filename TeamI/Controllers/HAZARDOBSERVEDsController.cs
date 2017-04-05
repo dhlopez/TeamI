@@ -85,7 +85,7 @@ namespace TeamI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Comments,Status,ID,InspectionDetailID,HazardID")] HAZARDOBSERVED hAZARDOBSERVED)
+        public ActionResult Edit([Bind(Include = "solvedAction,problemFound,Status,ID,InspectionDetailID,HazardID")] HAZARDOBSERVED hAZARDOBSERVED)
         {
             if (ModelState.IsValid)
             {

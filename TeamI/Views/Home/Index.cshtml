@@ -229,6 +229,9 @@
                                             <th>
                                                 Resolved
                                             </th>
+                                            <th>
+                                                Details
+                                            </th>
                                         </tr>
                                         @foreach (var item in Model.hazardsobserved)
                                         {
@@ -246,7 +249,7 @@
                                                     @Html.DisplayFor(modelItem => item.HAZARD.Description)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.actionRequired)
+                                                    @Html.DisplayFor(modelItem => item.problemFound)
                                                 </td>
                                                 <td>
                                                     @value

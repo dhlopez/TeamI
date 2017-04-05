@@ -21,6 +21,7 @@ namespace TeamI.Models
         public string problemFound { get; set; }
         public string actionRequired { get; set; }
         public Nullable<bool> urgentAction { get; set; }
+        public string solvedAction { get; set; }
     
         public virtual INSPECTIONDETAILS INSPECTIONDETAILS { get; set; }
         public virtual HAZARD HAZARD { get; set; }
