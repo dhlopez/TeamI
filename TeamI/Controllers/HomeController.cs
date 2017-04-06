@@ -78,15 +78,6 @@ namespace TeamI.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Under Construction";
-            //var inspectionDetails = db.INSPECTIONDETAILS;
-            //var maxprob = inspectionDetails.GroupBy(x => x.AreaEquipment).Select(g => g.First());
-            //ViewBag.MaxProb = maxprob.;
-
-            return View();
-        }
         public ActionResult Error(string message, string debug)
         {
             ViewBag.Message = message;
@@ -173,10 +164,6 @@ namespace TeamI.Controllers
             {
                 return string.Format("#ERROR#: Could not get user's email address. {0}", ex.Message);
             }
-        }
-        public async Task<string> userEmail()
-        {
-            return await GetUserEmail();
         }
 
         public async Task<ActionResult> Inbox()

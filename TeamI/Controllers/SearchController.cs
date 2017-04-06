@@ -1,7 +1,11 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.text.pdf;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -20,32 +24,42 @@ namespace TeamI.Controllers
         {
             
             var inspection = db.INSPECTION.Include(i => i.LAB).Include(i => i.USER);
-            var inspectionDetails = db.INSPECTIONDETAILS;
+            var inspectionDetails = db.INSPECTIONDETAILS.Include(i => i.USER);
             var hazardsObserved = db.HAZARDOBSERVED.Include(i => i.INSPECTIONDETAILS);
             if (startDate != null || endDate != null)
             { 
                     if (startDate == null)
                     {
                         inspection = inspection.Where(s => s.date <= endDate);
-                    }
+                        inspectionDetails = inspectionDetails.Where(s => s.Date <= endDate);
+                }
                     if (endDate == null)
                     {
                         inspection = inspection.Where(s => s.date >= startDate);
-                    }
+                        inspectionDetails = inspectionDetails.Where(s => s.Date >= startDate);
+                }
                 if (startDate != null && endDate != null)
                 {
                     inspection = inspection.Where(s => s.date <= endDate).Where(s => s.date >= startDate);
+                    inspectionDetails = inspectionDetails.Where(s => s.Date <= endDate).Where(s => s.Date >= startDate);
                 }           
             }
             
             if (!String.IsNullOrEmpty(labSearch))
+            {
                 inspection = inspection.Where(s => s.LAB.room.Contains(labSearch) || s.LAB.building.Contains(labSearch));
+                //inspectionDetails = inspectionDetails.Where(s => s.LAB.room.Contains(labSearch) || s.LAB.building.Contains(labSearch));
+            }
+                
 
             if (!String.IsNullOrEmpty(techSearch))
+            {
                 inspection = inspection.Where(s => s.USER.firstName.Contains(techSearch) || s.USER.lastName.Contains(techSearch));
+                inspectionDetails = inspectionDetails.Where(s => s.USER.firstName.Contains(techSearch) || s.USER.lastName.Contains(techSearch));
+            }
 
             string searchType = Request["status"];
-            if (!string.IsNullOrWhiteSpace(status))
+            if (!string.IsNullOrWhiteSpace(searchType))
             {
                 if (searchType.Equals("Fail"))
                     inspection = inspection.Where(s => s.status == false);
@@ -72,3 +86,4 @@ namespace TeamI.Controllers
         }
     }
 }
+
