@@ -64,10 +64,10 @@
                     int f = 0;
                     foreach (var item in Model.inspection)
                     {
-                        if (item.dueStatus == "complete") { c++; }
-                        if (item.dueStatus == "pending") { p++; }
+                        if (item.complete == 1) { c++; }
+                        if (item.complete == 0) { p++; }
                         if (Convert.ToDateTime(item.dueDate).ToUniversalTime() < DateTime.Now.ToUniversalTime() && item.dueDate != null) { o++; }
-                        if (item.dueStatus == "complete" && item.status == false) { f++; }
+                        if (item.complete == 1 && item.status == false) { f++; }
                     }
                 }
                 <div class="col-xs-3">
@@ -113,7 +113,7 @@
             @{ @*if there are overdue inspections*@
             if (o >= 1)
             {
-                <div class="row">
+                <div class="row" style="margin-bottom:15px;">
                     <div class="col-xs-12">
                         <div class="section">
 
@@ -132,6 +132,9 @@
                                     </th>
                                     <th>
                                         Room
+                                    </th>
+                                    <th>
+                                        Details
                                     </th>
 
 
@@ -153,6 +156,9 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.LAB.room)
                                             </td>
+                                            <td>
+                                                @Html.ActionLink("Details", "Details", "INSPECTIONs", new { id = item.ID }, null)
+                                            </td>
                                         </tr>
                                     }
                                 }
@@ -173,7 +179,7 @@
                                 <table class="table">
                                     <tr>
                                         <th>
-                                            @Html.ActionLink("Day Of Month", "Index", new { sortOrder = ViewBag.DateSortParm })
+                                            Due date
                                         </th>
                                         <th>
                                             Building
@@ -182,17 +188,18 @@
                                             Room
                                         </th>
                                         <th>
-                                            Section
+                                            Details
                                         </th>
 
                                     </tr>
-                                    @foreach (var item in Model.inspection)
+                                    @foreach (var item in Model.inspection.Where(i => i.complete == 0))
                                     {
-                                        if (item.dueStatus == "pending")
-                                        {
-                                            <tr>
+                                        var color = "";
+                                        if (Convert.ToDateTime(item.dueDate).ToUniversalTime() < DateTime.Now.ToUniversalTime() && item.dueDate != null)
+                                        { color = "orange"; } 
+                                            <tr style="color: @color">
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.date.Value.Day)
+                                                    @Html.DisplayFor(modelItem => item.dueDate)
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.LAB.building)
@@ -201,11 +208,11 @@
                                                     @Html.DisplayFor(modelItem => item.LAB.room)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.LAB.type)
+                                                    @Html.ActionLink("Details", "Details", "INSPECTIONs", new { id = item.ID }, null) 
                                                 </td>
 
                                             </tr>
-                                        }
+                                        
                                     }
                                 </table>
                             </div>
@@ -221,41 +228,29 @@
                                     <table class="table">
                                         <tr>
                                             <th>
-                                                Description
+                                                Problem Found
                                             </th>
                                             <th>
-                                                Comments
+                                                Room
                                             </th>
-                                            <th>
-                                                Resolved
-                                            </th>
+                                           
                                             <th>
                                                 Details
                                             </th>
                                         </tr>
-                                        @foreach (var item in Model.hazardsobserved)
+                                        @foreach (var item in Model.hazardsobserved.Where(i => i.Status == false))
                                         {
-                                            string value = "";
-                                            if (item.Status == true)
-                                            {
-                                                value = "Yes";
-                                            }
-                                            else
-                                            {
-                                                value = "No";
-                                            }
+                                           
                                             <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.HAZARD.Description)
-                                                </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.problemFound)
                                                 </td>
                                                 <td>
-                                                    @value
+                                                    @Html.DisplayFor(modelItem => item.INSPECTIONDETAILS.INSPECTION.LAB.room)
                                                 </td>
-
-
+                                                <td>
+                                                    @Html.ActionLink("Details", "Details", "HAZARDOBSERVEDs", new { id = item.ID }, null)
+                                                </td>
                                             </tr>
                                         }
                                     </table>
@@ -274,7 +269,7 @@
 
 }
 
-            </div>
+          
 @section Scripts{
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/scripts/CircleStats")

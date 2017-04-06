@@ -3,72 +3,63 @@
 @{
     ViewBag.Title = "Details";
 }
-<div>
-  
-    <dl class="dl-horizontal">
-        <dt>
-           Inspector
-        </dt>
-
-        <dd>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <label>Inspector:</label>
             @Html.DisplayFor(model => model.INSPECTIONDETAILS.INSPECTION.USER.FullName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.INSPECTIONDETAILS.INSPECTION.LAB.room)
-        </dt>
-
-        <dd>
+        </div>
+        <div class="col-sm-6">
+            <label>Room:</label>
             @Html.DisplayFor(model => model.INSPECTIONDETAILS.INSPECTION.LAB.room)
-        </dd>
-        <dt>
-           Type
-        </dt>
-
-        <dd>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <label>Date:</label>
+            @Html.DisplayFor(model => model.INSPECTIONDETAILS.INSPECTION.date)
+        </div>
+        <div class="col-sm-4">
+            <label>Area:</label>
             @Html.DisplayFor(model => model.INSPECTIONDETAILS.AreaEquipment)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.HAZARD.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HAZARD.Description)
-        </dd>
-        <dt>
-            Problem Found
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.problemFound)
-        </dd>
-        <dt>
-            Action(s) Required
-        </dt>
-
-        <dd>
+        </div>
+        <div class="col-sm-4">
+            <label>Action(s) required:</label>
             @Html.DisplayFor(model => model.actionRequired)
-        </dd>
-        <dt>
-            Urgency
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.urgentAction)
-        </dd>
-       
-    
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <label>Problem found:</label>
+            @Html.DisplayFor(model => model.problemFound)
+        </div>
+        <div class="col-sm-4">
+            <label>Description:</label>
+            @Html.DisplayFor(model => model.HAZARD.Description)
+        </div>
+        <div class="col-sm-4">
+            <label>Fixed:</label>
             @Html.DisplayFor(model => model.Status)
-        </dd>
-   
+        </div>
+    </div>
 
-    </dl>
+
+    <div class="row">
+        <div class="col-sm-4" style="text-align:left">
+            <a href="@Url.Action("Edit", "HAZARDOBSERVEDs", new { id = Model.ID })" class="btn btn-success">
+                Edit
+                <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+            </a>
+            </div>
+
+            <div class="col-sm-4 col-sm-offset-4" style="text-align:right">
+                <a href="@Url.Action("index", "INSPECTIONs", "INSPECTIONs", null)" class="btn btn-danger">
+                    Cancel
+                    <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+                </a>
+
+            </div>
+        </div>
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-  
-</p>
