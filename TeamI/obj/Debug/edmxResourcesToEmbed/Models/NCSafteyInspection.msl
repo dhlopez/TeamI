@@ -12,9 +12,9 @@
     <EntitySetMapping Name="INSPECTION">
       <EntityTypeMapping TypeName="NCSafteyInspectionModel.INSPECTION">
         <MappingFragment StoreEntitySet="INSPECTION">
-          <ScalarProperty Name="complete" ColumnName="complete" />
           <ScalarProperty Name="scheduledDate" ColumnName="scheduledDate" />
           <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+          <ScalarProperty Name="dueStatus" ColumnName="dueStatus" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="labID" ColumnName="labID" />
@@ -36,7 +36,6 @@
     <EntitySetMapping Name="HAZARDOBSERVED">
       <EntityTypeMapping TypeName="NCSafteyInspectionModel.HAZARDOBSERVED">
         <MappingFragment StoreEntitySet="HAZARDOBSERVED">
-          <ScalarProperty Name="solvedAction" ColumnName="solvedAction" />
           <ScalarProperty Name="urgentAction" ColumnName="urgentAction" />
           <ScalarProperty Name="actionRequired" ColumnName="actionRequired" />
           <ScalarProperty Name="problemFound" ColumnName="problemFound" />
