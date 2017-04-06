@@ -18,6 +18,7 @@
     <Property Name="Status" Type="bit" Nullable="false" />
     <Property Name="actionRequired" Type="nchar" MaxLength="100" />
     <Property Name="urgentAction" Type="bit" />
+    <Property Name="solvedAction" Type="nchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="INSPECTION">
     <Key>
@@ -28,9 +29,9 @@
     <Property Name="labID" Type="int" />
     <Property Name="userID" Type="int" />
     <Property Name="status" Type="bit" />
-    <Property Name="dueStatus" Type="nchar" MaxLength="20" />
     <Property Name="dueDate" Type="date" />
     <Property Name="scheduledDate" Type="date" />
+    <Property Name="complete" Type="int" />
   </EntityType>
   <EntityType Name="INSPECTIONDETAILS">
     <Key>

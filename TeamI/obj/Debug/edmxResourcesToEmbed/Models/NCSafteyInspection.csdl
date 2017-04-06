@@ -19,9 +19,9 @@
     <NavigationProperty Name="LAB" Relationship="Self.FK__INSPECTIO__labID__32E0915F" FromRole="INSPECTION" ToRole="LAB" />
     <NavigationProperty Name="USER" Relationship="NCSafteyInspectionModel.FK__INSPECTIO__userI__2DE6D218" FromRole="INSPECTION" ToRole="USER" />
     <NavigationProperty Name="INSPECTIONDETAILS" Relationship="NCSafteyInspectionModel.FK_INSPECTIONDETAILS_INSPECTION" FromRole="INSPECTION" ToRole="INSPECTIONDETAILS" />
-    <Property Name="dueStatus" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
     <Property Name="dueDate" Type="DateTime" Precision="0" />
     <Property Name="scheduledDate" Type="DateTime" Precision="0" />
+    <Property Name="complete" Type="Int32" />
   </EntityType>
   <EntityType Name="LAB">
     <Key>
@@ -95,6 +95,7 @@
     <Property Name="problemFound" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
     <Property Name="actionRequired" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
     <Property Name="urgentAction" Type="Boolean" />
+    <Property Name="solvedAction" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="TASK">
     <Key>
