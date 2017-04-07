@@ -24,12 +24,12 @@ namespace TeamI
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/scripts/CircleStats").Include(
+            bundles.Add(new ScriptBundle("~/bundles/CircleStats").Include(
                  "~/Scripts/circleStats/jquery.circliful.js",
                  "~/Scripts/circleStats/jquery.circliful.min.js",
                 "~/Scripts/circleStats/CircleStats.js"));
 
-            bundles.Add(new ScriptBundle("~/scripts/SiteTour").Include(
+            bundles.Add(new ScriptBundle("~/bundles/SiteTour").Include(
                   "~/Scripts/SiteTour/bootstrap-tour.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/navigation").Include(

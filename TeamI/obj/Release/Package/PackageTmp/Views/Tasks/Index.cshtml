@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Notifications</h2>
+<h2>Tasks</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -18,10 +18,7 @@
             @Html.DisplayNameFor(model => model.date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.USER.firstName)
+            Inspector
         </th>
         <th></th>
     </tr>
@@ -35,10 +32,7 @@
             @Html.DisplayFor(modelItem => item.date)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.USER.firstName)
+            @Html.DisplayFor(modelItem => item.USER.FullName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

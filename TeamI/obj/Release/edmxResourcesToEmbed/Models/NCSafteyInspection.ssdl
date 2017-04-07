@@ -14,8 +14,11 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="InspectionDetailID" Type="int" Nullable="false" />
     <Property Name="HazardID" Type="int" Nullable="false" />
-    <Property Name="Comments" Type="nchar" MaxLength="1000" />
+    <Property Name="problemFound" Type="nchar" MaxLength="1000" />
     <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="actionRequired" Type="nchar" MaxLength="100" />
+    <Property Name="urgentAction" Type="bit" />
+    <Property Name="solvedAction" Type="nchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="INSPECTION">
     <Key>
@@ -26,6 +29,9 @@
     <Property Name="labID" Type="int" />
     <Property Name="userID" Type="int" />
     <Property Name="status" Type="bit" />
+    <Property Name="dueDate" Type="date" />
+    <Property Name="scheduledDate" Type="date" />
+    <Property Name="complete" Type="int" />
   </EntityType>
   <EntityType Name="INSPECTIONDETAILS">
     <Key>

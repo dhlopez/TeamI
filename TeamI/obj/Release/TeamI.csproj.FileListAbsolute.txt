@@ -274,3 +274,8 @@ C:\Users\Administrator\Source\Repos\TeamI\TeamI\bin\zh-Hant\Microsoft.Spatial.re
 C:\Users\Administrator\Source\Repos\TeamI\TeamI\obj\Release\TeamI.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Source\Repos\TeamI\TeamI\obj\Release\TeamI.dll
 C:\Users\Administrator\Source\Repos\TeamI\TeamI\obj\Release\TeamI.pdb
+C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\itextsharp.dll
+C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\itextsharp.xmlworker.dll
+C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\RestSharp.dll
+C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\itextsharp.xml
+C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\RestSharp.xml

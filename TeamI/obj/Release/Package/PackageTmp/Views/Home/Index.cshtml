@@ -2,42 +2,15 @@
 @{
     ViewBag.Title = "Welcome!";
 }
+@Styles.Render("~/style/CircleStats")
+@Styles.Render("~/style/SiteTour")
+
+
+
 @{
-    var g = 0;
-    var b = 0;
-    var t = 0;
-
-    foreach (var item in Model.inspection)
+    if (1 == 2)
     {
-        if(item.date == null)
-        {
-
-        }
-        else
-        {
-            if (item.date.Value.ToUniversalTime() < DateTime.Now.ToUniversalTime() && item.date.Value.ToUniversalTime() > DateTime.Now.AddDays(-30).ToUniversalTime())
-            {
-                if (item.status == true)
-                {
-                    g++;
-                }
-                else
-                {
-                    b++;
-                }
-            }
-        }
-
-        t = g + b;
-    }
-}
-
-@{ TeamI.ViewModel.UserInformation user = (TeamI.ViewModel.UserInformation)HttpContext.Current.Session["CurrentUser"]; }
-<div class="container">
-
-    @{
-        if (1 == 2)
-        {
+        <div class="container">
             <style>
                 .carouselcolour {
                     background-color: white;
@@ -76,14 +49,44 @@
                     </a>
                 </div>
             </div>
+        </div>
+    }
+    if (1 == 1)
+    {
+        <div>
 
-        }
-        if (1 == 1)
-        {
+            <div class="row" id="dataCircles">
+                @{
+
+                    int c = 0;
+                    int p = 0;
+                    int o = 0;
+                    int f = 0;
+                    foreach (var item in Model.inspection)
+                    {
+                        if (item.complete == 1) { c++; }
+                        if (item.complete == 0) { p++; }
+                        if (Convert.ToDateTime(item.dueDate).ToUniversalTime() < DateTime.Now.ToUniversalTime() && item.dueDate != null) { o++; }
+                        if (item.complete == 1 && item.status == false) { f++; }
+                    }
+                }
+                <div class="col-xs-3">
+                    <div id="circle1" data-animation="1" data-animationStep="5" data-percent="@c"></div>
+                </div>
+                <div class="col-xs-3">
+                    <div id="circle2" data-animation="1" data-animationStep="5" data-percent="@p"></div>
+                </div>
+                <div class="col-xs-3">
+                    <div id="circle3" data-animation="1" data-animationStep="5" data-percent="@o"></div>
+                </div>
+                <div class="col-xs-3">
+                    <div id="circle4" data-animation="1" data-animationStep="5" data-percent="@f"></div>
+                </div>
 
 
-         
-            <div class="section" style="margin-bottom:10px;">
+            </div>
+
+            <div style="margin-bottom:15px;">
                 <div class="row">
                     <div class="col-sm-4" style="padding-top:15px; text-align:center;">
                         <a href="@Url.Action("Create", "INSPECTIONs")" class="btn-lg btn-primary">
@@ -93,141 +96,182 @@
                     </div>
                     <div class="col-sm-4" style="padding-top:15px; text-align:center;">
                         <a href="@Url.Action("Index", "INSPECTIONs")" class="btn-lg btn-primary">
-                            view Inspections
+                            View Inspections
                             <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
                         </a>
                     </div>
                     <div class="col-sm-4" style="padding-top:15px; text-align:center;">
-                        <a href="@Url.Action("Create", "INSPECTIONDETAILS")" class="btn-lg btn-primary">
+                        <a href="@Url.Action("CreateInsDet", "INSPECTIONs")" class="btn-lg btn-primary">
                             Report An Issue
                             <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
                         </a>
                     </div>
 
                 </div>
+            </div>
 
-                <h2>Past 30 days</h2>
+            @{ @*if there are overdue inspections*@
+            if (o >= 1)
+            {
+                <div class="row" style="margin-bottom:15px;">
+                    <div class="col-xs-12">
+                        <div class="section">
 
-                <div class="row" id="dataCircles">
-                    <div class="col-xs-4">
-                        <div id="circle1" data-animation="1" data-animationStep="5" data-percent="@g"></div>
-                    </div>
-                    <div class="col-xs-4">
-                        <div id="circle2" data-animation="1" data-animationStep="5" data-percent="@b"></div>
-                    </div>
-                    <div class="col-xs-4">
-                        <div id="circle3" data-animation="1" data-animationStep="5" data-percent="@t"></div>
+                            <h2 style="color:orange;">Overdue Inspections</h2>
+
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        Due Date
+                                    </th>
+                                    <th>
+                                        Scheduled Date
+                                    </th>
+                                    <th>
+                                        Building
+                                    </th>
+                                    <th>
+                                        Room
+                                    </th>
+                                    <th>
+                                        Details
+                                    </th>
+
+
+                                </tr>
+                                @foreach (var item in Model.inspection)
+                                {
+                                    if (Convert.ToDateTime(item.dueDate).ToUniversalTime() < DateTime.Now.ToUniversalTime() && item.dueDate != null)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.dueDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.scheduledDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LAB.building)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LAB.room)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Details", "Details", "INSPECTIONs", new { id = item.ID }, null)
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
+            }
+
 
             <div class="row">
                 <div class="col-xs-6">
                     <div class="section">
-                        <h2>Upcoming Inspections</h2>
-
-                        <table class="table">
-                            <tr>
-                                <th>
-                                    @Html.ActionLink("Day Of Month", "Index", new { sortOrder = ViewBag.DateSortParm })
-                                </th>
-                                <th>
-                                    Building
-                                </th>
-                                <th>
-                                    Room
-                                </th>
-                                <th>
-                                    Section
-                                </th>
-
-                            </tr>
-                            @foreach (var item in Model.inspection.Where(x => x.userID == user.ID))
-                            {
-                                if (item.date > DateTime.Now)
-                                {
+                        <h2>Pending Inspections</h2>
+                        <div id="table-wrapper">
+                            <div id="table-scroll">
+                                <table class="table">
                                     <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.date.Value.Day)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.LAB.building)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.LAB.room)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.LAB.type)
-                                        </td>
+                                        <th>
+                                            Due date
+                                        </th>
+                                        <th>
+                                            Building
+                                        </th>
+                                        <th>
+                                            Room
+                                        </th>
+                                        <th>
+                                            Details
+                                        </th>
 
                                     </tr>
-                                }
-                            }
-                        </table>
+                                    @foreach (var item in Model.inspection.Where(i => i.complete == 0))
+                                    {
+                                        var color = "";
+                                        if (Convert.ToDateTime(item.dueDate).ToUniversalTime() < DateTime.Now.ToUniversalTime() && item.dueDate != null)
+                                        { color = "orange"; } 
+                                            <tr style="color: @color">
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.dueDate)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.LAB.building)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.LAB.room)
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Details", "Details", "INSPECTIONs", new { id = item.ID }, null) 
+                                                </td>
+
+                                            </tr>
+                                        
+                                    }
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-6" style="padding-left: 0px;">
                     <div class="section">
                         <h2>Corrective Action Required</h2>
                         <div id="Corrective">
-
-
-
-
-                            <table class="table">
-                                <tr>
-                                    <th>
-                                        Description
-                                    </th>
-                                    <th>
-                                        Comments
-                                    </th>
-                                    <th>
-                                        Resolved
-                                    </th>
-
-                                </tr>
-                                @foreach (var item in Model.hazardsobserved)
-                                {
-                                    string value = "";
-                                    if (item.Status == true)
-                                    {
-                                        value = "Yes";
-                                    }
-                                    else
-                                    {
-                                        value = "No";
-                                    }
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.HAZARD.Description)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Comments)
-                                        </td>
-                                        <td>
-                                            @value
-                                        </td>
-
-
-                                    </tr>
-                                }
-                            </table>
-                        </div>@*Corrective Actions*@
+                            <div id="table-wrapper">
+                                <div id="table-scroll">
+                                    <table class="table">
+                                        <tr>
+                                            <th>
+                                                Problem Found
+                                            </th>
+                                            <th>
+                                                Room
+                                            </th>
+                                           
+                                            <th>
+                                                Details
+                                            </th>
+                                        </tr>
+                                        @foreach (var item in Model.hazardsobserved.Where(i => i.Status == false))
+                                        {
+                                           
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.problemFound)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.INSPECTIONDETAILS.INSPECTION.LAB.room)
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Details", "Details", "HAZARDOBSERVEDs", new { id = item.ID }, null)
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
             </div>
+        </div>
+                }
+                else
+                {
+                }
 
+}
 
-
-
-
-        }
-        else
-        {
-        }
-
-    }
-
-</div>
+          
+@section Scripts{
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/CircleStats")
+    @Scripts.Render("~/bundles/SiteTour")
+}

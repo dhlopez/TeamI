@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<TeamI.Models.HAZARDOBSERVED>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Corrective Problems";
 }
 
-<h2>Corrective Problems</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<a href="@Url.Action("Create", "HAZARDOBSERVEDs")" class="btn btn-danger">
+    Report a problem
+    <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+</a>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Comments)
+            @Html.DisplayNameFor(model => model.problemFound)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Status)
@@ -29,7 +29,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Comments)
+            @Html.DisplayFor(modelItem => item.problemFound)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Status)
@@ -42,10 +42,9 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) 
+        
         </td>
     </tr>
 }
-
 </table>
