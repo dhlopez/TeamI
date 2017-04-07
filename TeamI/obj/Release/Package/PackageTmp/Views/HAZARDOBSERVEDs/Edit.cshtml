@@ -1,68 +1,79 @@
 ﻿@model TeamI.Models.HAZARDOBSERVED
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Solve Problem";
 }
-
-<h2>Edit</h2>
-
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>HAZARDOBSERVED</h4>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <label>Problem found: </label>
+                @Html.EditorFor(model => model.problemFound, new { htmlAttributes = new { @class = "form-control", @style = "display: none;" } })
+                @Html.DisplayFor(model => model.problemFound)
+                @Html.ValidationMessageFor(model => model.problemFound, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-xs-6">
+                <label>Action(s) required: </label>
+                @Html.EditorFor(model => model.actionRequired, new { htmlAttributes = new { @class = "form-control", @style = "display: none;" } })
+                @Html.DisplayFor(model => model.actionRequired)
+                @Html.ValidationMessageFor(model => model.actionRequired, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <label>Room: </label>
+                @Html.DisplayFor(model => model.INSPECTIONDETAILS.INSPECTION.LAB.room)
+            </div>
+            <div class="col-xs-6">
+                <label>Inspector: </label>
+                @Html.DisplayFor(model => model.INSPECTIONDETAILS.INSPECTION.USER.FullName)
+            </div>
+        </div>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-xs-6">
+
+                <label>Have all corrective actions been met? </label>
+
+                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "checkbox" } })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+
+
+            </div>
+            <div class="col-xs-6" style="margin-bottom: 30px;">
+                <label>What has been done to solve the problem?</label><br />
+
+                <div class="editor-field">
+                    @Html.TextAreaFor(model => model.solvedAction, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.solvedAction, "", new { @class = "text-danger" })
+
+
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Status)
-                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
 
         @Html.HiddenFor(model => model.ID)
+        @Html.DropDownList("InspectionDetailID", null, htmlAttributes: new { @class = "form-control", @style = "display: none;" })
+        @Html.DropDownList("HazardID", null, htmlAttributes: new { @class = "form-control", @style = "display: none;" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.InspectionDetailID, "InspectionDetailID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("InspectionDetailID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.InspectionDetailID, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.HazardID, "HazardID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("HazardID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.HazardID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-6" style="text-align:right">
+               
+                <a href="@Url.Action("index", "INSPECTIONs", "INSPECTIONs", null)" class="btn btn-danger">
+                    Cancel
+                    <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+                </a>
+                <input type="submit" value="Submit corrective action" class="btn btn-success" />
             </div>
         </div>
     </div>
+
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

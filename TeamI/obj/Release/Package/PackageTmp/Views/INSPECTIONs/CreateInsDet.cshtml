@@ -299,10 +299,12 @@
                                     <input type="text" class="form-control" id="inputComm" data-bind="value:Comments" />
                                 </div>
                             </div>
+                            <button id="btnAddEquip" type="button" class="btn btn-default">Add new Area/Equipment</button>
                             <button id="submitHazObs" type="submit" class="btn btn-default">Submit</button>
                         </form>
                     </div>
                 </div>
+                <button id="btnFinish" type="button" class="btn btn-default">Finish Inspection</button>
             </div>
 
     </div>
@@ -314,7 +316,7 @@
 
 
         <div>
-            @Html.ActionLink("Back to List", "Index")
+            @*@Html.ActionLink("Back to List", "Index")*@
         </div>
    
  
@@ -324,6 +326,7 @@
     <script>
         $(document).ready(function () {
             $("#addInspectionDiv").hide();
+            $("#btnFinish").hide();
             //$("#addInspectionDetDiv").hide();
             $("#addHazardsObsDiv").hide();
             $("#AddInsDetail").click(function () {
@@ -347,8 +350,12 @@
                 $("#addHazardsObsDiv").show();
             });
             $("#submitHazObs").click(function () {
+                $("#btnFinish").show();
                 //$("#addInspectionDiv").hide();
                 //$("#addInspectionDetDiv").show();
+            });
+            $("#btnFinish").click(function () {
+                window.location.href = '@Url.Action("Index", "Home")';
             });
         });
     </script>

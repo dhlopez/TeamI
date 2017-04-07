@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-TeamI-20170114114840.mdf;Initial Catalog=aspnet-TeamI-20170114114840;Integrated Security=True" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Administrator\\Source\\Repos\\TeamI\\TeamI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Casa\\Desktop\\Practice\\MVC\\TeamI\\TeamI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
   <parameter name="NCSafteyInspectionEntities-Web.config Connection String" description="NCSafteyInspectionEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.NCSafteyInspection.csdl|res://*/Models.NCSafteyInspection.ssdl|res://*/Models.NCSafteyInspection.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(LocalDB)\NClocaldb;attachdbfilename=|DataDirectory|\NCSafteyInspection.mdf;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Administrator\\Source\\Repos\\TeamI\\TeamI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='NCSafteyInspectionEntities']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Casa\\Desktop\\Practice\\MVC\\TeamI\\TeamI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='NCSafteyInspectionEntities']/@connectionString" />
   </parameter>
 </parameters>
