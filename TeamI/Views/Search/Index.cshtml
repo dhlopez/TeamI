@@ -9,9 +9,9 @@
 {
     <div class="col-sm-4">
         <text>Start Date:</text>
-        @Html.TextBox("startDate", null, new { @id = "datefield", type = "date", @class = "form-control" })
+        @Html.TextBox("startDate", null, new { @id = "startdatefield", type = "date", @class = "form-control" })
         <text>End Date:</text>
-        @Html.TextBox("endDate", DateTime.Now.ToString("d:0"), new { @id = "datefield", type = "date", @class = "form-control" })
+        @Html.TextBox("endDate", DateTime.Now.ToString("d:0"), new { @id = "enddatefield", type = "date", @class = "form-control" })
     </div>
    <div class="col-sm-4">
        <text>Lab:</text>
@@ -100,27 +100,30 @@
                                         {
                                             subHeader++;
                                                 <tr style="background-color:#f2f2f2; display:none;" class="subMenu#@item.ID">
-                                                    <th>Hazard</th>
                                                     <th>Area/Equipment</th>
-                                                    <th colspan="3">Comment</th>
-
+                                                    <th>Hazard</th>                                               
+                                                    <th colspan="2">Comment</th>
+                                                    <th colspan="2">Required Action</th>
                                                 </tr>
 
                                         }
                                             <tr style="background-color:white; display:none;" class="subMenu#@item.ID">
-
-                                                <td>@Html.DisplayFor(modelItem => subItem.HAZARD.Description)</td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => subItem.INSPECTIONDETAILS.AreaEquipment)
                                                 </td>
-                                                <td colspan="3">
+                                                <td>@Html.DisplayFor(modelItem => subItem.HAZARD.Description)</td>
+                                                
+                                                <td colspan="2">
                                                     @Html.DisplayFor(modelItem => subItem.problemFound)
+                                                </td>
+                                                <td colspan="2">
+                                                    @Html.DisplayFor(modelItem => subItem.actionRequired)
                                                 </td>
                                             </tr>
                                         }
                                     }
                     </table>
-                    <input type="button" name="genInpPDF" value="Save as PDF" class="btn btn-primary btn-sm" />
+                    <input type="button" name="genInspPDF" id="genInspPDF" value="Save as PDF" class="btn btn-primary btn-sm" />
         }
         </div>
     </div>
@@ -198,18 +201,91 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/scripts/SiteTour")
     @Scripts.Render("~/bundles/app")
     @Scripts.Render("~/bundles/tabSaveState")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/html2canvas")
     <script type="text/javascript" src="@Url.Content("https://code.jquery.com/ui/1.12.1/jquery-ui.js")"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script>
       $(".inspectionClick").click(function () {
           $(this).find(".activeButton").toggle();
           $(this).nextUntil('.inspectionClick').slideToggle(100, function () {
-          });         
+          });
       });
+
+      $("#genInspPDF").click(function () {
+          $('#inspectionTable').find(".activeButton").toggle();
+          $('.inspectionClick').nextUntil('.inspectionClick').slideToggle(100, function () {
+          });
+          //Table
+          html2canvas($("#inspectionTable"), {
+              onrendered: function (canvas) {
+                  var imgData = canvas.toDataURL('image/jpg');
+                  //New PDF
+                  var doc = new jsPDF('landscape');
+                  //Title
+                  doc.text(10, 10, 'Inspections');
+                  doc.setFontSize(16);
+                  if (generateTitle() != '') {
+                      doc.text(generateTitle(), 10, 28);
+                  }
+                  doc.addImage(imgData, 'JPG', 0, 40);
+                  doc.save(todaysDate() + 'inspections.pdf');
+              }
+          });
+          $('#inspectionTable').find(".activeButton").toggle();
+          $('.inspectionClick').nextUntil('.inspectionClick').slideToggle(100, function () {
+          });
+      });
+
+      function getDate() {
+          var tableDate = '';
+          if (($('#startdatefield').val() != '') && ($('#enddatefield').val() != '')) {
+              tableDate = 'From ' + $('#startdatefield').val() + ' to ' + $('#enddatefield').val();
+          }
+          if (($('#startdatefield').val() != '') && ($('#enddatefield').val() == '')) {
+              tableDate = 'From ' + $('#startdatefield').val() + ' to ' + todaysDate();
+          }
+          if (($('#startdatefield').val() == '') && ($('#enddatefield').val() != '')) {
+              tableDate = 'From ' + 'beginning of time' + ' to ' +  $('#enddatefield').val();
+          }
+          return tableDate;
+      };
+      function todaysDate() {
+          var today = new Date();
+          var dd = today.getDate();
+          var mm = today.getMonth() + 1;
+          var yyyy = today.getFullYear();
+
+          if (dd < 10) {
+              dd = '0' + dd
+          }
+
+          if (mm < 10) {
+              mm = '0' + mm
+          }
+
+          today = yyyy + '-' + mm + '-' + dd;
+          return today;
+      };
+      function generateTitle() {
+          var title = '';
+          if (getDate() != '') {
+              title += 'Date: ' + getDate() + '\n';
+          }
+          if (($('#labSearch').val() != '')) {
+              title += 'Lab: ' + $('#labSearch').val() + '\n';
+          }
+          if (($('#techSearch').val() != '')) {
+              title += 'Technician: ' + $('#techSearch').val() + '\n';
+          }
+          //if ($("input[name='status']").is(':checked')) {
+          //    title += 'Status: ' + $('input[name="status"]:checked').val();
+          //}
+          return title;
+      };
 
       $("#btnFinish").click(function () {
           window.location.href = '@Url.Action("Index", "Search")';

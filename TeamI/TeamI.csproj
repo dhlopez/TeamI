@@ -44,14 +44,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="itextsharp.xmlworker, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\packages\itextsharp.xmlworker.5.5.11\lib\itextsharp.xmlworker.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -368,6 +360,7 @@
     <Content Include="Content\circleStats\material-design-iconic-font.min.css" />
     <Content Include="Content\Custom.css" />
     <Content Include="Content\FontSizeChange.css" />
+    <Content Include="Scripts\html2canvas.js" />
     <Content Include="Content\Modal.css" />
     <Content Include="Content\navigation.css" />
     <Content Include="Content\Normalize.css" />
@@ -429,6 +422,7 @@
     <Content Include="Scripts\circleStats\jquery.circliful.js" />
     <Content Include="Scripts\circleStats\jquery.circliful.min.js" />
     <Content Include="Scripts\FontSize.js" />
+    <Content Include="Scripts\html2canvas.svg.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
