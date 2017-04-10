@@ -14,6 +14,7 @@ using Microsoft.Owin.Security.OpenIdConnect;
 using Microsoft.Identity.Client;
 using Owin;
 using TeamI.TokenStorage;
+using Microsoft.AspNet.Identity;
 
 [assembly: OwinStartup(typeof(TeamI.App_Start.Startup))]
 
@@ -31,7 +32,14 @@ namespace TeamI.App_Start
         {
             app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions());
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                CookieName = "SafetyCookie",
+                LoginPath = new PathString("/LogIn"),
+                LogoutPath = new PathString("/LogIn"),
+                ExpireTimeSpan = System.TimeSpan.FromMinutes(5)
+            });
 
             app.UseOpenIdConnectAuthentication(
               new OpenIdConnectAuthenticationOptions

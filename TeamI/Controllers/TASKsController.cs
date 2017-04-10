@@ -9,6 +9,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TeamI.Models;
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace TeamI.Controllers
 {
@@ -53,6 +55,25 @@ namespace TeamI.Controllers
             ViewBag.userID = new SelectList(db.USER, "ID", "firstName");
             ViewBag.labID = new SelectList(db.LAB, "ID", "room");
             return View();
+        }
+
+        public static void SendSimpleMessage()
+        {
+            RestClient client = new RestClient();
+            client.BaseUrl = new System.Uri("https://api.mailgun.net/v3");
+            client.Authenticator =
+            new HttpBasicAuthenticator("api",
+                                      "key-88bcfda0bac089d6f861e5fa3f7d8a32");
+            RestRequest request = new RestRequest();
+            request.AddParameter("domain", "sandboxe5dae96553a54504b07b52d2804e9212.mailgun.org", ParameterType.UrlSegment);
+            request.Resource = "{domain}/messages";
+            //request.AddParameter("from", "Mailgun Sandbox <postmaster@sandboxe5dae96553a54504b07b52d2804e9212.mailgun.org>");
+            request.AddParameter("from", "NCSafetySystem <postmaster@sandboxe5dae96553a54504b07b52d2804e9212.mailgun.org>");
+            request.AddParameter("to", "David <dhelaman@hotmail.com>");
+            request.AddParameter("subject", "Hello Dave");
+            request.AddParameter("text", "Congratulations, you just sent an email with Mailgun!");
+            request.Method = Method.POST;
+            client.Execute(request);
         }
 
         // POST: TASKs/Create
