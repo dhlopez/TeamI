@@ -16,6 +16,8 @@ using TeamI.ViewModel;
 using TeamI.TokenStorage;
 using System.Configuration;
 using System.Web.SessionState;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace TeamI.Controllers
 {
@@ -25,8 +27,10 @@ namespace TeamI.Controllers
         public ActionResult Index()
         {
             if (Request.IsAuthenticated)
-            {         
-                string userName = ClaimsPrincipal.Current.FindFirst("name").Value;
+            {
+                
+
+                string userName = User.Identity.Name; //ClaimsPrincipal.Current.FindFirst("name").Value;
                 string userId = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
                 if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(userId))
                 {
@@ -39,7 +43,7 @@ namespace TeamI.Controllers
                 // authenticated but not have a valid token cache. Check for this
                 // and force signout.
                 SessionTokenCache tokenCache = new SessionTokenCache(userId, HttpContext);
-                if (tokenCache.Count <= 0)
+                if (tokenCache ==null)
                 {
                     // Cache is empty, sign out
                     return RedirectToAction("SignOut");
