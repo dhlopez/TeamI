@@ -31,10 +31,14 @@ namespace TeamI
 
             IdentityUser user = new IdentityUser(txtUser.Text);
             IdentityResult idResult = manager.Create(user, txtPass.Text);
+           
             //await manager.CreateAsync(user, txtPass.Text);
 
             if (idResult.Succeeded)
             {
+                manager.SetEmail(user.Id, "dhelaman@hotmail.com");
+                manager.AddToRole(user.Id, "Technician");
+
                 lblMessage.Text = "User " + user.UserName + " was created successfully!";
                 var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
 

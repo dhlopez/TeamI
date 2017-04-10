@@ -43,7 +43,10 @@ namespace TeamI
 
                 authenticationManager.SignIn(userIdentity);
 
-                Response.Redirect("~/LocalLogin/Welcome.aspx");
+                Response.Cookies["NCSafetyUser"]["username"] = user.UserName;
+                Response.Cookies["NCSafetyUser"]["email"] = user.Email;
+                Response.Cookies["NCSafetyUser"]["role"] = user.Roles.FirstOrDefault().RoleId;
+                Response.Redirect("~/Home/Index");
 
             }
 
