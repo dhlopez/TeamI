@@ -40,6 +40,28 @@
                 </td>
             </tr>
         </table>
+        <table style="width: 42%;">
+            <tr>
+                <td class="auto-style1">Email:</td>
+                <td>
+                    <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+        </table>
+        <table style="width: 42%;">
+            <tr>
+                <td class="auto-style1">Role:</td>
+                <td>
+                    <asp:DropDownList ID="ddlRoles" runat="server">
+                        <asp:ListItem Value="Technician">Technician</asp:ListItem>
+                        <asp:ListItem Value="Dean">Dean</asp:ListItem>
+                        <asp:ListItem Value="Associate Dean">Associate Dean</asp:ListItem>
+                        <asp:ListItem Value="Admin">Admin</asp:ListItem>
+                    </asp:DropDownList>
+                    <%--<asp:TextBox ID="txtRole" runat="server"></asp:TextBox>--%>
+                </td>
+            </tr>
+        </table>
         <br />
         <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" />
         <br />
@@ -56,10 +78,12 @@
         <br />
         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtConfirm" ErrorMessage="Must confirm password" SetFocusOnError="True"></asp:RequiredFieldValidator>
         <br />
-    
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtEmail" ErrorMessage="Please enter an Email" SetFocusOnError="True"></asp:RequiredFieldValidator>
+        <br />    
         <br />
     
     </div>
+        
     </form>
 </body>
 </html>

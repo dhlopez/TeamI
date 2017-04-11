@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -164,6 +166,43 @@ namespace TeamI.Controllers
             {
                 db.INSPECTION.Add(inspec);
                 db.SaveChanges();
+
+                string conn = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                SqlConnection sqlConnection1 = new SqlConnection(conn);
+                SqlCommand cmd = new SqlCommand();
+                SqlDataReader reader;
+
+                cmd.CommandText = "select * from aspnetusers inner join aspnetuserroles on aspnetusers.id = aspnetuserroles.UserId where roleid = 'assnDean'";
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = sqlConnection1;
+
+                sqlConnection1.Open();
+
+                reader = cmd.ExecuteReader();
+                // Data is accessible through the DataReader object here.
+                while (reader.Read())
+                {
+                    // get the results of each column
+
+                    string userEmail = (string)reader["Email"];
+                    string userName = (string)reader["UserName"];
+                    //string userName, userEmail, userRole;
+                    TeamI.App_Start.SimpleEmail.SendSimpleMessage(userEmail, userName, "inspection");
+                    //if (Request.Cookies["NCSafetyUser"]["username"] != null)
+                    //{
+                    //    //userName = Request.Cookies["NCSafetyUser"]["username"];
+                    //    //userEmail = Request.Cookies["NCSafetyUser"]["email"];
+                    //    //userRole = Request.Cookies["NCSafetyUser"]["role"];
+
+                        
+                    //}
+                    // print out the results
+                }
+
+                sqlConnection1.Close();
+
+                
+                
                 int id = inspec.ID;
                 //return View(id);
 

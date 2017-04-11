@@ -24,15 +24,29 @@ namespace TeamI.Controllers
     public class HomeController : Controller
     {
         private NCSafteyInspectionEntities db = new NCSafteyInspectionEntities();
+       
         public ActionResult Index()
         {
             if (Request.IsAuthenticated)
             {
-                
+                string userName="", toEmail="", userEmail="", userRole="";
+                if (Request.Cookies["NCSafetyUser"] != null)
+                {
+                    if (Request.Cookies["NCSafetyUser"]["username"] != null)
+                    {
+                        userName = Request.Cookies["NCSafetyUser"]["username"];
+                        userEmail = Request.Cookies["NCSafetyUser"]["email"];
+                        userRole = Request.Cookies["NCSafetyUser"]["role"];
+                    }
+                    else
+                    {
+                        return RedirectToAction("SignOut");
+                    }
+                }
 
-                string userName = User.Identity.Name; //ClaimsPrincipal.Current.FindFirst("name").Value;
-                string userId = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-                if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(userId))
+                //string userName = ClaimsPrincipal.Current.FindFirst("name").Value;
+                //string userId = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+                if (string.IsNullOrEmpty(userName)) //|| string.IsNullOrEmpty(userId))
                 {
                     // Invalid principal, sign out
                     return RedirectToAction("SignOut");
@@ -42,12 +56,12 @@ namespace TeamI.Controllers
                 // but the browser still has a cached cookie, we may be
                 // authenticated but not have a valid token cache. Check for this
                 // and force signout.
-                SessionTokenCache tokenCache = new SessionTokenCache(userId, HttpContext);
-                if (tokenCache ==null)
-                {
-                    // Cache is empty, sign out
-                    return RedirectToAction("SignOut");
-                }
+                //SessionTokenCache tokenCache = new SessionTokenCache(userId, HttpContext);
+                //if (tokenCache ==null)
+                //{
+                //    // Cache is empty, sign out
+                //    return RedirectToAction("SignOut");
+                //}
                 UserInformation CurrentUser = new UserInformation(userName, "devintope@outlook.com");
                 Session["CurrentUser"] = CurrentUser;
             }

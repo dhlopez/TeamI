@@ -47,9 +47,7 @@ namespace TeamI
                 Response.Cookies["NCSafetyUser"]["email"] = user.Email;
                 Response.Cookies["NCSafetyUser"]["role"] = user.Roles.FirstOrDefault().RoleId;
                 Response.Redirect("~/Home/Index");
-
             }
-
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)

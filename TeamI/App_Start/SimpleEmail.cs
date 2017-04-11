@@ -9,8 +9,9 @@ namespace TeamI.App_Start
 {
     public static class SimpleEmail
     {
-        public static void SendSimpleMessage(string emailFrom, string emailTo, string destName, string emailType)
+        public static void SendSimpleMessage(string emailTo, string destName, string emailType)
         {
+            string emailFrom;
             string bodyEmail="There was an error sending this email, please contact your administrator";
             switch (emailType) {
                 case "inspection":

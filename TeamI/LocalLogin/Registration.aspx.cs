@@ -36,15 +36,20 @@ namespace TeamI
 
             if (idResult.Succeeded)
             {
-                manager.SetEmail(user.Id, "dhelaman@hotmail.com");
-                manager.AddToRole(user.Id, "Technician");
+                manager.SetEmail(user.Id, txtEmail.Text);
+                manager.AddToRole(user.Id, ddlRoles.SelectedValue);
 
                 lblMessage.Text = "User " + user.UserName + " was created successfully!";
                 var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
 
                 var userIdentity = manager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                 authenticationManager.SignIn(userIdentity);
-                Response.Redirect("~/LocalLogin/Welcome.aspx");
+
+                Response.Cookies["NCSafetyUser"]["username"] = user.UserName;
+                Response.Cookies["NCSafetyUser"]["email"] = user.Email;
+                Response.Cookies["NCSafetyUser"]["role"] = user.Roles.FirstOrDefault().RoleId;
+                Response.Redirect("~/Home/Index");
+                //Response.Redirect("~/LocalLogin/Welcome.aspx");
             }
             else
             {
