@@ -29,6 +29,10 @@ namespace TeamI
                  "~/Scripts/circleStats/jquery.circliful.min.js",
                 "~/Scripts/circleStats/CircleStats.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/html2canvas").Include(
+                 "~/Scripts/html2canvas.js",
+                 "~/Scripts/html2canvas.svg.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/SiteTour").Include(
                   "~/Scripts/SiteTour/bootstrap-tour.min.js"));
 
