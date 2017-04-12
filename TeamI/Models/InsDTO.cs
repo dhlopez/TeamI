@@ -25,7 +25,10 @@ namespace TeamI.Models
     {
         public int Id { get; set; }
         public string HazardDesc { get; set; }
-        public string Comm { get; set; }
+        //public string Comm { get; set; }
         //public string Stats { get; set; }
+        public bool? UrgentAction { get; set; }
+        public string ProblemFound { get; set; }
+        public string ActionRequired { get; set; }
     }
 }
