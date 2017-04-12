@@ -10,43 +10,86 @@
             text-align: right;
             width: 156px;
         }
+
         .auto-style2 {
             font-size: xx-large;
         }
+        .outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+    width: /*whatever width you want*/;
+}
+body{
+    background-image:url("../Images/sparks-login.jpg");
+    background-color:white;
+      background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}
     </style>
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/Custom.css" />
+
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-    
-        <span class="auto-style2">Login</span><br />
-        <br />
-        <table style="width: 42%;">
-            <tr>
-                <td class="auto-style1">Username:</td>
-                <td>
-                    <asp:TextBox ID="txtUser" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style1">Password:</td>
-                <td>
-                    <asp:TextBox ID="txtPass" runat="server" TextMode="Password"></asp:TextBox>
-                </td>
-            </tr>
-        </table>
-        <br />
-        <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
-        <asp:Button ID="btnRegister" runat="server" CausesValidation="False" Text="Register" OnClick="btnRegister_Click" />
-        <br />
-        <br />
-        <asp:Label ID="lblMessage" runat="server"></asp:Label>
-        <br />
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtUser" ErrorMessage="Username is required"></asp:RequiredFieldValidator>
-        <br />
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPass" ErrorMessage="Password is required"></asp:RequiredFieldValidator>
-    
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="section" style="padding: 30px; background-color:rgb(255, 255, 255)">
+                                <form id="form1" runat="server">
+                                    <div class="row">
+                                        <h1 style="text-align:center;">MTT Safety Login</h1>
+                                        <hr/>
+
+                                    </div>
+                                    <div class="row">
+                                        <label for="txtUser">User:</label>
+                                        <asp:TextBox ID="txtUser" runat="server" Class="form-control"></asp:TextBox>
+                                        <span style="color: red;">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtUser" ErrorMessage="Username is required"></asp:RequiredFieldValidator></span>
+                                    </div>
+                                    <div class="row">
+                                        <label for="txtPass">Password:</label>
+                                        <asp:TextBox ID="txtPass" runat="server" Class="form-control" TextMode="Password"></asp:TextBox>
+                                        <span style="color: red;">
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPass" ErrorMessage="Password is required"></asp:RequiredFieldValidator></span>
+
+                                    </div>
+                                    <div class="row" style="margin-bottom: 15px;">
+                                        <asp:Button ID="btnLogin" runat="server" Text="Login" Class="btn btn-success form-control" OnClick="btnLogin_Click" />
+
+                                    </div>
+                                    <div class="row">
+                                        <asp:Button ID="btnRegister" runat="server" CausesValidation="False" Text="Register" Class="btn btn-warning form-control" OnClick="btnRegister_Click" />
+                                    </div>
+                                    <asp:Label ID="lblMessage" runat="server"></asp:Label>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
     </div>
-    </form>
+
 </body>
 </html>
