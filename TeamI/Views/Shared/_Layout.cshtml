@@ -67,7 +67,7 @@
 
                     @if (Request.IsAuthenticated)
                     {
-                        <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span> @user.Name</a></li>
+                        <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span>@Request.Cookies["NCSafetyUser"]["username"]</a></li>
                         <li>@Html.ActionLink("Inbox", "Inbox", "Home")</li>
                         <li>@Html.ActionLink("Calendar", "Calendar", "Home")</li>
                         <li>@Html.ActionLink("Contacts", "Contacts", "Home")</li>
@@ -91,41 +91,39 @@
 
                     <!-- The Modal -->
                     <div id="myModal" class="modal">
-
-                        <!-- Modal content -->
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div class="row">
-                                    <span class="close">&times;</span>
+                        @if ((User.Identity.IsAuthenticated) && (Request.Cookies["NCSafetyUser"] != null))
+                        {
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <span class="close">&times;</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <img src="~/Images/user.png" alt="User Picture" class="modalimg img-responsive" />
+                                            <h3>@Request.Cookies["NCSafetyUser"]["username"]</h3>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h4>User Information</h4>
+                                            <p>Role - @Request.Cookies["NCSafetyUser"]["role"]</p>
+                                            <p>Email - @Request.Cookies["NCSafetyUser"]["email"]</p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            @*Alerts or mail maybe??*@
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <img src="~/Images/user.png" alt="User Picture" class="modalimg img-responsive" />
-                                        <h3>@user.Name</h3>
-                                        <p>@user.Phone</p>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <h4>User Information</h4>
-                                        <p>Role - @user.Role</p>
-                                        <p>Email - @user.Email</p>
-                                        <p>Phone - @user.Phone</p>
-                                        <p>Postal Code - @user.PostalCode</p>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        @*Alerts or mail maybe??*@
-                                    </div>
+                                <div class="modal-footer">
+                                    @Html.ActionLink("Sign Out", "SignOut", "Home")
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                @Html.ActionLink("Sign Out", "SignOut", "Home")
-                            </div>
-                        </div>
-
+                        }
                     </div>
 
                     <div id="fontSizeChange">
