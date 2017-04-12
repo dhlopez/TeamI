@@ -21,7 +21,7 @@
                 @if (1 == 1)
                 {
                     <li>
-                        @Html.ActionLink("Search", "Index", "Search")
+                        @Html.ActionLink("Reports", "Index", "Search")
                     </li>
                     <li>
                         @Html.ActionLink("Inspection", "Index", "INSPECTIONs")
@@ -29,15 +29,18 @@
                     <li>
                         @Html.ActionLink("Report an Issue", "Index", "INSPECTIONDETAILS")
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>@Html.ActionLink("Labs", "Index", "Labs")</li>
-                            <li>@Html.ActionLink("Hazards", "Index", "Hazards")</li>
-                            <li>@Html.ActionLink("Tasks", "Index", "Tasks")</li>
-                            <li>@Html.ActionLink("Users", "Index", "Users")</li>
-                        </ul>
-                    </li>
+                    if ((Request.Cookies["NCSafetyUser"]["role"] == "Admin") || (Request.Cookies["NCSafetyUser"]["role"] == "Dean"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Labs", "Index", "Labs")</li>
+                                <li>@Html.ActionLink("Hazards", "Index", "Hazards")</li>
+                                <li>@Html.ActionLink("Tasks", "Index", "Tasks")</li>
+                                <li>@Html.ActionLink("Users", "Index", "Users")</li>
+                            </ul>
+                        </li>
+                    }
                 }              
                 <li>
                     <a href="http://www.niagaracollege.ca">Niagara College</a>
@@ -68,14 +71,18 @@
                     @if (Request.IsAuthenticated)
                     {
                         <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span>@Request.Cookies["NCSafetyUser"]["username"]</a></li>
-                        <li>@Html.ActionLink("Inbox", "Inbox", "Home")</li>
-                        <li>@Html.ActionLink("Calendar", "Calendar", "Home")</li>
-                        <li>@Html.ActionLink("Contacts", "Contacts", "Home")</li>
+                        if (HttpContext.Current.Session["CurrentUser"] != null)
+                        {
+                            <li>@Html.ActionLink("Inbox", "Inbox", "Home")</li>
+                            <li>@Html.ActionLink("Calendar", "Calendar", "Home")</li>
+                            <li>@Html.ActionLink("Contacts", "Contacts", "Home")</li>
+                        }
                         <li>@Html.ActionLink("Sign Out", "SignOut", "Home")</li>
                     }
                     else
                     {
-                        <li><a href="@Url.Action("SignIn", "Home")"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
+                        <li><a href="~/LocalLogin/Login.aspx"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="@Url.Action("SignIn", "Home")"><span class="glyphicon glyphicon-log-in"></span> Outlook</a></li>
                     }
                 </ul>
             </div>
