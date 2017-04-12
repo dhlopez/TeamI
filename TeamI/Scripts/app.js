@@ -36,7 +36,10 @@
     self.newHazardObs = {
         InspectionDetNo: ko.observable(),
         Hazard: ko.observable(),
-        Comments: ko.observable(),
+        //Comments: ko.observable(),
+        urgentAction: ko.observable(),
+        problemFound: ko.observable(),
+        actionRequired: ko.observable(),
         Status: ko.observable()
     }
 
@@ -141,11 +144,16 @@
         var hazObsRow = {
             InspectionDetailID: self.newHazardObs.InspectionDetNo,
             HazardID: self.newHazardObs.Hazard().ID,
-            Comments: self.newHazardObs.Comments(),
-            Status: self.newHazardObs.Status()
+            UrgentAction: self.newHazardObs.urgentAction(),
+            ProblemFound: self.newHazardObs.problemFound(),
+            ActionRequired: self.newHazardObs.actionRequired()
+            //Comments: self.newHazardObs.Comments(),
+            //Status: self.newHazardObs.Status()
+
             /*UserID: self.newInspectionDet.User().ID,
             Date: self.newInspectionDet.Date,*/
         };
+        console.info(self.newHazardObs.urgentAction());
         ajaxHelper(newHazardObsUri, 'POST', hazObsRow).done(function (item) {
             self.hazObsSec.push(item);
         });
