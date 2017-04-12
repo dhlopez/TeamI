@@ -299,6 +299,10 @@
             $("#submitHazObs").click(function () {
                
                 $("#hazardInfo").show();
+                //Clear fields
+                document.getElementById('problemFound').value = "";
+                document.getElementById('actionRequired').value = "";
+                document.getElementById('urgentAction').checked = false;
                 //$("#addInspectionDiv").hide();
                 //$("#addInspectionDetDiv").show();
             });
