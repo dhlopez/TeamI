@@ -25,164 +25,232 @@
     </style>
 
 
-    <div class="container">
+        <div class="container">
 
-        <h2>New Corrective Action</h2>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        @*<div class="row">
-            <div class="col-md-8">
+            @*<div class="row">
+                <div class="col-md-8">
 
-                <div class="tableLable">
-                    @Html.LabelFor(model => model.labID, "Lab:", htmlAttributes: new { @class = "control-label" })
-                </div>
-                <div class="tableData">
-                    @Html.DropDownList("labID", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.labID, "", new { @class = "text-danger" })
-                </div>
-
-            </div>
-            <div class="col-md-4">
-
-                <div class="tableLable">
-                    @Html.LabelFor(model => model.dateIns, "Date:", htmlAttributes: new { @class = "control-label" })
-                </div>
-                <div class="tableData">
-                    @Html.EditorFor(model => model.dateIns, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.dateIns, "", new { @class = "text-danger" })
+                    <div class="tableLable">
+                        @Html.LabelFor(model => model.labID, "Lab:", htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="tableData">
+                        @Html.DropDownList("labID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.labID, "", new { @class = "text-danger" })
+                    </div>
 
                 </div>
-            </div>
-        </div>
+                <div class="col-md-4">
 
+                    <div class="tableLable">
+                        @Html.LabelFor(model => model.dateIns, "Date:", htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="tableData">
+                        @Html.EditorFor(model => model.dateIns, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.dateIns, "", new { @class = "text-danger" })
 
-        <div class="row">
-            <div class="col-md-8">
-                <div class="tableLable">
-                    @Html.LabelFor(model => model.userIDIns, "Inspector:", htmlAttributes: new { @class = "" })
-                </div>
-                <div class="tableData">
-                    @Html.DropDownList("userIDIns", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.userIDIns, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="tableLable">
-                    @Html.LabelFor(model => model.status, "Status:", htmlAttributes: new { @class = "" })
-                </div>
-                <div class="tableData">
-                    @Html.EditorFor(model => model.status)
-                    @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                    </div>
                 </div>
             </div>
 
-        </div>*@
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="tableLable">
+                        @Html.LabelFor(model => model.userIDIns, "Inspector:", htmlAttributes: new { @class = "" })
+                    </div>
+                    <div class="tableData">
+                        @Html.DropDownList("userIDIns", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.userIDIns, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="tableLable">
+                        @Html.LabelFor(model => model.status, "Status:", htmlAttributes: new { @class = "" })
+                    </div>
+                    <div class="tableData">
+                        @Html.EditorFor(model => model.status)
+                        @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>*@
 
 
-        @*commented code*@
-        @*<div class="form-group">
+            @*commented code*@
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.correctionID, "correctionID", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("correctionID", null, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.correctionID, "", new { @class = "text-danger" })
                 </div>
             </div>*@
-        @*@Html.LabelFor(model => model.inspection.SingleOrDefault().ID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @*@Html.LabelFor(model => model.inspection.SingleOrDefault().ID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
                 @Html.EditorFor(model => model.inspection.SingleOrDefault().ID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model =>model.inspection.SingleOrDefault().ID, "", new { @class = "text-danger" })
             </div>*@
-        @*</div>
+            @*</div>
 
             <div class="form-group">*@
-        @*commented code*@
+            @*commented code*@
 
 
-        
+
             @*<table id="inspTable" class="table-bordered" style="width:100%;">
-                <tr>
-                    <th>
-                        <h4>Areas/Equipment</h4>
-                    </th>
-                    <th>
-                        <h4>Hazards Observed - Details</h4>
-                    </th>
-                    <th>
-                        <h4>Fault</h4>
-                    </th>
-                    <th>
-                        <h4>Comments</h4>
-                    </th>
+            <tr>
+                <th>
+                    <h4>Areas/Equipment</h4>
+                </th>
+                <th>
+                    <h4>Hazards Observed - Details</h4>
+                </th>
+                <th>
+                    <h4>Fault</h4>
+                </th>
+                <th>
+                    <h4>Comments</h4>
+                </th>
 
+            </tr>
+                <tr id="cloneSection">
+                    <td>
+                        @Html.LabelFor(model => model.InspectionDetailID, "Area/Equipment", htmlAttributes: new { @class = "control-label2" })
+
+                        @Html.EditorFor(model => model.AreaEquipment)
+                        @Html.ValidationMessageFor(model => model.AreaEquipment, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model.HazardID, "Hazard", htmlAttributes: new { @class = "" })
+
+                        @Html.DropDownList("hazardID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.HazardID, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.statusHO)
+                            @Html.ValidationMessageFor(model => model.statusHO, "", new { @class = "text-danger" })
+                        </div>
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Comments)
+                        @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                    </td>
                 </tr>
-                    <tr id="cloneSection">
-                        <td>
-                            @Html.LabelFor(model => model.InspectionDetailID, "Area/Equipment", htmlAttributes: new { @class = "control-label2" })
+            </table>*@
 
-                            @Html.EditorFor(model => model.AreaEquipment)
-                            @Html.ValidationMessageFor(model => model.AreaEquipment, "", new { @class = "text-danger" })
-                        </td>
-                        <td>
-                            @Html.LabelFor(model => model.HazardID, "Hazard", htmlAttributes: new { @class = "" })
-
-                            @Html.DropDownList("hazardID", null, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.HazardID, "", new { @class = "text-danger" })
-                        </td>
-                        <td>
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.statusHO)
-                                @Html.ValidationMessageFor(model => model.statusHO, "", new { @class = "text-danger" })
-                            </div>
-                        </td>
-                        <td>
-                            @Html.EditorFor(model => model.Comments)
-                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
-                        </td>
-                    </tr>
-                </table>*@
-        
-        @*<div class="row">*@
+            @*<div class="row">*@
             @*<div class="col-md-offset-2 col-md-4">
                 <input type="button" id="AddInsDetail" value="Add Area/Equipment" class="btn btn-default" />
             </div>*@
-        @*</div>*@
-        <div class="row">
-            <!-- ko if:allInfo -->
-            <!--
-            <div class="col-md-12">
+            @*</div>*@
+
+
+
+
+
+            <div id="addInspectionDetDiv">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="margin-bottom:25px;">
+                        <h2 class="panel-title">Enter Area or Equipment</h2>
+                    </div>
+
+
+
+                    <form class="form-horizontal" data-bind="submit: addInspectionDetail" style="margin-left:20px;">
+                        <div class="row" style="margin-bottom:15px; margin-top:15px;">
+                            <div class="col-sm-8 col-sm-offset-2" data-bind="with: newInspectionDet">
+                                <label for="inputAreaEquip" class="col-sm-4 control-label">Area/Equipment</label>
+                                <div">
+                                    <input type="text" class="form-control" id="inputAreaEquip" data-bind="value:AreaEquip" />
+                            </div>
+
+
+                        </div>
+                        <div class="row" style="margin-bottom:15px; margin-top:15px;">
+                            <div class="col-sm-2 col-sm-offset-10">
+                                <button id="submitInsDet" type="submit" class="btn btn-success">Continue</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div id="addHazardsObsDiv">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title">Header</h2>
+                        <h2 class="panel-title">Enter Hazard Observed</h2>
                     </div>
-                    <div class="panel-body">
-                        <table class="table" data-bind="foreach: allInfo">
-                             <tr class="list-unstyled">
-                                 <td><strong>Inspection:</strong></td><td><span data-bind="text: Id"></span></td>
-                                 <td><strong>Date:</strong></td><td><span data-bind="text: date"></span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Lab:</strong></td>
-                                <td><span data-bind="text: labDesc"></span></td>
-                                <td><strong>Inspector:</strong></td>
-                                <td><span data-bind="text: username"></span><td>
-                                @*<td><small><a href="#" data-bind="click: $parent.getInspectionDetails">Details</a></small></td>*@
-                            </tr>
-                        </table>
-                    </div>
+
+
+
+                    <form class="form-horizontal" data-bind="submit: addHazardObserved" style="margin-left:20px;">
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <label for="inputLabs" class="control-label">Hazard Type</label>
+                                <div>
+                                    <select class="form-control" data-bind="options:hazards, optionsText: 'Description', value: newHazardObs.Hazard"></select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6" data-bind="with: newHazardObs">
+                                <div class="row" style="padding-top:25px;">
+                                    <div class="col-sm-4">
+                                        <label for="inputComm">Urgent Problem?</label>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <input type="checkbox" id="inputComm" data-bind="//DAVID NEW FIELD - HAZARDOBSERVED.urgentAction" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6" data-bind="with: newHazardObs">
+                                <label for="inputComm" class="control-label">Problem Found</label>
+                                <div>
+                                    <textarea type="text" class="form-control" id="inputComm" data-bind="//DAVID NEW FIELD - HAZARDSOBSERVED.problemFound"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6" data-bind="with: newHazardObs">
+                                <label for="inputComm" class="control-label">Action Required</label>
+                                <div>
+                                    <textarea type="text" class="form-control" id="inputComm" data-bind="//DAVID NEW FIELD - HAZARDOBSERVED.actionRequired"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom:15px; margin-top:15px;">
+                            <div class="col-sm-2">
+                                <button id="btnAddEquip" type="button" class="btn btn-warning">Add new Area/Equipment</button>
+                            </div>
+                            <div class="col-sm-2 col-sm-offset-8">
+                                <button id="submitHazObs" type="submit" class="btn btn-success">Submit Hazard</button>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
-                <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
-            </div>-->
+
+            </div>
+            <!-- ko if:allInfo -->
+ 
             <!-- /ko -->
-            
             <!-- ko if:areas -->
-            <div class="col-md-12">
-                <div class="panel panel-default">
+            <div id="areaInfo" class="col-md-6">
+                <div class="">
                     <div class="panel-heading">
                         <h2 class="panel-title">Area/Equipment</h2>
                     </div>
                     <div class="panel-body">
                         <table class="table" data-bind="foreach: areas">
+                            <tr class="list-unstyled">
+                                <td><b>Inspection Line #</b></td>
+                                <td data-bind="text: Inspectionid"></td>
+                            </tr>
                             <tr>
                                 <td><b>Area/Equipment</b></td>
                                 <td data-bind="text: AreaEquip"></td>
@@ -194,120 +262,40 @@
             </div>
             <!-- /ko -->
             <!-- ko if:hazobs -->
-            <div class="col-md-12">
-                <div class="panel panel-default">
+            <div id="hazardInfo" class="col-md-6">
+                <div class="">
                     <div class="panel-heading">
                         <h2 class="panel-title">Hazards Observed</h2>
                     </div>
                     <table class="table" data-bind="foreach: hazObsSec">
-                        <tr class="list-unstyled" >
-                            <td><b>Hazard</b></td><td data-bind="text: Id"></td>
-                            <td><b></b></td><td data-bind="text: HazardDesc"></td>
-                            <td><b>Comments</b></td><td data-bind="text: Comm"></td>
+                        <tr class="list-unstyled">
+                            <td><b>Hazard</b></td>
+                            <td data-bind="text: Id"></td>
+                            <td><b></b></td>
+                            <td data-bind="text: HazardDesc"></td>
+                            <td><b>Comments</b></td>
+                            <td data-bind="text: Comm"></td>
                     </table>
                 </div>
             </div>
-           
+
             <!-- /ko -->
-
-        @*</div>
-            <hr />
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>*@
-
-
-        <div class="col-md-4" id="addInspectionDiv">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2 class="panel-title">Enter Header Information</h2>
-                </div>
-
-                <div class="panel-body">
-
-                    <form class="form-horizontal" data-bind="submit: addInspection">
-                        <div class="form-group">
-                            <label for="inputLabs" class="col-sm-2 control-label">Labs</label>
-                            <div class="col-sm-10">
-                                <select data-bind="options:labs, optionsText: 'room', value: newInspection.Lab"></select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputUser" class="col-sm-2 control-label">User</label>
-                            <div class="col-sm-10">
-                                <select data-bind="options:users, optionsText: 'firstName', value: newInspection.User"></select>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group" data-bind="with: newInspection">
-                            <label for="inputDate" class="col-sm-2 control-label">Date</label>
-                            <div class="col-sm-10">
-                                <input type="date" class="form-control" id="inputDate" data-bind="value:Date" />
-                            </div>
-                        </div>
-                        <button id="submitIns" type="submit" class="btn btn-default">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-
-            <div class="col-md-4" id="addInspectionDetDiv">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h2 class="panel-title">Enter Area or Equipment</h2>
+            @*</div>
+                <hr />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
                     </div>
+                </div>
+            </div>*@
 
-                    <div class="panel-body">
 
-                        <form class="form-horizontal" data-bind="submit: addInspectionDetail">
-                            <div class="form-group" data-bind="with: newInspectionDet">
-                                <label for="inputAreaEquip" class="col-sm-4 control-label">Area/Equipment</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputAreaEquip" data-bind="value:AreaEquip" />
-                                </div>
-                            </div>
-                            <button id="submitInsDet" type="submit" class="btn btn-default">Submit</button>
-                        </form>
-                    </div>
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-10">
+                    <button id="btnFinish" type="button" class="btn btn-success">Finish Inspection</button>
                 </div>
             </div>
 
-            <div class="col-md-4" id="addHazardsObsDiv">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h2 class="panel-title">Enter Hazard Observed</h2>
-                    </div>
-
-                    <div class="panel-body">
-
-                        <form class="form-horizontal" data-bind="submit: addHazardObserved">
-                            <div class="form-group">
-                                <label for="inputLabs" class="col-sm-2 control-label">Hazard</label>
-                                <div class="col-sm-10">
-                                    <select data-bind="options:hazards, optionsText: 'Description', value: newHazardObs.Hazard"></select>
-                                </div>
-                            </div>
-
-                            <div class="form-group" data-bind="with: newHazardObs">
-                                <label for="inputComm" class="col-sm-4 control-label">Comments</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="inputComm" data-bind="value:Comments" />
-                                </div>
-                            </div>
-                            <button id="btnAddEquip" type="button" class="btn btn-default">Add new Area/Equipment</button>
-                            <button id="submitHazObs" type="submit" class="btn btn-default">Submit</button>
-                        </form>
-                    </div>
-                </div>
-                <button id="btnFinish" type="button" class="btn btn-default">Finish Inspection</button>
-            </div>
-
-    </div>
         </div>
 
 
@@ -327,6 +315,8 @@
         $(document).ready(function () {
             $("#addInspectionDiv").hide();
             $("#btnFinish").hide();
+            $("#areaInfo").hide();
+            $("#hazardInfo").hide();
             //$("#addInspectionDetDiv").hide();
             $("#addHazardsObsDiv").hide();
             $("#AddInsDetail").click(function () {
@@ -348,9 +338,16 @@
             $("#submitInsDet").click(function () {
                 $("#addInspectionDetDiv").hide();
                 $("#addHazardsObsDiv").show();
+                $("#areaInfo").show();
+            });
+            $("#btnAddEquip").click(function () {
+                $("#addInspectionDetDiv").show();
+                $("#addHazardsObsDiv").hide();
+
             });
             $("#submitHazObs").click(function () {
                 $("#btnFinish").show();
+                $("#hazardInfo").show();
                 //$("#addInspectionDiv").hide();
                 //$("#addInspectionDetDiv").show();
             });
