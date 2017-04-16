@@ -28,7 +28,7 @@
     <Property Name="date" Type="date" />
     <Property Name="labID" Type="int" />
     <Property Name="userID" Type="int" />
-    <Property Name="status" Type="bit" />
+    <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="dueDate" Type="date" />
     <Property Name="scheduledDate" Type="date" />
     <Property Name="complete" Type="int" />

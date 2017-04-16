@@ -24,7 +24,7 @@ namespace TeamI.Models
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<int> labID { get; set; }
         public Nullable<int> userID { get; set; }
-        public Nullable<bool> status { get; set; }
+        public bool status { get; set; }
         public Nullable<System.DateTime> dueDate { get; set; }
         public Nullable<System.DateTime> scheduledDate { get; set; }
         public Nullable<int> complete { get; set; }
