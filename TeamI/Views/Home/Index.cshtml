@@ -57,30 +57,22 @@
 
             <div class="row" id="dataCircles">
                 @{
+                    int pending = Model.inspection.Where(i => (i.complete == 0)).Count();
+                    int overdue = Model.inspection.Where(i => i.dueDate < DateTime.Now).Count();
 
-                    int c = 0;
-                    int p = 0;
-                    int o = 0;
-                    int f = 0;
-                    foreach (var item in Model.inspection)
-                    {
-                        if (item.complete == 1) { c++; }
-                        if (item.complete == 0) { p++; }
-                        if (Convert.ToDateTime(item.dueDate).ToUniversalTime() < DateTime.Now.ToUniversalTime() && item.dueDate != null) { o++; }
-                        if (item.complete == 1 && item.status == false) { f++; }
-                    }
+                    decimal all = Model.inspection.Count();
+                    decimal pass = Model.inspection.Where(i => i.status != false).Count();
+                    decimal passRate = pass / all;
                 }
-                <div class="col-xs-3">
-                    <div id="circle1" data-animation="1" data-animationStep="5" data-percent="@c"></div>
+             
+                <div class="col-xs-4">
+                    <div id="circle1" data-animation="1" data-animationStep="5" data-percent="@pending" data-replacePercentageByText="@pending"></div>
                 </div>
-                <div class="col-xs-3">
-                    <div id="circle2" data-animation="1" data-animationStep="5" data-percent="@p"></div>
+                <div class="col-xs-4">
+                    <div id="circle2" data-animation="1" data-animationStep="5" data-percent="@overdue" data-replacePercentageByText="@overdue"></div>
                 </div>
-                <div class="col-xs-3">
-                    <div id="circle3" data-animation="1" data-animationStep="5" data-percent="@o"></div>
-                </div>
-                <div class="col-xs-3">
-                    <div id="circle4" data-animation="1" data-animationStep="5" data-percent="@f"></div>
+                <div class="col-xs-4">
+                    <div id="circle3" data-animation="1" data-animationStep="5" data-percent="@passRate"></div>
                 </div>
 
 
@@ -111,7 +103,7 @@
             </div>
 
             @{ @*if there are overdue inspections*@
-            if (o >= 1)
+            if (overdue >= 1)
             {
                 <div class="row" style="margin-bottom:15px;">
                     <div class="col-xs-12">

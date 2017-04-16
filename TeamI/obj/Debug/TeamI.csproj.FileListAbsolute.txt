@@ -694,3 +694,6 @@ C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\obj\Debug\TeamI.pdb
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\obj\Debug\TeamI.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Source\Repos\TeamI\TeamI\bin\RestSharp.dll
 C:\Users\Administrator\Source\Repos\TeamI\TeamI\bin\RestSharp.xml
+C:\Users\Gaming\Source\Repos\TeamI\TeamI\bin\RestSharp.dll
+C:\Users\Gaming\Source\Repos\TeamI\TeamI\bin\RestSharp.xml
+C:\Users\Gaming\Source\Repos\TeamI\TeamI\obj\Debug\TeamI.csprojResolveAssemblyReference.cache
