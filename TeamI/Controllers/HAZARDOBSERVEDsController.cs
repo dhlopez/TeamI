@@ -91,7 +91,7 @@ namespace TeamI.Controllers
             {
                 db.Entry(hAZARDOBSERVED).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             ViewBag.InspectionDetailID = new SelectList(db.INSPECTIONDETAILS, "ID", "AreaEquipment", hAZARDOBSERVED.InspectionDetailID);
             ViewBag.HazardID = new SelectList(db.HAZARD, "ID", "Description", hAZARDOBSERVED.HazardID);
