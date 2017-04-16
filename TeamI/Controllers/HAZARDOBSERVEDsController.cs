@@ -95,7 +95,7 @@ namespace TeamI.Controllers
             }
             ViewBag.InspectionDetailID = new SelectList(db.INSPECTIONDETAILS, "ID", "AreaEquipment", hAZARDOBSERVED.InspectionDetailID);
             ViewBag.HazardID = new SelectList(db.HAZARD, "ID", "Description", hAZARDOBSERVED.HazardID);
-            return View(hAZARDOBSERVED);
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: HAZARDOBSERVEDs/Delete/5
