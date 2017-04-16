@@ -33,7 +33,7 @@
           <Property Name="date" Type="date" />
           <Property Name="labID" Type="int" />
           <Property Name="userID" Type="int" />
-          <Property Name="status" Type="bit" />
+          <Property Name="status" Type="bit" Nullable="false" />
           <Property Name="dueDate" Type="date" />
           <Property Name="scheduledDate" Type="date" />
           <Property Name="complete" Type="int" />
@@ -219,7 +219,7 @@
           <Property Name="date" Type="DateTime" Precision="0" />
           <Property Name="labID" Type="Int32" />
           <Property Name="userID" Type="Int32" />
-          <Property Name="status" Type="Boolean" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="LAB" Relationship="Self.FK__INSPECTIO__labID__32E0915F" FromRole="INSPECTION" ToRole="LAB" />
           <NavigationProperty Name="USER" Relationship="NCSafteyInspectionModel.FK__INSPECTIO__userI__2DE6D218" FromRole="INSPECTION" ToRole="USER" />
           <NavigationProperty Name="INSPECTIONDETAILS" Relationship="NCSafteyInspectionModel.FK_INSPECTIONDETAILS_INSPECTION" FromRole="INSPECTION" ToRole="INSPECTIONDETAILS" />

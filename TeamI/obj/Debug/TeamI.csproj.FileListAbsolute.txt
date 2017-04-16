@@ -571,8 +571,6 @@ C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\TeamI.pdb
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\Antlr3.Runtime.dll
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\EntityFramework.dll
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\EntityFramework.SqlServer.dll
-C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\itextsharp.dll
-C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\itextsharp.xmlworker.dll
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\Microsoft.AI.DependencyCollector.dll
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -616,7 +614,6 @@ C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\System.Web.WebPages.Deploymen
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\System.Web.WebPages.dll
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\System.Web.WebPages.Razor.dll
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\WebGrease.dll
-C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\itextsharp.xml
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\Casa\Desktop\Practice\MVC\TeamI\TeamI\bin\Microsoft.AI.Web.xml

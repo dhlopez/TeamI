@@ -46,6 +46,7 @@ namespace TeamI
                 Response.Cookies["NCSafetyUser"]["username"] = user.UserName;
                 Response.Cookies["NCSafetyUser"]["email"] = user.Email;
                 Response.Cookies["NCSafetyUser"]["role"] = user.Roles.FirstOrDefault().RoleId;
+                Response.Cookies["NCSafetyUser"].Expires = DateTime.Now.AddDays(1d);
                 Response.Redirect("~/Home/Index");
             }
         }
