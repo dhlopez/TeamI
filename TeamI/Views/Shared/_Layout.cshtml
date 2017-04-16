@@ -29,18 +29,22 @@
                     <li>
                         @Html.ActionLink("Report an Issue", "Index", "INSPECTIONDETAILS")
                     </li>
-                    if ((Request.Cookies["NCSafetyUser"]["role"] == "Admin") || (Request.Cookies["NCSafetyUser"]["role"] == "Dean"))
+                    if (Request.Cookies["NCSafetyUser"] != null)
                     {
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>@Html.ActionLink("Labs", "Index", "Labs")</li>
-                                <li>@Html.ActionLink("Hazards", "Index", "Hazards")</li>
-                                <li>@Html.ActionLink("Tasks", "Index", "Tasks")</li>
-                                <li>@Html.ActionLink("Users", "Index", "Users")</li>
-                            </ul>
-                        </li>
+                        if ( (Request.Cookies["NCSafetyUser"]["role"] == "Admin") || (Request.Cookies["NCSafetyUser"]["role"] == "assnDean"))
+                        {
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Labs", "Index", "Labs")</li>
+                                    <li>@Html.ActionLink("Hazards", "Index", "Hazards")</li>
+                                    <li>@Html.ActionLink("Tasks", "Index", "Tasks")</li>
+                                    <li>@Html.ActionLink("Users", "Index", "Users")</li>
+                                </ul>
+                            </li>
+                        }
                     }
+
                 }              
                 <li>
                     <a href="http://www.niagaracollege.ca">Niagara College</a>
@@ -68,7 +72,7 @@
                 <ul class="nav navbar-nav navbar-right">
 
 
-                    @if (Request.IsAuthenticated)
+                    @if (Request.IsAuthenticated && Request.Cookies["NCSafetyUser"] != null)
                     {
                         <li><a href="#" id="btnModal"><span class="glyphicon glyphicon-user"></span>@Request.Cookies["NCSafetyUser"]["username"]</a></li>
                         if (HttpContext.Current.Session["CurrentUser"] != null)

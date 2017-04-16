@@ -38,19 +38,24 @@ namespace TeamI.Controllers
                         userEmail = Request.Cookies["NCSafetyUser"]["email"];
                         userRole = Request.Cookies["NCSafetyUser"]["role"];
                     }
-                    else
+                    
+                }
+                else
+                {
+                    if (Session.Count >= 1)
                     {
                         return RedirectToAction("SignOut");
                     }
+                        
                 }
 
                 //string userName = ClaimsPrincipal.Current.FindFirst("name").Value;
                 //string userId = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-                if (string.IsNullOrEmpty(userName)) //|| string.IsNullOrEmpty(userId))
-                {
-                    // Invalid principal, sign out
-                    return RedirectToAction("SignOut");
-                }
+                //if (string.IsNullOrEmpty(userName)) //|| string.IsNullOrEmpty(userId))
+                //{
+                //    // Invalid principal, sign out
+                //    return RedirectToAction("SignOut");
+                //}
 
                 // Since we cache tokens in the session, if the server restarts
                 // but the browser still has a cached cookie, we may be
@@ -62,13 +67,13 @@ namespace TeamI.Controllers
                 //    // Cache is empty, sign out
                 //    return RedirectToAction("SignOut");
                 //}
-                UserInformation CurrentUser = new UserInformation(userName, "devintope@outlook.com");
-                Session["CurrentUser"] = CurrentUser;
+                //UserInformation CurrentUser = new UserInformation(userName, "devintope@outlook.com");
+                //Session["CurrentUser"] = CurrentUser;
             }
             else
             {
-                UserInformation CurrentUser = new UserInformation("userName", "devintope@outlook.com");
-                Session["CurrentUser"] = CurrentUser;
+                //UserInformation CurrentUser = new UserInformation("userName", "devintope@outlook.com");
+                //Session["CurrentUser"] = CurrentUser;
             }
 
 
@@ -127,12 +132,20 @@ namespace TeamI.Controllers
                     SessionTokenCache tokenCache = new SessionTokenCache(userId, HttpContext);
                     tokenCache.Clear(appId);
                     Session.Clear();
+                    if (Request.Cookies["NCSafetyUser"] != null)
+                    {
+                        HttpCookie myCookie = new HttpCookie("NCSafetyUser");
+                        myCookie.Expires = DateTime.Now.AddDays(-1d);
+                        Response.Cookies.Add(myCookie);
+                    }
                 }       
             }
             // Send an OpenID Connect sign-out request. 
             HttpContext.GetOwinContext().Authentication.SignOut(
               CookieAuthenticationDefaults.AuthenticationType);
+            Session.Abandon();
             Session.Clear();
+            
             Response.Redirect("/Home/Index");
         }
         public async Task<string> GetAccessToken()
