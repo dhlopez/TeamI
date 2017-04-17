@@ -199,27 +199,27 @@
                             <div class="col-sm-6" data-bind="with: newHazardObs">
                                 <div class="row" style="padding-top:25px;">
                                     <div class="col-sm-4">
-                                        <label for="inputComm">Urgent Problem?</label>
+                                        <label for="urgentAction">Urgent Problem?</label>
                                     </div>
 
                                     <div class="col-sm-2">
-                                        <input type="checkbox" id="inputComm" data-bind="//DAVID NEW FIELD - HAZARDOBSERVED.urgentAction" />
+                                        <input type="checkbox" id="urgentAction" data-bind="checked:urgentAction" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6" data-bind="with: newHazardObs">
-                                <label for="inputComm" class="control-label">Problem Found</label>
+                                <label for="problemFound" class="control-label">Problem Found</label>
                                 <div>
-                                    <textarea type="text" class="form-control" id="inputComm" data-bind="//DAVID NEW FIELD - HAZARDSOBSERVED.problemFound"></textarea>
+                                    <textarea type="text" class="form-control" id="problemFound" data-bind="value:problemFound"></textarea>
                                 </div>
                             </div>
 
                             <div class="col-sm-6" data-bind="with: newHazardObs">
-                                <label for="inputComm" class="control-label">Action Required</label>
+                                <label for="actionRequired" class="control-label">Action Required</label>
                                 <div>
-                                    <textarea type="text" class="form-control" id="inputComm" data-bind="//DAVID NEW FIELD - HAZARDOBSERVED.actionRequired"></textarea>
+                                    <textarea type="text" class="form-control" id="actionRequired" data-bind="value:actionRequired"></textarea>
                                 </div>
                             </div>
                         </div>
