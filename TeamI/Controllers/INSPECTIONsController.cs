@@ -259,11 +259,13 @@ namespace TeamI.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (hazObs.InspectionDetailID>0)
+                var inspec = db.INSPECTION.Find(db.INSPECTIONDETAILS.Find(hazObs.InspectionDetailID).InspectionID);
+                if (inspec != null)
                 {
-                    var inspec = db.INSPECTION.Find(db.INSPECTIONDETAILS.Find(hazObs.InspectionDetailID).InspectionID);
                     inspec.status = false;
                 }
+                
+
                 db.HAZARDOBSERVED.Add(hazObs);
                 db.SaveChanges();
                 //int id = inspec.ID;

@@ -27,6 +27,14 @@ namespace TeamI.Controllers
        
         public ActionResult Index()
         {
+            //data circles
+            ViewBag.Pending = db.INSPECTION.Where(i => i.complete == 0).Count();
+            ViewBag.Overdue = db.INSPECTION.Where(i => i.dueDate < DateTime.Now).Count();
+
+            decimal pass = db.INSPECTION.Where(i => i.status != false).Count();
+            decimal all = db.INSPECTION.Count();
+            ViewBag.PassPercent = pass / all;
+
             if (Request.IsAuthenticated)
             {
                 string userName="", toEmail="", userEmail="", userRole="";

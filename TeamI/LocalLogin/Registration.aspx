@@ -93,7 +93,7 @@ label{
                                             <asp:ListItem Value="Technician">Technician</asp:ListItem>
                                             <asp:ListItem Value="Dean">Dean</asp:ListItem>
                                             <asp:ListItem Value="Associate Dean">Associate Dean</asp:ListItem>
-                                            <asp:ListItem Value="Admin">Admin</asp:ListItem>
+                                            <asp:ListItem Value="Administrator">Admin</asp:ListItem>
                                         </asp:DropDownList>
 
                                     </div>
