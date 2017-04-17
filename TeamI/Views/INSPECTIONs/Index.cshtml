@@ -83,39 +83,34 @@
                 <div id="table-scroll">
                     <table class="table">
                         <tr>
-                            <th>
-                                @Html.ActionLink("Day Of Month", "Index", new { sortOrder = ViewBag.DateSortParm })
-                            </th>
-                            <th>
-                                Building
-                            </th>
+
                             <th>
                                 Room
                             </th>
                             <th>
-                                Section
+                                Due
+                            </th>
+                            <th>
+                                Scheduled On
                             </th>
                             <th>
                                 Inspector
                             </th>
+
                             <th></th>
                         </tr>
-                        @foreach (var item in Model.inspection.Where(i => i.complete == 0))
-            {
+                        @foreach (var item in Model.inspection.Where(i => i.complete == 0))//add inspector == user
+                        {
                             <tr>
-                              
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.date)
-                                        </td>
-                               
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.LAB.building)
-                                </td>
+
                                 <td>
                                     @Html.DisplayFor(modelItem => item.LAB.room)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.LAB.type)
+                                    @Html.DisplayFor(modelItem => item.dueDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.scheduledDate)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.USER.FullName)
@@ -124,8 +119,10 @@
                                     @Html.ActionLink("Details", "Details", new { id = item.ID })
                                 </td>
                             </tr>
-                                    }
+                        }
+
                     </table>
+
                 </div>
             </div>
         </div>@*All inspections*@
@@ -217,6 +214,9 @@
                     <table class="table">
                         <tr>
                             <th>
+                                Type
+                            </th>
+                            <th>
                                 Problem
                             </th>
                             <th>
@@ -235,6 +235,9 @@
                         @foreach (var item in Model.hazardsobserved.Where(i => i.Status == false))
                         {
                             <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HAZARD.Description)
+                                </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.problemFound)
                                 </td>

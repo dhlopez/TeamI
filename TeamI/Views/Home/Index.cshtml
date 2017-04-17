@@ -67,7 +67,15 @@
                     @{ 
                         decimal pass = Model.inspection.Where(i => i.status != false).Count();
                         decimal all = Model.inspection.Count();
-                        decimal perc = pass / all;
+                        decimal perc = 0;
+                        try
+                        {
+                             perc = pass / all * 100;
+                        }catch
+                        {
+                            
+                        }
+
                     }
                     <div id="circle3" data-animation="1" data-animationStep="5" data-percent="@perc"></div>
                 </div>
@@ -100,7 +108,7 @@
             </div>
 
             @{ @*if there are overdue inspections*@
-            if (ViewBag.Overdue >= 1)
+            if (Model.inspection.Where(i => i.dueDate < DateTime.Now).Count() >= 1)
             {
                 <div class="row" style="margin-bottom:15px;">
                     <div class="col-xs-12">
@@ -217,6 +225,9 @@
                                     <table class="table">
                                         <tr>
                                             <th>
+                                                Type
+                                            </th>
+                                            <th>
                                                 Problem Found
                                             </th>
                                             <th>
@@ -232,14 +243,19 @@
                                            
                                             <tr>
                                                 <td>
+                                                    @Html.DisplayFor(modelItem => item.HAZARD.Description)
+                                                </td>
+                                                <td>
                                                     @Html.DisplayFor(modelItem => item.problemFound)
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.INSPECTIONDETAILS.INSPECTION.LAB.room)
                                                 </td>
                                                 <td>
-                                                    @Html.ActionLink("Details", "Details", "HAZARDOBSERVEDs", new { id = item.ID }, null)
+                                                    @Html.ActionLink("Details", "Details", "HAZARDOBSERVEDs", new { id = item.ID }, null) |
+                                                    @Html.ActionLink("Solve", "Edit", "HAZARDOBSERVEDs", new { id = item.ID }, null)
                                                 </td>
+
                                             </tr>
                                         }
                                     </table>
