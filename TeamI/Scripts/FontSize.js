@@ -14,6 +14,12 @@
         //alert("Reset");
         modifyFontSize('reset');
     });
+    $(function () {
+        var fontSize = $.cookie("UserFontSize");
+        if (fontSize) {
+            $('body').css('font-size', fontSize + "px");
+        }
+    });
 
     function modifyFontSize(direction) {
         var divElement = $('body');
