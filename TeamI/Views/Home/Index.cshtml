@@ -58,13 +58,18 @@
             <div class="row" id="dataCircles">
 
                 <div class="col-xs-4">
-                    <div id="circle1" data-animation="1" data-animationStep="5" data-percent="@ViewBag.Pending" data-replacePercentageByText="@ViewBag.Pending"></div>
+                    <div id="circle1" data-animation="1" data-animationStep="5" data-percent="@Model.inspection.Where(i => i.complete == 0).Count()" data-replacePercentageByText="@Model.inspection.Where(i => i.complete == 0).Count()"></div>
                 </div>
                 <div class="col-xs-4">
-                    <div id="circle2" data-animation="1" data-animationStep="5" data-percent="@ViewBag.Overdue"  data-replacePercentageByText="@ViewBag.Overdue"></div>
+                    <div id="circle2" data-animation="1" data-animationStep="5" data-percent="@Model.inspection.Where(i => i.dueDate < DateTime.Now).Count()"  data-replacePercentageByText="@Model.inspection.Where(i => i.dueDate < DateTime.Now).Count()"></div>
                 </div>
                 <div class="col-xs-4">
-                    <div id="circle3" data-animation="1" data-animationStep="5" data-percent="@ViewBag.PassPercent"></div>
+                    @{ 
+                        decimal pass = Model.inspection.Where(i => i.status != false).Count();
+                        decimal all = Model.inspection.Count();
+                        decimal perc = pass / all;
+                    }
+                    <div id="circle3" data-animation="1" data-animationStep="5" data-percent="@perc"></div>
                 </div>
 
 
